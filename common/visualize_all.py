@@ -155,6 +155,116 @@ def inspect_task5():
         print(f"  Outcome Sensitivity (S_outcome):   RLVR = {s_o['rlvr']:.1%}, RLAIF = {s_o['rlaif']:.1%}")
 
 
+def plot_cross_task_synthesis():
+    """Generate a master 4-panel publication-ready synthesis figure for Task 6."""
+    dpo_beta = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_beta_ablation_results.json")
+    ppo_kl = load_json_safe(RESULTS_DIR / "task2_ppo" / "ppo_kl_ablation_results.json")
+    grpo_norm = load_json_safe(RESULTS_DIR / "task3_grpo" / "grpo_normalization_comparison.json")
+    safety_res = load_json_safe(RESULTS_DIR / "task4_safety" / "safety_evaluation_results.json")
+    feedback_syn = load_json_safe(RESULTS_DIR / "task5_feedback" / "feedback_synthesis.json")
+
+    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+
+    # --- 1. Policy Drift vs Reward Frontier (DPO vs PPO vs GRPO) ---
+    ax = axes[0, 0]
+    has_p1 = False
+    if dpo_beta:
+        dpo_kl = [dpo_beta[b]["eval"]["mean_kl_from_reference"] for b in sorted(dpo_beta.keys(), key=float)]
+        dpo_rew = [dpo_beta[b]["eval"]["mean_reward"] for b in sorted(dpo_beta.keys(), key=float)]
+        ax.plot(dpo_kl, dpo_rew, "o-", label="DPO (β sweep)", color="tab:blue", linewidth=2, markersize=8)
+        for b, x, y in zip(sorted(dpo_beta.keys(), key=float), dpo_kl, dpo_rew):
+            ax.annotate(f"β={b}", (x, y), textcoords="offset points", xytext=(5, 5), fontsize=9)
+        has_p1 = True
+
+    if ppo_kl:
+        p_kl = [ppo_kl[b]["eval"]["mean_kl"] for b in sorted(ppo_kl.keys(), key=float)]
+        p_rew = [ppo_kl[b]["eval"]["mean_reward"] for b in sorted(ppo_kl.keys(), key=float)]
+        ax.plot(p_kl, p_rew, "s--", label="PPO (β_KL sweep)", color="tab:orange", linewidth=2, markersize=8)
+        for b, x, y in zip(sorted(ppo_kl.keys(), key=float), p_kl, p_rew):
+            ax.annotate(f"β_KL={b}", (x, y), textcoords="offset points", xytext=(5, -12), fontsize=9)
+        has_p1 = True
+
+    if grpo_norm and "grpo" in grpo_norm:
+        g_kl = grpo_norm["grpo"]["eval"]["mean_kl"]
+        g_rew = grpo_norm["grpo"]["eval"]["mean_reward"]
+        ax.scatter([g_kl], [g_rew], color="tab:green", s=150, zorder=5, label="Standard GRPO")
+        ax.annotate("GRPO", (g_kl, g_rew), textcoords="offset points", xytext=(8, 4), fontweight="bold")
+        has_p1 = True
+
+    ax.set_xlabel("Policy Drift: Mean KL(π_θ || π_ref)", fontsize=11)
+    ax.set_ylabel("Reward Model Score", fontsize=11)
+    ax.set_title("Synthesis 1: Reward vs Policy Drift Across Algorithms", fontsize=12, fontweight="bold")
+    ax.grid(True, alpha=0.3)
+    if has_p1:
+        ax.legend(fontsize=10)
+
+    # --- 2. Length Shifts Across Optimization Methods ---
+    ax = axes[0, 1]
+    lengths = {}
+    if dpo_beta and "0.10" in dpo_beta:
+        lengths["Standard DPO"] = dpo_beta["0.10"]["eval"]["mean_response_length_words"]
+    dpo_len = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_length_analysis.json")
+    if dpo_len and "length_balanced_dpo" in dpo_len:
+        lengths["Balanced DPO"] = dpo_len["length_balanced_dpo"]["word_limit"]["mean_word_count"]
+    if ppo_kl and "0.10" in ppo_kl:
+        lengths["PPO (β=0.1)"] = ppo_kl["0.10"]["eval"]["mean_response_length_tokens"]
+    if grpo_norm:
+        lengths["GRPO (1/Tk)"] = grpo_norm["grpo"]["eval"]["mean_response_length_tokens"]
+        lengths["Dr-GRPO"] = grpo_norm["dr_grpo"]["eval"]["mean_response_length_tokens"]
+
+    if lengths:
+        bars = ax.bar(list(lengths.keys()), list(lengths.values()), color=["steelblue", "seagreen", "coral", "mediumpurple", "teal"][:len(lengths)], alpha=0.85, width=0.5)
+        for b in bars:
+            h = b.get_height()
+            ax.text(b.get_x() + b.get_width()/2., h + 2, f"{h:.1f}", ha="center", va="bottom", fontweight="bold", fontsize=10)
+        ax.set_xticklabels(list(lengths.keys()), rotation=15, ha="right", fontsize=10)
+    ax.set_ylabel("Mean Response Length", fontsize=11)
+    ax.set_title("Synthesis 2: Response Length Shifts by Objective", fontsize=12, fontweight="bold")
+    ax.grid(True, alpha=0.3, axis="y")
+
+    # --- 3. Safety Calibration Map (Over-refusal vs Unsafe compliance) ---
+    ax = axes[1, 0]
+    if safety_res:
+        colors = {"sft": "tab:gray", "dpo": "tab:blue", "ppo": "tab:orange", "grpo": "tab:green"}
+        for pol, st in safety_res.items():
+            over_ref = st["safe_prompt_over_refusal_rate"] * 100
+            unsafe_comp = st["unsafe_prompt_unsafe_compliance_rate"] * 100
+            c = colors.get(pol.lower(), "tab:purple")
+            ax.scatter(over_ref, unsafe_comp, s=180, color=c, zorder=5, label=pol.upper())
+            ax.annotate(pol.upper(), (over_ref, unsafe_comp), textcoords="offset points", xytext=(8, 5), fontweight="bold")
+        ax.set_xlabel("Safe Prompt Over-Refusal Rate (%) [Harmlessness Overreach]", fontsize=11)
+        ax.set_ylabel("Unsafe Prompt Compliance Rate (%) [Harmful Failure]", fontsize=11)
+        ax.set_title("Synthesis 3: Safety Calibration (Ideal = Bottom-Left)", fontsize=12, fontweight="bold")
+        ax.grid(True, alpha=0.3)
+        ax.legend(fontsize=10)
+
+    # --- 4. Verifier vs AI Feedback Generalization (GSM8K -> SVAMP) ---
+    ax = axes[1, 1]
+    if feedback_syn:
+        policies = ["sft", "rlvr", "rlaif"]
+        labels = ["SFT Base", "RLVR (Exact)", "RLAIF (Judge)"]
+        gsm_acc = [feedback_syn["in_domain_gsm"][p]["exact_accuracy"] * 100 for p in policies]
+        svamp_acc = [feedback_syn["transfer_svamp"][p]["exact_accuracy"] * 100 for p in policies]
+        x = np.arange(len(policies))
+        width = 0.35
+        ax.bar(x - width/2, gsm_acc, width, label="In-Domain (GSM8K)", color="tab:blue", alpha=0.85)
+        ax.bar(x + width/2, svamp_acc, width, label="Transfer (SVAMP)", color="tab:orange", alpha=0.85)
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, fontsize=10)
+        ax.set_ylabel("Exact Answer Accuracy (%)", fontsize=11)
+        ax.set_title("Synthesis 4: Reasoning Generalization (RLVR vs RLAIF)", fontsize=12, fontweight="bold")
+        ax.set_ylim(0, 100)
+        ax.grid(True, alpha=0.3, axis="y")
+        ax.legend(fontsize=10)
+
+    fig.suptitle("Task 6: Master Cross-Task Synthesis & Trade-Off Analysis", fontsize=15, fontweight="bold", y=0.99)
+    fig.tight_layout()
+    out_path = FIGURES_DIR / "task6_cross_task_synthesis.png"
+    fig.savefig(out_path, dpi=160, bbox_inches="tight")
+    plt.close(fig)
+    print(f"\n[plot] Master Task 6 Cross-Task Synthesis Figure saved -> {out_path}")
+
+
 def main():
     print("=" * 80)
     print("ATML PA2 — COMPLETE POST-TRAINING RESEARCH DASHBOARD")
@@ -168,6 +278,11 @@ def main():
     inspect_task3()
     inspect_task4()
     inspect_task5()
+
+    try:
+        plot_cross_task_synthesis()
+    except Exception as e:
+        print(f"[Synthesis Plot] Note: {e}")
 
     # List all figures generated
     figs = list(FIGURES_DIR.glob("*.png"))
