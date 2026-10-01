@@ -52,13 +52,28 @@ def ppo_policy_loss(new_logp, old_logp, advantage, mask, eps=0.2):
     surr1 = ratio * advantage
     surr2 = ratio.clamp(1.0 - eps, 1.0 + eps) * advantage
 
-    # Starter implementation: students must validate the clipping geometry carefully.
-    objective = torch.maximum(surr1, surr2)
+    # BUG FIX: Starter code used torch.maximum (optimistic bound).
+    # PPO establishes a pessimistic lower bound on the unclipped objective by
+    # taking the minimum of surr1 and surr2:
+    # L_CLIP(θ) = E[ min( r_t(θ) A_t, clip(r_t(θ), 1-eps, 1+eps) A_t ) ]
+    objective = torch.minimum(surr1, surr2)
 
     loss = -masked_mean(objective, mask)
     affected = ((ratio < (1.0 - eps)) | (ratio > (1.0 + eps))).float()
     clip_fraction = masked_mean(affected, mask)
-    return loss, ratio.detach(), clip_fraction.detach()
+
+    # Detailed clipping metrics for research questions:
+    clip_high = ((ratio > (1.0 + eps)) & (advantage > 0)).float()
+    clip_low = ((ratio < (1.0 - eps)) & (advantage < 0)).float()
+    return loss, ratio.detach(), {
+        "clip_fraction": clip_fraction.detach(),
+        "clip_high_fraction": masked_mean(clip_high, mask).detach(),
+        "clip_low_fraction": masked_mean(clip_low, mask).detach(),
+        "ratio_mean": masked_mean(ratio.detach(), mask),
+        "ratio_min": (ratio * mask + (1 - mask) * 1.0).min().detach(),
+        "ratio_max": (ratio * mask).max().detach(),
+        "policy_loss": loss.detach(),
+    }
 
 
 def value_mse_loss(predicted_values, returns, mask):

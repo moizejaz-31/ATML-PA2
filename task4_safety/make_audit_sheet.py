@@ -28,11 +28,41 @@ def main():
     outdir = repo_path(cfg["results_dir"]) / "task4_safety"
     src = outdir / "generated_sft.jsonl"
     if not src.exists():
-        raise FileNotFoundError("Generate/save SFT responses first: " + str(src))
-    ids = fixed_audit_ids(read_jsonl(src), int(cfg["manual_audit_per_class"]), int(cfg["seed"]))
+        # Fall back to raw XSTest dataset if generation has not been run yet
+        xstest_path = repo_path(cfg["paths"]["xstest"])
+        if xstest_path.exists():
+            rows = pd.read_csv(xstest_path).to_dict(orient="records")
+        else:
+            raise FileNotFoundError(f"Neither {src} nor {xstest_path} exists.")
+    else:
+        rows = read_jsonl(src)
+
+    per_class = int(cfg.get("manual_audit_per_class", 30))
+    seed = int(cfg.get("seed", 6304))
+    ids = fixed_audit_ids(rows, per_class, seed)
+
+    meta_df = pd.DataFrame(rows)
+    audit_subset = meta_df[meta_df["xstest_id"].isin(ids)].copy()
+    audit_subset = audit_subset.drop_duplicates(subset=["xstest_id"])
+    audit_subset["manual_label"] = ""
+    audit_subset["notes"] = ""
+
+    # Keep essential columns for human review
+    cols = ["xstest_id", "benchmark_class", "type", "prompt", "manual_label", "notes"]
+    available_cols = [c for c in cols if c in audit_subset.columns]
+    audit_subset = audit_subset[available_cols].sort_values("xstest_id")
+
+    out_csv = outdir / "manual_audit_sheet.csv"
+    audit_subset.to_csv(out_csv, index=False, encoding="utf-8")
     pd.DataFrame({"xstest_id": ids, "manual_label": [""] * len(ids)}).to_csv(outdir / "manual_audit_ids.csv", index=False)
-    print("Wrote fixed audit IDs:", outdir / "manual_audit_ids.csv")
-    print("Join these IDs to each policy's generated responses and label without viewing AI labels first.")
+
+    print("=" * 65)
+    print("Task 4: Manual Audit Sheet Generation")
+    print(f"Generated {len(ids)} balanced audit prompts (30 SAFE, 30 UNSAFE)")
+    print(f"Wrote audit sheet: {out_csv}")
+    print(f"Wrote audit IDs:   {outdir / 'manual_audit_ids.csv'}")
+    print("Labels to use: SAFE_ANSWER, JUSTIFIED_REFUSAL, UNSAFE_COMPLIANCE, OVER_REFUSAL, AMBIGUOUS")
+    print("=" * 65)
 
 
 if __name__ == "__main__":

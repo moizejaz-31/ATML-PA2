@@ -11,10 +11,24 @@ def group_relative_advantages(rewards: torch.Tensor, group_ids: torch.Tensor, ep
     `group_ids[i]` identifies which prompt produced reward `rewards[i]`.
     Validate this implementation against the group-relative definition in the assignment manual.
     """
-    # Starter implementation: students must validate the grouping logic carefully.
-    mean = rewards.mean()
-    std = rewards.std(unbiased=False).clamp_min(eps)
-    return (rewards - mean) / std
+    # BUG FIX: Starter code computed global mean/std across all rewards,
+    # ignoring group_ids. In GRPO (Shao et al., 2024), advantage normalization
+    # is performed WITHIN EACH PROMPT'S GROUP of K completions:
+    # A_k = (r_k - μ_r) / (σ_r + eps), where μ_r, σ_r are within-group statistics.
+    advantages = torch.zeros_like(rewards)
+    unique_groups = torch.unique(group_ids)
+
+    for gid in unique_groups:
+        idx = (group_ids == gid).nonzero(as_tuple=True)[0]
+        group_rews = rewards[idx]
+        if group_rews.numel() <= 1:
+            advantages[idx] = 0.0
+            continue
+        g_mean = group_rews.mean()
+        g_std = group_rews.std(unbiased=False).clamp_min(eps)
+        advantages[idx] = (group_rews - g_mean) / g_std
+
+    return advantages
 
 
 def grpo_policy_loss(
