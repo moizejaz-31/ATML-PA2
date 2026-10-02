@@ -9,6 +9,9 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import sys
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt

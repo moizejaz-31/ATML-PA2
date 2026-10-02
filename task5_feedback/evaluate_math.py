@@ -131,7 +131,16 @@ def evaluate_dataset(config_path: str, dataset: str, batch_size: int = 4):
 
         for start in range(0, len(rows), batch_size):
             chunk = rows[start : start + batch_size]
-            prompts = [[{"role": "user", "content": str(r.get("question", r.get("problem", "")))}] for r in chunk]
+            prompts = []
+            for r in chunk:
+                if "messages" in r and isinstance(r["messages"], list):
+                    prompts.append(r["messages"])
+                else:
+                    q = str(r.get("question", r.get("problem", "")))
+                    prompts.append([{
+                        "role": "user",
+                        "content": f"{q}\n\nShow your reasoning and end your response with exactly `#### <number>`."
+                    }])
             gen = batch_generate(
                 model,
                 tokenizer,
@@ -142,7 +151,7 @@ def evaluate_dataset(config_path: str, dataset: str, batch_size: int = 4):
                 do_sample=False,
             )
             for r, resp, n_tok in zip(chunk, gen["responses"], gen["response_lengths"]):
-                gold = str(r.get("answer", r.get("gold", "")))
+                gold = str(r.get("gold_final", r.get("answer", r.get("gold", ""))))
                 pred = extract_designated_final(resp)
                 corr = exact_reward(resp, gold)
                 records.append({
