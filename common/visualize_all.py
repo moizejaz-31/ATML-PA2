@@ -1,300 +1,376 @@
-"""Master visualization and results inspection utility for ATML PA2.
+"""Report builder for ATML PA2: summary tables (CSV + LaTeX) and cross-task figures.
 
-This script aggregates all saved result files (.json, .jsonl, .csv) across Tasks 1-5,
-re-generates publication-ready figures in report/figures/, and prints formatted summary tables
-addressing all research questions from the assignment manual.
+Reads only saved files under results/; any section whose inputs are missing is skipped with a note.
+Run: python -m common.visualize_all
+Outputs: report/tables/*.csv|*.tex and report/figures/task6_*.png (+ reprints of key tables).
 """
 
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RESULTS_DIR = REPO_ROOT / "results"
 FIGURES_DIR = REPO_ROOT / "report" / "figures"
-FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+TABLES_DIR = REPO_ROOT / "report" / "tables"
 
 
-def load_json_safe(path: Path) -> dict | list | None:
-    if not path.exists():
+def load(rel: str):
+    p = RESULTS_DIR / rel
+    if not p.exists():
         return None
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        return json.loads(p.read_text(encoding="utf-8"))
     except Exception:
         return None
 
 
-def inspect_task1():
-    print("\n" + "=" * 80)
-    print("TASK 1: DIRECT PREFERENCE OPTIMIZATION (DPO) SUMMARY")
-    print("=" * 80)
-    summary = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_summary_standard.json")
-    if summary:
-        print(f"Standard DPO Run: {summary['total_steps']} steps, final loss = {summary['final_loss']:.4f}, final pref acc = {summary['final_preference_accuracy']:.1%}")
-
-    ablation = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_beta_ablation_results.json")
-    if ablation:
-        print("\n[RQ1: Regularization Strength β]")
-        print(f"{'β':>6} | {'Held-out Acc':>14} | {'Policy Drift (KL)':>18} | {'Mean Reward':>14} | {'Length (words)':>16}")
-        print("-" * 74)
-        for b_str, data in sorted(ablation.items(), key=lambda x: float(x[0])):
-            ev = data["eval"]
-            print(f"{float(b_str):6.2f} | {ev['held_out_preference_accuracy']:13.1%} | {ev['mean_kl_from_reference']:17.4f} | {ev['mean_reward']:13.3f} | {ev['mean_response_length_words']:15.1f}")
-
-    length_res = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_length_analysis.json")
-    if length_res:
-        print("\n[RQ2: Length Confounding & Bias]")
-        std_strat = length_res["standard_dpo"]["stratified"]
-        len_strat = length_res["length_balanced_dpo"]["stratified"]
-        print(f"{'Stratum':<20} | {'Standard DPO Acc':>18} | {'Length-Balanced Acc':>22}")
-        print("-" * 65)
-        for s in ["preferred_longer", "matched_length", "rejected_longer"]:
-            s_acc = std_strat.get(s, {}).get("accuracy", 0.0)
-            l_acc = len_strat.get(s, {}).get("accuracy", 0.0)
-            print(f"{s:<20} | {s_acc:17.1%} | {l_acc:21.1%}")
-
-        std_wl = length_res["standard_dpo"]["word_limit"]
-        len_wl = length_res["length_balanced_dpo"]["word_limit"]
-        print(f"\nWord Limit Compliance: Standard = {std_wl['compliance_rate']:.1%}, Length-Balanced = {len_wl['compliance_rate']:.1%}")
+def jsonl(rel: str):
+    p = RESULTS_DIR / rel
+    if not p.exists():
+        return []
+    return [json.loads(l) for l in p.open(encoding="utf-8") if l.strip()]
 
 
-def inspect_task2():
-    print("\n" + "=" * 80)
-    print("TASK 2: PROXIMAL POLICY OPTIMIZATION (PPO) SUMMARY")
-    print("=" * 80)
-    ppo_summary = load_json_safe(RESULTS_DIR / "task2_ppo" / "ppo_summary_standard.json")
-    if ppo_summary:
-        print(f"Standard PPO Continuation: {ppo_summary['updates']} updates, final reward = {ppo_summary['final_reward']:.3f}, peak VRAM = {ppo_summary.get('peak_vram_mb', 0):.0f}MB")
-
-    clip_res = load_json_safe(RESULTS_DIR / "task2_ppo" / "ppo_clipping_study_results.json")
-    if clip_res:
-        print("\n[RQ1: Clipping Parameter ε]")
-        cached = clip_res.get("cached_geometry", {})
-        forks = clip_res.get("fork_results", {})
-        print(f"{'ε':>6} | {'Cached Clip %':>15} | {'Held-out Reward':>18} | {'Policy Drift (KL)':>18}")
-        print("-" * 65)
-        for eps_str in sorted(cached.keys(), key=lambda x: float(x)):
-            c_frac = cached[eps_str]["clip_fraction"]
-            f_r = forks.get(eps_str, {}).get("eval", {}).get("mean_reward", float("nan"))
-            f_kl = forks.get(eps_str, {}).get("eval", {}).get("mean_kl", float("nan"))
-            print(f"{float(eps_str):6.2f} | {c_frac:14.1%} | {f_r:17.3f} | {f_kl:17.4f}")
-
-    kl_res = load_json_safe(RESULTS_DIR / "task2_ppo" / "ppo_kl_ablation_results.json")
-    if kl_res:
-        print("\n[RQ2 & RQ3: KL Penalty β_KL & Reward Overoptimization]")
-        print(f"{'β_KL':>6} | {'Held-out Reward':>18} | {'Policy Drift (KL)':>18} | {'Mean Length':>14} | {'EOS Rate':>12}")
-        print("-" * 74)
-        for b_str in sorted(kl_res.keys(), key=lambda x: float(x)):
-            ev = kl_res[b_str]["eval"]
-            print(f"{float(b_str):6.2f} | {ev['mean_reward']:17.3f} | {ev['mean_kl']:17.4f} | {ev['mean_response_length_tokens']:13.1f} | {ev['eos_termination_rate']:11.1%}")
+def write_table(df: pd.DataFrame, name: str, caption: str):
+    TABLES_DIR.mkdir(parents=True, exist_ok=True)
+    df.to_csv(TABLES_DIR / f"{name}.csv", index=False)
+    try:
+        tex = df.to_latex(index=False, escape=True, na_rep="--", caption=caption, label=f"tab:{name}")
+    except Exception:
+        tex = df.to_string(index=False)
+    (TABLES_DIR / f"{name}.tex").write_text(tex, encoding="utf-8")
+    print(f"\n### {caption}  [{name}]")
+    print(df.to_string(index=False))
 
 
-def inspect_task3():
-    print("\n" + "=" * 80)
-    print("TASK 3: GROUP RELATIVE POLICY OPTIMIZATION (GRPO) SUMMARY")
-    print("=" * 80)
-    grpo_summary = load_json_safe(RESULTS_DIR / "task3_grpo" / "grpo_summary_standard.json")
-    if grpo_summary:
-        print(f"Standard GRPO Continuation: {grpo_summary['updates']} updates, K={grpo_summary['k_generations']}, final reward = {grpo_summary['final_reward']:.3f}, within-group std = {grpo_summary['final_within_group_std']:.3f}")
-
-    grp_res = load_json_safe(RESULTS_DIR / "task3_grpo" / "grpo_group_size_analysis.json")
-    if grp_res:
-        print("\n[RQ1: Group Size K at Equal Generation Budget]")
-        print(f"{'K':>4} | {'Informative %':>15} | {'Within-group Std':>18} | {'Adv Variance':>14}")
-        print("-" * 57)
-        for k_str in sorted(grp_res.keys(), key=lambda x: int(x)):
-            st = grp_res[k_str]
-            print(f"{int(k_str):4d} | {st['informative_group_fraction']:14.1%} | {st['mean_within_group_reward_std']:17.4f} | {st['relative_signal_variance']:13.4f}")
-
-    norm_res = load_json_safe(RESULTS_DIR / "task3_grpo" / "grpo_normalization_comparison.json")
-    if norm_res:
-        print("\n[RQ2: Sequence Normalization: Canonical (1/Tk) vs Dr-GRPO (1/Lmax)]")
-        print(f"{'Normalization':<25} | {'Held-out Reward':>18} | {'Mean Length (tokens)':>22} | {'KL (drift)':>12}")
-        print("-" * 82)
-        for m in ["grpo", "dr_grpo"]:
-            ev = norm_res[m]["eval"]
-            name = "Canonical GRPO (1/Tk)" if m == "grpo" else "Dr-GRPO (1/L_max)"
-            print(f"{name:<25} | {ev['mean_reward']:17.3f} | {ev['mean_response_length_tokens']:21.1f} | {ev['mean_kl']:11.4f}")
+def f(x, nd=3):
+    return None if x is None or (isinstance(x, float) and np.isnan(x)) else round(float(x), nd)
 
 
-def inspect_task4():
-    print("\n" + "=" * 80)
-    print("TASK 4: SAFETY CALIBRATION EVALUATION (XSTest)")
-    print("=" * 80)
-    safety_res = load_json_safe(RESULTS_DIR / "task4_safety" / "safety_evaluation_results.json")
-    if safety_res:
-        print(f"{'Policy':<8} | {'Safe Answer %':>14} | {'Over-Refusal %':>15} | {'Justified Refusal %':>20} | {'Unsafe Compliance %':>20}")
-        print("-" * 85)
-        for pol, st in safety_res.items():
-            print(f"{pol.upper():<8} | {st['safe_prompt_answer_rate']:13.1%} | {st['safe_prompt_over_refusal_rate']:14.1%} | {st['unsafe_prompt_justified_refusal_rate']:19.1%} | {st['unsafe_prompt_unsafe_compliance_rate']:19.1%}")
+def pm(mean, sd, nd=1):
+    return f"{mean:.{nd}f} ± {sd:.{nd}f}"
 
 
-def inspect_task5():
-    print("\n" + "=" * 80)
-    print("TASK 5: FEEDBACK SOURCE COMPARISON (RLVR vs RLAIF)")
-    print("=" * 80)
-    syn_res = load_json_safe(RESULTS_DIR / "task5_feedback" / "feedback_synthesis.json")
-    if syn_res:
-        print(f"{'Policy':<10} | {'GSM8K Acc':>12} | {'SVAMP Acc':>12} | {'Retention %':>14}")
-        print("-" * 54)
+# --------------------------------------------------------------------------- Task 1
+def task1():
+    rows = []
+    specs = [("SFT (no adapter)", "dpo_eval_sft_reference.json", "—", "—"),
+             ("Standard DPO", "dpo_eval_standard.json", "1 epoch, all kept train pairs", "0.10")]
+    abl = load("task1_dpo/dpo_beta_ablation_results.json") or {}
+    for b in sorted(abl, key=float):
+        specs.append((f"Short fork β={float(b):g}", f"dpo_eval_ablation_beta_{float(b):.2f}".replace(".", "_") + ".json",
+                      abl[b].get("budget", "short"), f"{float(b):g}"))
+    for name, fn, budget, beta in specs:
+        e = load(f"task1_dpo/{fn}")
+        if e is None:
+            continue
+        sft = name.startswith("SFT")
+        rows.append({"condition": name, "β": beta, "budget": budget,
+                     "held-out DPO loss": None if sft else f(e["heldout_dpo_loss"]),
+                     "pref. acc.": None if sft else f(e["heldout_preference_accuracy"]),
+                     "KL tok": f(e["kl_token_mean"], 4), "KL seq": f(e["kl_sequence_mean"], 2),
+                     "RM": f"{e['mean_reward']:.3f} ± {e['sem_reward']:.3f}",
+                     "len (tok)": pm(e["length_tokens"]["mean"], e["length_tokens"]["std"]),
+                     "IQR": f(e["length_tokens"]["iqr"], 0), "EOS": f(e["eos_rate"], 2)})
+    if rows:
+        write_table(pd.DataFrame(rows), "t1_dpo_summary",
+                    "DPO summary (standard one-epoch run and short β forks use different budgets; RM ± s.e.m.; length mean ± std)")
+    la = load("task1_dpo/dpo_length_analysis.json")
+    if la and "standard" in la:
+        rows = []
+        for s in ["preferred_longer", "length_matched", "rejected_longer"]:
+            a, b = la["standard"]["stratified"].get(s, {}), la["length_balanced"]["stratified"].get(s, {})
+            rows.append({"stratum": s, "n": a.get("total_pairs"), "std acc": f(a.get("accuracy")), "LB acc": f(b.get("accuracy")),
+                         "std margin": f(a.get("mean_margin"), 2), "LB margin": f(b.get("mean_margin"), 2),
+                         "pairs w/ truncated resp.": a.get("pairs_with_truncated_response")})
+        write_table(pd.DataFrame(rows), "t1_length_strata", "Held-out preference accuracy by length stratum")
+        rows = []
+        for key, lab, ev in [("sft", "SFT", "dpo_eval_sft_reference.json"), ("standard", "standard DPO", "dpo_eval_standard.json"),
+                             ("length_balanced", "length-balanced DPO", "dpo_eval_length_balanced.json")]:
+            wl = la[key]["word_limit"]
+            e = load(f"task1_dpo/{ev}")
+            rows.append({"policy": lab, "word-limit compliance (greedy)": f(wl["greedy_compliance_rate"], 2),
+                         "compliance (8 samples/prompt)": f(wl.get("sampled_compliance_rate"), 2),
+                         "words (greedy)": pm(wl["greedy_word_count"]["mean"], wl["greedy_word_count"]["std"]),
+                         "words / limit": f(wl["mean_excess_ratio"], 2),
+                         "held-out len (tok)": pm(e["length_tokens"]["mean"], e["length_tokens"]["std"]) if e else None})
+        write_table(pd.DataFrame(rows), "t1_word_limit", "Word-limit compliance and generated length")
+    pre = load("task1_dpo/dpo_preprocessing_report.json")
+    if pre:
+        rows = []
+        for k, v in pre["files"].items():
+            t = v["total"]
+            rows.append({"file": k, "pairs": t.get("pairs"), "overlength": t.get("overlength_pairs", 0),
+                         "dropped (prompt > limit)": t.get("dropped_here", 0),
+                         "response truncated": t.get("either_truncated_here", 0),
+                         "released rule: prompt cut": t.get("released_prompt_cut", 0),
+                         "frac chosen longer (full)": f(v["chosen_minus_rejected_tokens_full"]["frac_chosen_longer"], 2),
+                         "frac chosen longer (after trunc.)": f(v["chosen_minus_rejected_tokens_after_truncation"]["frac_chosen_longer"], 2)})
+        write_table(pd.DataFrame(rows), "t1_truncation_policy", "Effect of the 768-token limit under the prompt-preserving policy")
+
+
+# --------------------------------------------------------------------------- Task 2
+def task2():
+    rows = []
+    for name, fn, cond in [("SFT (no adapter)", "ppo_eval_sft_reference.json", "—"),
+                           ("PPO midpoint (start)", "ppo_eval_midpoint.json", "—"),
+                           ("Standard PPO (20 updates)", "ppo_eval_standard.json", "ε=0.20, β_KL=0.10")]:
+        e = load(f"task2_ppo/{fn}")
+        if e:
+            rows.append({"policy": name, "setting": cond, "RM": f"{e['mean_reward']:.3f} ± {e['sem_reward']:.3f}",
+                         "KL tok": f(e["kl_token_mean"], 4), "entropy": f(e["entropy_exact"], 3),
+                         "len": pm(e["length_tokens"]["mean"], e["length_tokens"]["std"]), "EOS": f(e["eos_rate"], 2)})
+    clip = load("task2_ppo/ppo_clipping_study_results.json")
+    kl = load("task2_ppo/ppo_kl_ablation_results.json")
+    for study, data, key in [("clip", clip, "eps_values"), ("kl", kl, "kl_values")]:
+        if not data:
+            continue
+        for v in data[key]:
+            fk = data["forks"].get(str(v))
+            if not fk:
+                continue
+            e, t = fk["eval"], fk["train"]
+            rows.append({"policy": f"fork ({study} study, 8 updates)", "setting": f"ε={fk['clip_epsilon']}, β_KL={fk['kl_beta']}",
+                         "RM": f"{e['mean_reward']:.3f} ± {e['sem_reward']:.3f}", "KL tok": f(e["kl_token_mean"], 4),
+                         "entropy": f(e["entropy_exact"], 3), "len": pm(e["length_tokens"]["mean"], e["length_tokens"]["std"]),
+                         "EOS": f(e["eos_rate"], 2), "max KL(old,new)": f(t.get("stability_max_approx_kl_old_new"), 5),
+                         "grad-norm CV": f(t.get("stability_policy_grad_norm_cv"), 2)})
+    if rows:
+        write_table(pd.DataFrame(rows), "t2_ppo_heldout", "PPO held-out evaluation (64 fixed prompts, cap 768, RM ± s.e.m.)")
+    if clip:
+        st = clip["cached_static"]
+        pr = clip.get("cached_probe", {})
+        rows = [{"ε": e, "static clip frac": f(st[str(e)]["clip_fraction"], 4), "static affected frac": f(st[str(e)]["affected_token_fraction"], 4),
+                 "probe clip frac": f(pr.get(str(e), {}).get("geometry", {}).get(str(e), {}).get("clip_fraction"), 4),
+                 "probe affected frac": f(pr.get(str(e), {}).get("geometry", {}).get(str(e), {}).get("affected_token_fraction"), 4),
+                 "clipped surrogate": f(st[str(e)]["clipped_surrogate"], 4), "unclipped surrogate": f(st[str(e)]["unclipped_surrogate"], 4)}
+                for e in clip["eps_values"]]
+        write_table(pd.DataFrame(rows), "t2_ppo_cached_clipping", f"Cached-rollout clipping geometry ({clip['cache']['rebuilt']} rollouts)")
+    s = load("task2_ppo/ppo_summary_standard.json")
+    g = load("task3_grpo/grpo_summary_standard.json")
+    d = load("task1_dpo/dpo_summary_standard.json")
+    rows = []
+    for name, x in [("DPO standard (1 epoch)", d), ("PPO standard (20 updates)", s), ("GRPO standard (20 updates)", g)]:
+        if x:
+            rows.append({"run": name, "wall-clock (min)": f(x["wall_time_seconds"] / 60, 1), "peak VRAM (GB)": f(x.get("peak_vram_mb", 0) / 1024, 2),
+                         "generated tokens": x.get("generated_tokens", "— (offline)")})
+    if rows:
+        write_table(pd.DataFrame(rows), "t_compute", "Compute for the standard runs")
+
+
+# --------------------------------------------------------------------------- Task 3
+def task3():
+    rows = []
+    for name, fn in [("SFT (no adapter)", "grpo_eval_sft_reference.json"), ("GRPO midpoint (start)", "grpo_eval_midpoint.json"),
+                     ("Standard GRPO (20 updates)", "grpo_eval_standard.json"),
+                     ("fork canonical GRPO (8)", "grpo_eval_fork_norm_grpo.json"), ("fork Dr. GRPO (8)", "grpo_eval_fork_norm_dr_grpo.json")]:
+        e = load(f"task3_grpo/{fn}")
+        if e:
+            rows.append({"policy": name, "RM": f"{e['mean_reward']:.3f} ± {e['sem_reward']:.3f}", "KL tok": f(e["kl_token_mean"], 4),
+                         "entropy": f(e["entropy_exact"], 3), "len": pm(e["length_tokens"]["mean"], e["length_tokens"]["std"]),
+                         "hit cap": f(e["hit_max_tokens_rate"], 2)})
+    if rows:
+        write_table(pd.DataFrame(rows), "t3_grpo_heldout", "GRPO held-out evaluation (64 fixed prompts, cap 512)")
+    gs = load("task3_grpo/grpo_group_size_analysis.json")
+    if gs:
+        rows = []
+        for k in sorted([k for k in gs if not k.startswith("_")], key=int):
+            s = gs[k]
+            row = {"K": int(k), "groups": s["groups"], "informative": f(s["informative_group_fraction"]),
+                   "std>0.1": f(s["meaningful_group_fraction"]), "mean σ_g": f(s["mean_within_group_reward_std"]),
+                   "var(adv)": f(s["relative_signal_variance"]), "sign agree": f(s["advantage_sign_agreement"]),
+                   "baseline err": f(s["mean_baseline_error"])}
+            for dname in ["hard", "medium", "easy"]:
+                row[f"sign agree ({dname})"] = f(s["difficulty_breakdown"][dname].get("advantage_sign_agreement"))
+            rows.append(row)
+        write_table(pd.DataFrame(rows), "t3_group_size", "Equal-generation group-size study (192 cached generations)")
+    nm = load("task3_grpo/grpo_normalization_comparison.json")
+    if nm:
+        rows = []
+        for lt in ["grpo", "dr_grpo"]:
+            if lt in nm:
+                lc, e = nm[lt]["length_conditioned"], nm[lt]["eval"]
+                rows.append({"condition": nm[lt]["label"], "RM": f"{e['mean_reward']:.3f} ± {e['sem_reward']:.3f}",
+                             "KL tok": f(e["kl_token_mean"], 4), "len": pm(e["length_tokens"]["mean"], e["length_tokens"]["std"]),
+                             "ρ_s(len, ‖g‖/|A|)": f(lc["spearman_length_vs_gradnorm_per_unit_adv"]),
+                             "grad share long third": f(lc["grad_mass_share_longest_third"]),
+                             "grad share short third": f(lc["grad_mass_share_shortest_third"])})
+        write_table(pd.DataFrame(rows), "t3_normalization", "Canonical vs Dr. GRPO normalisation")
+
+
+# --------------------------------------------------------------------------- Task 4
+def task4():
+    s = load("task4_safety/safety_evaluation_results.json")
+    if not s:
+        return
+    rows = []
+    for p in ["sft", "dpo", "ppo", "grpo"]:
+        if p not in s:
+            continue
+        m = s[p]["metrics"]
+        cell = lambda k: f"{m[k]['rate'] * 100:.1f} [{m[k]['ci95'][0] * 100:.0f},{m[k]['ci95'][1] * 100:.0f}]"
+        rows.append({"policy": p.upper(), "safe answer %": cell("safe_answer"), "over-refusal %": cell("over_refusal"),
+                     "any refusal on SAFE %*": cell("safe_any_refusal"), "justified refusal %": cell("justified_refusal"),
+                     "unsafe compliance %": cell("unsafe_compliance"), "ambiguous %": cell("ambiguous"),
+                     "len (tok)": pm(s[p]["length_tokens"]["mean"], s[p]["length_tokens"]["std"])})
+    write_table(pd.DataFrame(rows), "t4_safety", "XSTest safety calibration (AI judge; 95% Wilson CI; *supplementary)")
+    a = s.get("_manual_audit")
+    if a and a.get("pooled"):
+        rows = [{"policy": p.upper(), "n": v["n"], "agreement": f(v["agreement"]), "κ": f(v["cohen_kappa"]),
+                 "AI ambiguous": f(v["ai_ambiguous_rate"]), "manual ambiguous": f(v["manual_ambiguous_rate"])}
+                for p, v in a["per_policy"].items() if v]
+        rows.append({"policy": "pooled", "n": a["pooled"]["n"], "agreement": f(a["pooled"]["agreement"]), "κ": f(a["pooled"]["cohen_kappa"]),
+                     "AI ambiguous": f(a["pooled"]["ai_ambiguous_rate"]), "manual ambiguous": f(a["pooled"]["manual_ambiguous_rate"])})
+        write_table(pd.DataFrame(rows), "t4_manual_audit", "Manual audit vs AI judge (60 fixed prompts per policy)")
+
+
+# --------------------------------------------------------------------------- Task 5
+def task5():
+    g, t, d = load("task5_feedback/math_eval_gsm.json"), load("task5_feedback/math_eval_transfer.json"), load("task5_feedback/perturbation_scores.json")
+    if g and t:
+        rows = []
         for p in ["sft", "rlvr", "rlaif"]:
-            g = syn_res["in_domain_gsm"][p]["exact_accuracy"]
-            t = syn_res["transfer_svamp"][p]["exact_accuracy"]
-            ret = syn_res["retention_ratios"][p]
-            print(f"{p.upper():<10} | {g:11.1%} | {t:11.1%} | {ret:13.1%}")
+            a, b = g["per_policy"][p], t["per_policy"][p]
+            rows.append({"policy": p.upper(), "GSM acc": f(a["exact_accuracy"]), "GSM format": f(a["format_compliance_rate"]),
+                         "GSM len": pm(a["length_tokens"]["mean"], a["length_tokens"]["std"], 0),
+                         "SVAMP acc": f(b["exact_accuracy"]), "SVAMP len": pm(b["length_tokens"]["mean"], b["length_tokens"]["std"], 0),
+                         "acc drop": f(a["exact_accuracy"] - b["exact_accuracy"])})
+        for k in ["rlvr_vs_sft", "rlaif_vs_sft", "rlvr_vs_rlaif"]:
+            pa, pb = g["pairwise_comparisons"][k], t["pairwise_comparisons"][k]
+            rows.append({"policy": k.replace("_vs_", " vs ").upper(), "GSM acc": f"win {pa['win_rate_a_ties_half']:.3f}",
+                         "GSM format": f"ties {pa['explicit_ties']}/unparsed {pa['unparsed_judge_outputs']}",
+                         "GSM len": f"agree {pa['agreement_on_verifier_decisive']:.2f}" if pa["agreement_on_verifier_decisive"] is not None else "",
+                         "SVAMP acc": f"win {pb['win_rate_a_ties_half']:.3f}", "SVAMP len": "",
+                         "acc drop": f(pa["win_rate_a_ties_half"] - pb["win_rate_a_ties_half"])})
+        write_table(pd.DataFrame(rows), "t5_math", "RLVR vs RLAIF: exact accuracy, AI-judge win rate (tie=0.5), verifier agreement")
+    if d:
+        rows = []
+        for c, v in d["comparisons"].items():
+            rows.append({"perturbation": c, "verifier better/tie/worse": f"{v['rlvr']['better_rate']:.2f}/{v['rlvr']['tie_rate']:.2f}/{v['rlvr']['worse_rate']:.2f}",
+                         "judge better/tie/worse": f"{v['rlaif']['better_rate']:.2f}/{v['rlaif']['tie_rate']:.2f}/{v['rlaif']['worse_rate']:.2f}",
+                         "judge order consistency": f(v["rlaif_order_consistency"], 2)})
+        write_table(pd.DataFrame(rows), "t5_diagnostics",
+                    f"Controlled diagnostics (S_reason verifier {d['s_reason']['rlvr']:.2f} / judge {d['s_reason']['rlaif']:.2f}; "
+                    f"S_outcome verifier {d['s_outcome']['rlvr']:.2f} / judge {d['s_outcome']['rlaif']:.2f})")
 
-        print("\nDiagnostic Sensitivity Breakdown:")
-        s_r = syn_res["diagnostic_sensitivities"]["s_reason"]
-        s_o = syn_res["diagnostic_sensitivities"]["s_outcome"]
-        print(f"  Reasoning Sensitivity (S_reason): RLVR = {s_r['rlvr']:.1%}, RLAIF = {s_r['rlaif']:.1%}")
-        print(f"  Outcome Sensitivity (S_outcome):   RLVR = {s_o['rlvr']:.1%}, RLAIF = {s_o['rlaif']:.1%}")
 
-
+# --------------------------------------------------------------------------- Task 6
 def plot_cross_task_synthesis():
-    """Generate a master 4-panel publication-ready synthesis figure for Task 6."""
-    dpo_beta = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_beta_ablation_results.json")
-    ppo_kl = load_json_safe(RESULTS_DIR / "task2_ppo" / "ppo_kl_ablation_results.json")
-    grpo_norm = load_json_safe(RESULTS_DIR / "task3_grpo" / "grpo_normalization_comparison.json")
-    safety_res = load_json_safe(RESULTS_DIR / "task4_safety" / "safety_evaluation_results.json")
-    feedback_syn = load_json_safe(RESULTS_DIR / "task5_feedback" / "feedback_synthesis.json")
-
-    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-
-    # --- 1. Policy Drift vs Reward Frontier (DPO vs PPO vs GRPO) ---
-    ax = axes[0, 0]
-    has_p1 = False
-    if dpo_beta:
-        dpo_kl = [dpo_beta[b]["eval"]["mean_kl_from_reference"] for b in sorted(dpo_beta.keys(), key=float)]
-        dpo_rew = [dpo_beta[b]["eval"]["mean_reward"] for b in sorted(dpo_beta.keys(), key=float)]
-        ax.plot(dpo_kl, dpo_rew, "o-", label="DPO (β sweep)", color="tab:blue", linewidth=2, markersize=8)
-        for b, x, y in zip(sorted(dpo_beta.keys(), key=float), dpo_kl, dpo_rew):
-            ax.annotate(f"β={b}", (x, y), textcoords="offset points", xytext=(5, 5), fontsize=9)
-        has_p1 = True
-
-    if ppo_kl:
-        p_kl = [ppo_kl[b]["eval"]["mean_kl"] for b in sorted(ppo_kl.keys(), key=float)]
-        p_rew = [ppo_kl[b]["eval"]["mean_reward"] for b in sorted(ppo_kl.keys(), key=float)]
-        ax.plot(p_kl, p_rew, "s--", label="PPO (β_KL sweep)", color="tab:orange", linewidth=2, markersize=8)
-        for b, x, y in zip(sorted(ppo_kl.keys(), key=float), p_kl, p_rew):
-            ax.annotate(f"β_KL={b}", (x, y), textcoords="offset points", xytext=(5, -12), fontsize=9)
-        has_p1 = True
-
-    if grpo_norm and "grpo" in grpo_norm:
-        g_kl = grpo_norm["grpo"]["eval"]["mean_kl"]
-        g_rew = grpo_norm["grpo"]["eval"]["mean_reward"]
-        ax.scatter([g_kl], [g_rew], color="tab:green", s=150, zorder=5, label="Standard GRPO")
-        ax.annotate("GRPO", (g_kl, g_rew), textcoords="offset points", xytext=(8, 4), fontweight="bold")
-        has_p1 = True
-
-    ax.set_xlabel("Policy Drift: Mean KL(π_θ || π_ref)", fontsize=11)
-    ax.set_ylabel("Reward Model Score", fontsize=11)
-    ax.set_title("Synthesis 1: Reward vs Policy Drift Across Algorithms", fontsize=12, fontweight="bold")
-    ax.grid(True, alpha=0.3)
-    if has_p1:
-        ax.legend(fontsize=10)
-
-    # --- 2. Length Shifts Across Optimization Methods ---
-    ax = axes[0, 1]
-    lengths = {}
-    if dpo_beta and "0.10" in dpo_beta:
-        lengths["Standard DPO"] = dpo_beta["0.10"]["eval"]["mean_response_length_words"]
-    dpo_len = load_json_safe(RESULTS_DIR / "task1_dpo" / "dpo_length_analysis.json")
-    if dpo_len and "length_balanced_dpo" in dpo_len:
-        lengths["Balanced DPO"] = dpo_len["length_balanced_dpo"]["word_limit"]["mean_word_count"]
-    if ppo_kl and "0.10" in ppo_kl:
-        lengths["PPO (β=0.1)"] = ppo_kl["0.10"]["eval"]["mean_response_length_tokens"]
-    if grpo_norm:
-        lengths["GRPO (1/Tk)"] = grpo_norm["grpo"]["eval"]["mean_response_length_tokens"]
-        lengths["Dr-GRPO"] = grpo_norm["dr_grpo"]["eval"]["mean_response_length_tokens"]
-
-    if lengths:
-        bars = ax.bar(list(lengths.keys()), list(lengths.values()), color=["steelblue", "seagreen", "coral", "mediumpurple", "teal"][:len(lengths)], alpha=0.85, width=0.5)
-        for b in bars:
-            h = b.get_height()
-            ax.text(b.get_x() + b.get_width()/2., h + 2, f"{h:.1f}", ha="center", va="bottom", fontweight="bold", fontsize=10)
-        ax.set_xticklabels(list(lengths.keys()), rotation=15, ha="right", fontsize=10)
-    ax.set_ylabel("Mean Response Length", fontsize=11)
-    ax.set_title("Synthesis 2: Response Length Shifts by Objective", fontsize=12, fontweight="bold")
-    ax.grid(True, alpha=0.3, axis="y")
-
-    # --- 3. Safety Calibration Map (Over-refusal vs Unsafe compliance) ---
-    ax = axes[1, 0]
-    if safety_res:
-        colors = {"sft": "tab:gray", "dpo": "tab:blue", "ppo": "tab:orange", "grpo": "tab:green"}
-        for pol, st in safety_res.items():
-            over_ref = st["safe_prompt_over_refusal_rate"] * 100
-            unsafe_comp = st["unsafe_prompt_unsafe_compliance_rate"] * 100
-            c = colors.get(pol.lower(), "tab:purple")
-            ax.scatter(over_ref, unsafe_comp, s=180, color=c, zorder=5, label=pol.upper())
-            ax.annotate(pol.upper(), (over_ref, unsafe_comp), textcoords="offset points", xytext=(8, 5), fontweight="bold")
-        ax.set_xlabel("Safe Prompt Over-Refusal Rate (%) [Harmlessness Overreach]", fontsize=11)
-        ax.set_ylabel("Unsafe Prompt Compliance Rate (%) [Harmful Failure]", fontsize=11)
-        ax.set_title("Synthesis 3: Safety Calibration (Ideal = Bottom-Left)", fontsize=12, fontweight="bold")
-        ax.grid(True, alpha=0.3)
-        ax.legend(fontsize=10)
-
-    # --- 4. Verifier vs AI Feedback Generalization (GSM8K -> SVAMP) ---
-    ax = axes[1, 1]
-    if feedback_syn:
-        policies = ["sft", "rlvr", "rlaif"]
-        labels = ["SFT Base", "RLVR (Exact)", "RLAIF (Judge)"]
-        gsm_acc = [feedback_syn["in_domain_gsm"][p]["exact_accuracy"] * 100 for p in policies]
-        svamp_acc = [feedback_syn["transfer_svamp"][p]["exact_accuracy"] * 100 for p in policies]
-        x = np.arange(len(policies))
-        width = 0.35
-        ax.bar(x - width/2, gsm_acc, width, label="In-Domain (GSM8K)", color="tab:blue", alpha=0.85)
-        ax.bar(x + width/2, svamp_acc, width, label="Transfer (SVAMP)", color="tab:orange", alpha=0.85)
-        ax.set_xticks(x)
-        ax.set_xticklabels(labels, fontsize=10)
-        ax.set_ylabel("Exact Answer Accuracy (%)", fontsize=11)
-        ax.set_title("Synthesis 4: Reasoning Generalization (RLVR vs RLAIF)", fontsize=12, fontweight="bold")
-        ax.set_ylim(0, 100)
-        ax.grid(True, alpha=0.3, axis="y")
-        ax.legend(fontsize=10)
-
-    fig.suptitle("Task 6: Master Cross-Task Synthesis & Trade-Off Analysis", fontsize=15, fontweight="bold", y=0.99)
+    pts = []  # (method, label, kl, d_reward, d_len, eval set)
+    d_ref = load("task1_dpo/dpo_eval_sft_reference.json")
+    if d_ref:
+        for lab, fn in [("DPO std", "dpo_eval_standard.json"), ("DPO β=.03", "dpo_eval_ablation_beta_0_03.json"),
+                        ("DPO β=.10", "dpo_eval_ablation_beta_0_10.json"), ("DPO β=.30", "dpo_eval_ablation_beta_0_30.json"),
+                        ("DPO len-bal", "dpo_eval_length_balanced.json")]:
+            e = load(f"task1_dpo/{fn}")
+            if e:
+                pts.append(("DPO", lab, e["kl_token_mean"], e["mean_reward"] - d_ref["mean_reward"],
+                            e["length_tokens"]["mean"] - d_ref["length_tokens"]["mean"]))
+    for method, task, start, files in [
+        ("PPO", "task2_ppo", "ppo_eval_midpoint.json", [("PPO std", "ppo_eval_standard.json")] +
+         [(f"PPO {n}", f"ppo_eval_{n}.json") for n in ["fork_eps0_05_kl0_10", "fork_eps0_20_kl0_10", "fork_eps0_50_kl0_10",
+                                                       "fork_eps0_20_kl0_00", "fork_eps0_20_kl0_20"]]),
+        ("GRPO", "task3_grpo", "grpo_eval_midpoint.json", [("GRPO std", "grpo_eval_standard.json"),
+                                                           ("GRPO canon", "grpo_eval_fork_norm_grpo.json"),
+                                                           ("Dr.GRPO", "grpo_eval_fork_norm_dr_grpo.json")])]:
+        s0 = load(f"{task}/{start}")
+        if not s0:
+            continue
+        pts.append((method, f"{method} midpoint", s0["kl_token_mean"], 0.0, 0.0))
+        for lab, fn in files:
+            e = load(f"{task}/{fn}")
+            if e:
+                pts.append((method, lab.replace("fork_", "").replace("_kl", " kl").replace("eps", "ε"), e["kl_token_mean"],
+                            e["mean_reward"] - s0["mean_reward"], e["length_tokens"]["mean"] - s0["length_tokens"]["mean"]))
+    safety = load("task4_safety/safety_evaluation_results.json")
+    if not pts and not safety:
+        print("[Task 6] nothing to plot yet")
+        return
+    cols = {"DPO": "#2563EB", "PPO": "#DC2626", "GRPO": "#16A34A"}
+    fig, axes = plt.subplots(1, 3, figsize=(20, 5.2))
+    for m, lab, kl, dr, dl in pts:
+        axes[0].scatter(kl, dr, color=cols[m], s=45)
+        axes[0].annotate(lab, (kl, dr), fontsize=7, xytext=(3, 3), textcoords="offset points")
+        axes[1].scatter(kl, dl, color=cols[m], s=45)
+        axes[1].annotate(lab, (kl, dl), fontsize=7, xytext=(3, 3), textcoords="offset points")
+    for ax, yl, t in [(axes[0], "Δ RM score vs own start", "(a) Reward change vs drift"),
+                      (axes[1], "Δ generated tokens vs own start", "(b) Length change vs drift")]:
+        ax.axhline(0, color="black", lw=0.7)
+        ax.set_xlabel("held-out sampled KL to the frozen reference (token mean)")
+        ax.set_ylabel(yl)
+        ax.set_title(t, fontsize=10)
+        ax.grid(alpha=0.3)
+    for m, c in cols.items():
+        axes[0].scatter([], [], color=c, label=m)
+    axes[0].legend(frameon=False)
+    if safety:
+        for p, c in zip(["sft", "dpo", "ppo", "grpo"], ["#6B7280", "#2563EB", "#DC2626", "#16A34A"]):
+            if p in safety:
+                m = safety[p]["metrics"]
+                x, y = m["safe_any_refusal"]["rate"] * 100, m["unsafe_compliance"]["rate"] * 100
+                axes[2].errorbar(x, y, xerr=[[x - m["safe_any_refusal"]["ci95"][0] * 100], [m["safe_any_refusal"]["ci95"][1] * 100 - x]],
+                                 yerr=[[y - m["unsafe_compliance"]["ci95"][0] * 100], [m["unsafe_compliance"]["ci95"][1] * 100 - y]],
+                                 fmt="o", color=c, capsize=3, label=p.upper())
+        axes[2].set_xlabel("refusal-type labels on SAFE prompts (%)")
+        axes[2].set_ylabel("unsafe compliance on UNSAFE prompts (%)")
+        axes[2].set_title("(c) Safety calibration (lower-left is better)", fontsize=10)
+        axes[2].legend(frameon=False)
+        axes[2].grid(alpha=0.3)
+    fig.suptitle("Task 6 — cross-task synthesis (DPO measured on UltraFeedback held-out pairs' prompts; PPO/GRPO on the RL held-out pool; "
+                 "Δ relative to each method's own starting policy)", fontsize=10)
     fig.tight_layout()
-    out_path = FIGURES_DIR / "task6_cross_task_synthesis.png"
-    fig.savefig(out_path, dpi=160, bbox_inches="tight")
+    FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+    fig.savefig(FIGURES_DIR / "task6_cross_task_synthesis.png", dpi=170, bbox_inches="tight")
     plt.close(fig)
-    print(f"\n[plot] Master Task 6 Cross-Task Synthesis Figure saved -> {out_path}")
+    print(f"[plot] Saved {FIGURES_DIR / 'task6_cross_task_synthesis.png'}")
+
+
+def plot_standard_trajectories():
+    """One compact figure with the standard PPO and GRPO continuation trajectories side by side."""
+    ppo, grpo = jsonl("task2_ppo/ppo_train_standard.jsonl"), jsonl("task3_grpo/grpo_train_standard.jsonl")
+    if not ppo and not grpo:
+        return
+    keys = [("reward_rm", "reward_mean", "reward"), ("kl_token_mean", "kl_token_mean", "sampled KL"),
+            ("entropy_exact", "entropy_exact", "entropy"), ("response_length", "response_length", "length (tokens)")]
+    fig, axes = plt.subplots(1, 4, figsize=(20, 3.8))
+    for ax, (kp, kg, t) in zip(axes, keys):
+        if ppo:
+            ax.plot([r["update"] for r in ppo], [r[kp] for r in ppo], "-o", ms=3, color="#DC2626", label="PPO")
+        if grpo:
+            ax.plot([r["update"] for r in grpo], [r[kg] for r in grpo], "-s", ms=3, color="#16A34A", label="GRPO")
+        ax.set_title(t, fontsize=10)
+        ax.set_xlabel("update")
+        ax.grid(alpha=0.3)
+    axes[0].legend(frameon=False)
+    fig.suptitle("Standard continuations from the supplied midpoints (rollout statistics, 1 prompt per update)")
+    fig.tight_layout()
+    fig.savefig(FIGURES_DIR / "task6_standard_rl_trajectories.png", dpi=170, bbox_inches="tight")
+    plt.close(fig)
 
 
 def main():
-    print("=" * 80)
-    print("ATML PA2 — COMPLETE POST-TRAINING RESEARCH DASHBOARD")
-    print(f"Repo Root:    {REPO_ROOT}")
-    print(f"Results Dir:  {RESULTS_DIR}")
-    print(f"Figures Dir:  {FIGURES_DIR}")
-    print("=" * 80)
-
-    inspect_task1()
-    inspect_task2()
-    inspect_task3()
-    inspect_task4()
-    inspect_task5()
-
-    try:
-        plot_cross_task_synthesis()
-    except Exception as e:
-        print(f"[Synthesis Plot] Note: {e}")
-
-    # List all figures generated
-    figs = list(FIGURES_DIR.glob("*.png"))
-    print("\n" + "=" * 80)
-    print(f"SAVED FIGURES IN {FIGURES_DIR} ({len(figs)} files):")
-    print("=" * 80)
-    for f in sorted(figs):
-        print(f"  • {f.name}")
-    print("=" * 80)
+    for fn in (task1, task2, task3, task4, task5):
+        try:
+            fn()
+        except Exception as e:
+            print(f"[warn] {fn.__name__}: {e}")
+    for fn in (plot_cross_task_synthesis, plot_standard_trajectories):
+        try:
+            fn()
+        except Exception as e:
+            print(f"[warn] {fn.__name__}: {e}")
+    print(f"\nTables in {TABLES_DIR}, figures in {FIGURES_DIR}")
 
 
 if __name__ == "__main__":

@@ -131,6 +131,7 @@ def main():
     ap.add_argument("--policies", nargs="+", default=["sft", "dpo", "ppo", "grpo"])
     ap.add_argument("--input", help="Optional specific generated JSONL file to judge")
     ap.add_argument("--output", help="Optional output path")
+    ap.add_argument("--skip-existing", action="store_true", help="skip policies already judged (same row count)")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
 
@@ -152,6 +153,9 @@ def main():
             out_p = outdir / f"judged_{pol}.jsonl"
             if not in_p.exists():
                 print(f"[Warning] Input {in_p} does not exist. Run generate_responses first.")
+                continue
+            if args.skip_existing and out_p.exists() and len(read_jsonl(out_p)) == len(read_jsonl(in_p)):
+                print(f"[skip] {out_p} already judged")
                 continue
             judge_file(tok, model, in_p, out_p, max_new_tokens=max_tokens)
 

@@ -1,17 +1,20 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
-import time
+
+import numpy as np
 import torch
 from torch.optim import AdamW
 
 from common.data import load_yaml, prompt_messages, read_jsonl, repo_path
 from common.generation import batch_generate, response_token_logprobs, score_reward_pairs
-from common.logging_utils import append_jsonl, save_json, set_seed, wall_timer
+from common.logging_utils import append_jsonl, reset_file, save_json, set_seed, wall_timer
 from common.metrics import masked_mean, sample_entropy, sampled_kl
 from common.models import (
     count_parameters,
+    disable_dropout,
     load_policy,
     load_reward_model,
     load_tokenizer,
@@ -31,67 +34,42 @@ from task2_ppo.ppo import (
 
 
 def plot_ppo_continuation(log_path: Path, fig_dir: Path, run_name: str = "standard"):
-    """Plot multi-panel PPO training progression."""
-    import json
+    """Multi-panel PPO trajectory: every quantity the manual lists for the standard continuation."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    records = []
-    with log_path.open(encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                records.append(json.loads(line))
-    if not records:
+    recs = [json.loads(l) for l in log_path.open(encoding="utf-8") if l.strip()]
+    if not recs:
         return
-
-    updates = [r["update"] for r in records]
-    fig_dir.mkdir(parents=True, exist_ok=True)
-
-    fig, axes = plt.subplots(3, 2, figsize=(14, 12), sharex=True)
-
-    # 1. Learned Task Reward
-    axes[0, 0].plot(updates, [r["reward_mean"] for r in records], color="tab:blue", marker="o")
-    axes[0, 0].set_ylabel("Learned Reward", fontsize=10)
-    axes[0, 0].set_title("Terminal Reward Model Score", fontsize=11, fontweight="bold")
-    axes[0, 0].grid(True, alpha=0.3)
-
-    # 2. Reference Policy KL Drift
-    axes[0, 1].plot(updates, [r["kl_mean"] for r in records], color="tab:red", marker="s")
-    axes[0, 1].set_ylabel("KL(π_θ || π_ref)", fontsize=10)
-    axes[0, 1].set_title("Policy Drift (KL from Reference)", fontsize=11, fontweight="bold")
-    axes[0, 1].grid(True, alpha=0.3)
-
-    # 3. Policy Loss & Value Loss
-    axes[1, 0].plot(updates, [r["policy_loss"] for r in records], color="tab:purple", label="Policy Loss")
-    axes[1, 0].set_ylabel("Policy Loss", fontsize=10)
-    axes[1, 0].set_title("PPO Clipped Surrogate Policy Loss", fontsize=11, fontweight="bold")
-    axes[1, 0].grid(True, alpha=0.3)
-
-    axes[1, 1].plot(updates, [r["value_loss"] for r in records], color="tab:brown", label="Value Loss")
-    axes[1, 1].set_ylabel("Value Loss (MSE)", fontsize=10)
-    axes[1, 1].set_title("Critic Value Loss (Return MSE)", fontsize=11, fontweight="bold")
-    axes[1, 1].grid(True, alpha=0.3)
-
-    # 4. Clip Fraction & Entropy
-    axes[2, 0].plot(updates, [r["clip_fraction"] for r in records], color="tab:orange", marker="^")
-    axes[2, 0].set_ylabel("Clip Fraction", fontsize=10)
-    axes[2, 0].set_xlabel("Update Step", fontsize=10)
-    axes[2, 0].set_title("Fraction of Tokens Clipped", fontsize=11, fontweight="bold")
-    axes[2, 0].grid(True, alpha=0.3)
-
-    axes[2, 1].plot(updates, [r["response_length_mean"] for r in records], color="tab:green", marker="d")
-    axes[2, 1].set_ylabel("Response Length (tokens)", fontsize=10)
-    axes[2, 1].set_xlabel("Update Step", fontsize=10)
-    axes[2, 1].set_title("Mean Response Length", fontsize=11, fontweight="bold")
-    axes[2, 1].grid(True, alpha=0.3)
-
-    fig.suptitle(f"Task 2 — PPO Continuation Dashboard ({run_name})", fontsize=14, fontweight="bold", y=0.99)
+    u = [r["update"] for r in recs]
+    panels = [
+        (["reward_rm", "reward_effective"], "Reward (RM / after EOS penalty)"),
+        (["kl_token_mean"], "Sampled KL to reference (token mean)"),
+        (["policy_loss"], "Policy loss (clipped surrogate)"),
+        (["value_loss"], "Value loss (MSE)"),
+        (["entropy_exact"], "Policy entropy (exact, nats/token)"),
+        (["clip_fraction_last_epoch"], "Clip fraction (last PPO epoch)"),
+        (["policy_grad_norm", "value_grad_norm"], "Grad norm (pre-clip)"),
+        (["response_length"], "Response length (tokens)"),
+        (["value_explained_variance"], "Critic explained variance (returns)"),
+    ]
+    fig, axes = plt.subplots(3, 3, figsize=(16, 11), sharex=True)
+    for ax, (keys, title) in zip(axes.flat, panels):
+        for k, c in zip(keys, ["#2563EB", "#DC2626"]):
+            if k in recs[0]:
+                ax.plot(u, [r[k] for r in recs], "-o", ms=3, color=c, label=k)
+        if len(keys) > 1:
+            ax.legend(frameon=False, fontsize=7)
+        ax.set_title(title, fontsize=10)
+        ax.grid(alpha=0.3)
+    for ax in axes[-1]:
+        ax.set_xlabel("update")
+    fig.suptitle(f"Task 2 — PPO continuation ({run_name}, ε={recs[0]['clip_epsilon']}, β_KL={recs[0]['kl_beta']})")
     fig.tight_layout()
-    fig_path = fig_dir / f"task2_ppo_continuation_{run_name}.png"
-    fig.savefig(fig_path, dpi=150, bbox_inches="tight")
+    fig.savefig(fig_dir / f"task2_ppo_continuation_{run_name}.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
-    print(f"[plot] Saved PPO dashboard to {fig_path}")
+    print(f"[plot] Saved PPO dashboard for {run_name}")
 
 
 def prepare_ppo_continuation(config_path: str):
@@ -109,6 +87,9 @@ def prepare_ppo_continuation(config_path: str):
         cfg["paths"]["ppo_midpoint_value"],
         train_mode=cfg.get("value_train_mode", "head_only"),
     )
+    if bool(cfg.get("disable_dropout", True)):
+        disable_dropout(policy)
+        disable_dropout(value_model)
     reward_model, reward_tokenizer = load_reward_model(cfg)
     prompts = read_jsonl(cfg["paths"]["rl_prompt_train"])
 
@@ -136,6 +117,15 @@ def prepare_ppo_continuation(config_path: str):
         "policy_optimizer": policy_optimizer,
         "value_optimizer": value_optimizer,
     }
+
+
+def explained_variance(values: torch.Tensor, returns: torch.Tensor, mask: torch.Tensor) -> float:
+    m = mask.bool()
+    v, r = values[m].float(), returns[m].float()
+    var_r = r.var(unbiased=False)
+    if r.numel() < 2 or var_r <= 0:
+        return float("nan")
+    return float(1.0 - (r - v).var(unbiased=False) / var_r)
 
 
 def run_ppo(
@@ -184,165 +174,194 @@ def run_ppo(
     fig_dir = repo_path("report/figures")
     fig_dir.mkdir(parents=True, exist_ok=True)
 
-    log_path = results_dir / f"ppo_train_{run_name}.jsonl"
+    log_path = reset_file(results_dir / f"ppo_train_{run_name}.jsonl")
+    rollout_path = reset_file(results_dir / f"ppo_rollouts_{run_name}.jsonl")
 
-    print(f"============================================================")
-    print(f"[PPO Continuation] run={run_name} updates={num_updates} eps={eps} beta_kl={beta_kl}")
+    print("=" * 60)
+    print(f"[PPO] run={run_name} updates={num_updates} eps={eps} beta_kl={beta_kl} epochs={ppo_epochs}")
     print(f"Policy trainable params: {count_parameters(policy)[1]:,}")
     print(f"Value trainable params:  {count_parameters(value_model)[1]:,}")
     print(f"Output adapter:          {out}")
-    print(f"============================================================")
+    print("=" * 60)
 
     timer = wall_timer()
     prompt_idx = 0
-
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()
+    generated_tokens = 0
 
     for update in range(1, num_updates + 1):
-        # 1. Select prompts
-        batch_prompts = []
+        # 1. Prompts (identical order for every fork: index 0, 1, 2, ...)
+        batch_rows, batch_prompts = [], []
         for _ in range(prompts_per_update):
             row = prompts[prompt_idx % len(prompts)]
+            batch_rows.append(row)
             batch_prompts.append(prompt_messages(row))
             prompt_idx += 1
 
-        # 2. On-policy rollout generation
-        gen_data = batch_generate(
-            policy,
-            tokenizer,
-            batch_prompts,
+        # 2. On-policy rollouts
+        gen = batch_generate(
+            policy, tokenizer, batch_prompts,
             max_prompt_length=max_prompt_len,
             max_new_tokens=max_resp_len,
             temperature=float(cfg["generation"]["temperature"]),
             top_p=float(cfg["generation"]["top_p"]),
             do_sample=bool(cfg["generation"]["do_sample"]),
         )
+        sequences, attention_mask = gen["sequences"], gen["attention_mask"]
+        prompt_width, response_ids = gen["prompt_width"], gen["response_ids"]
+        response_mask = gen["response_mask"]
+        generated_tokens += int(response_mask.sum().item())
 
-        sequences = gen_data["sequences"]
-        attention_mask = gen_data["attention_mask"]
-        prompt_width = gen_data["prompt_width"]
-        response_ids = gen_data["response_ids"]
-        response_mask = gen_data["response_mask"]
-        responses = gen_data["responses"]
-        terminated = gen_data["terminated_with_eos"]
-
-        # 3. Terminal reward scoring
+        # 3. Terminal learned reward (+ released missing-EOS penalty)
         with torch.no_grad():
-            raw_rewards = score_reward_pairs(
-                reward_model, reward_tokenizer, batch_prompts, responses, max_length=int(cfg["reward_max_length"])
+            rm_scores = score_reward_pairs(
+                reward_model, reward_tokenizer, batch_prompts, gen["responses"], max_length=int(cfg["reward_max_length"])
+            ).float()
+            penalty = torch.tensor([0.0 if t else missing_eos_pen for t in gen["terminated_with_eos"]],
+                                   device=rm_scores.device)
+            task_reward = rm_scores - penalty
+
+        # 4. Old-policy and reference log-probs (+ exact rollout entropy)
+        with torch.no_grad():
+            policy.eval()
+            old_logp, entropy_tok = response_token_logprobs(
+                policy, sequences, attention_mask, prompt_width, response_ids, return_entropy=True
             )
-            # Apply missing EOS penalty
-            for b_idx, has_eos in enumerate(terminated):
-                if not has_eos:
-                    raw_rewards[b_idx] -= missing_eos_pen
-
-        # 4. Old policy logprobs and reference policy logprobs
-        with torch.no_grad():
-            old_logp, _ = response_token_logprobs(policy, sequences, attention_mask, prompt_width, response_ids)
             with reference_mode(policy):
                 ref_logp, _ = response_token_logprobs(policy, sequences, attention_mask, prompt_width, response_ids)
 
-        # 5. KL shaping and GAE advantage estimation
-        shaped_rew = shaped_rewards(raw_rewards, old_logp, ref_logp, response_mask, beta_kl)
-
+        # 5. KL-shaped rewards, values, GAE
+        shaped = shaped_rewards(task_reward, old_logp, ref_logp, response_mask, beta_kl)
         with torch.no_grad():
-            token_vals = token_values(value_model, sequences, attention_mask)
-            # Response-level values only
-            resp_values = token_vals[:, prompt_width - 1 : prompt_width - 1 + response_ids.shape[1]]
-            advantages, returns = compute_gae(shaped_rew, resp_values, response_mask, gamma=gamma, lam=lam)
-            norm_advantages = normalize_advantages(advantages, response_mask)
+            value_model.eval()
+            vals = token_values(value_model, sequences, attention_mask)
+            resp_values = vals[:, prompt_width - 1 : prompt_width - 1 + response_ids.shape[1]].float()
+            advantages, returns = compute_gae(shaped, resp_values, response_mask, gamma=gamma, lam=lam)
+            norm_adv = normalize_advantages(advantages, response_mask)
+            ev = explained_variance(resp_values, returns, response_mask)
 
-        # 6. PPO Update Epochs
+        # 6. PPO epochs on this rollout batch
         policy.train()
         value_model.train()
-
-        last_p_loss = 0.0
-        last_v_loss = 0.0
-        last_clip_fraction = 0.0
-        last_entropy = 0.0
-
-        for _ in range(ppo_epochs):
-            # Policy forward
+        ep = []
+        for epoch in range(ppo_epochs):
             new_logp, _ = response_token_logprobs(policy, sequences, attention_mask, prompt_width, response_ids)
-            p_loss, _, clip_diag = ppo_policy_loss(new_logp, old_logp, norm_advantages, response_mask, eps=eps)
-
+            p_loss, ratio, diag = ppo_policy_loss(new_logp, old_logp, norm_adv, response_mask, eps=eps)
             opt_p.zero_grad()
             p_loss.backward()
             p_norm = torch.nn.utils.clip_grad_norm_(trainable_parameters(policy), max_grad_norm).item()
             opt_p.step()
 
-            # Value forward
-            cur_vals = token_values(value_model, sequences, attention_mask)[:, prompt_width - 1 : prompt_width - 1 + response_ids.shape[1]]
+            cur_vals = token_values(value_model, sequences, attention_mask)[
+                :, prompt_width - 1 : prompt_width - 1 + response_ids.shape[1]
+            ].float()
             v_loss = value_mse_loss(cur_vals, returns, response_mask)
-
             opt_v.zero_grad()
             (v_loss * val_coef).backward()
             v_norm = torch.nn.utils.clip_grad_norm_(trainable_parameters(value_model), max_grad_norm).item()
             opt_v.step()
 
-            last_p_loss = float(p_loss.item())
-            last_v_loss = float(v_loss.item())
-            last_clip_fraction = float(clip_diag["clip_fraction"].item())
-            last_entropy = float(sample_entropy(new_logp.detach(), response_mask).item())
+            log_ratio = (new_logp - old_logp).detach()
+            ep.append({
+                "policy_loss": float(p_loss.item()),
+                "value_loss": float(v_loss.item()),
+                "clip_fraction": float(diag["clip_fraction"].item()),
+                "clip_high_fraction": float(diag["clip_high_fraction"].item()),
+                "clip_low_fraction": float(diag["clip_low_fraction"].item()),
+                # k3 estimator of KL(pi_old || pi_new) at the start of this epoch
+                "approx_kl_old_new": float(masked_mean(torch.exp(log_ratio) - 1 - log_ratio, response_mask).item()),
+                "ratio_max": float(diag["ratio_max"].item()),
+                "ratio_min": float(diag["ratio_min"].item()),
+                "policy_grad_norm": float(p_norm),
+                "value_grad_norm": float(v_norm),
+            })
 
-        # Metrics for the update
-        kl_div = float(sampled_kl(old_logp, ref_logp, response_mask).item())
-        mean_rew = float(raw_rewards.mean().item())
-        mean_len = float(response_mask.sum(-1).mean().item())
+        last = ep[-1]
         peak_vram = torch.cuda.max_memory_allocated() / 1024**2 if torch.cuda.is_available() else 0.0
-
         record = {
             "update": update,
-            "reward_mean": mean_rew,
-            "kl_mean": kl_div,
-            "policy_loss": last_p_loss,
-            "value_loss": last_v_loss,
-            "clip_fraction": last_clip_fraction,
-            "entropy": last_entropy,
-            "policy_grad_norm": p_norm,
-            "value_grad_norm": v_norm,
-            "response_length_mean": mean_len,
+            "prompt_id": str(batch_rows[0].get("prompt_id", batch_rows[0].get("source_index"))),
+            "clip_epsilon": eps,
+            "kl_beta": beta_kl,
+            "reward_rm": float(rm_scores.mean().item()),
+            "reward_effective": float(task_reward.mean().item()),
+            "reward_mean": float(task_reward.mean().item()),
+            "kl_token_mean": float(sampled_kl(old_logp, ref_logp, response_mask).item()),
+            "kl_seq_sum": float(((old_logp - ref_logp) * response_mask).sum(-1).mean().item()),
+            "policy_loss": float(np.mean([e["policy_loss"] for e in ep])),
+            "value_loss": float(np.mean([e["value_loss"] for e in ep])),
+            "clip_fraction": float(np.mean([e["clip_fraction"] for e in ep])),
+            "clip_fraction_last_epoch": last["clip_fraction"],
+            "approx_kl_old_new_last_epoch": last["approx_kl_old_new"],
+            "ratio_max_last_epoch": last["ratio_max"],
+            "ratio_min_last_epoch": last["ratio_min"],
+            "entropy_exact": float(masked_mean(entropy_tok, response_mask).item()),
+            "entropy_sampled": float(sample_entropy(old_logp, response_mask).item()),
+            "policy_grad_norm": float(np.mean([e["policy_grad_norm"] for e in ep])),
+            "value_grad_norm": float(np.mean([e["value_grad_norm"] for e in ep])),
+            "response_length": float(response_mask.sum(-1).float().mean().item()),
+            "terminated_with_eos": float(np.mean(gen["terminated_with_eos"])),
+            "hit_max_tokens": float(np.mean(gen["truncated"])),
+            "prompt_truncated": float(np.mean(gen["prompt_truncated"])),
+            "value_mean": float(masked_mean(resp_values, response_mask).item()),
+            "return_mean": float(masked_mean(returns, response_mask).item()),
+            "value_explained_variance": ev,
+            "value_first_token": float(resp_values[:, 0].mean().item()),
+            "generated_tokens_cum": generated_tokens,
+            "epochs": ep,
             "peak_vram_mb": peak_vram,
             "wall_time": float(timer()),
         }
+        record["response_length_mean"] = record["response_length"]
         append_jsonl(log_path, record)
+        append_jsonl(rollout_path, {
+            "update": update, "prompt_id": record["prompt_id"], "prompt": batch_prompts[0][-1]["content"],
+            "response": gen["responses"][0], "reward_rm": record["reward_rm"], "kl_token_mean": record["kl_token_mean"],
+            "response_length": record["response_length"], "terminated_with_eos": bool(gen["terminated_with_eos"][0]),
+        })
 
-        if update % 2 == 0 or update == 1 or update == num_updates:
-            print(
-                f"[Update {update:2d}/{num_updates}] "
-                f"R={mean_rew:+.3f} | KL={kl_div:.4f} | "
-                f"P_loss={last_p_loss:+.4f} | V_loss={last_v_loss:.4f} | "
-                f"Clip={last_clip_fraction:.2%} | Len={mean_len:.0f}tok | "
-                f"VRAM={peak_vram:.0f}MB | Time={timer():.1f}s"
-            )
+        print(
+            f"[{update:2d}/{num_updates}] RM={record['reward_rm']:+.3f} KL={record['kl_token_mean']:.4f} "
+            f"Lp={record['policy_loss']:+.4f} Lv={record['value_loss']:.3f} clip(ep{ppo_epochs})={last['clip_fraction']:.2%} "
+            f"H={record['entropy_exact']:.3f} len={record['response_length']:.0f} EV={ev:.2f} "
+            f"VRAM={peak_vram:.0f}MB t={timer():.0f}s", flush=True
+        )
 
-    # Save policy adapter and tokenizer
     print(f"\n[PPO] Saving continued policy adapter to {out}")
     policy.save_pretrained(str(out))
     tokenizer.save_pretrained(str(out))
 
+    recs = [json.loads(l) for l in log_path.open(encoding="utf-8") if l.strip()]
     summary = {
         "run_name": run_name,
         "updates": num_updates,
         "clip_epsilon": eps,
         "kl_beta": beta_kl,
-        "final_reward": mean_rew,
-        "final_kl": kl_div,
-        "final_policy_loss": last_p_loss,
-        "final_value_loss": last_v_loss,
-        "peak_vram_mb": peak_vram,
+        "ppo_epochs": ppo_epochs,
+        "prompts_per_update": prompts_per_update,
+        "disable_dropout": bool(cfg.get("disable_dropout", True)),
+        "prompt_ids": [r["prompt_id"] for r in recs],
+        "generated_tokens": generated_tokens,
+        "final_reward": recs[-1]["reward_rm"],
+        "final_kl": recs[-1]["kl_token_mean"],
+        "mean_reward_last5": float(np.mean([r["reward_rm"] for r in recs[-5:]])),
+        "mean_kl_last5": float(np.mean([r["kl_token_mean"] for r in recs[-5:]])),
+        # Stability statistics (defined once, used for every fork):
+        "stability_max_approx_kl_old_new": float(max(r["approx_kl_old_new_last_epoch"] for r in recs)),
+        "stability_mean_clip_fraction_last_epoch": float(np.mean([r["clip_fraction_last_epoch"] for r in recs])),
+        "stability_policy_grad_norm_cv": float(np.std([r["policy_grad_norm"] for r in recs]) /
+                                               max(np.mean([r["policy_grad_norm"] for r in recs]), 1e-12)),
+        "stability_max_ratio": float(max(r["ratio_max_last_epoch"] for r in recs)),
+        "peak_vram_mb": recs[-1]["peak_vram_mb"],
         "wall_time_seconds": timer(),
         "adapter_path": str(out),
     }
     save_json(results_dir / f"ppo_summary_{run_name}.json", summary)
-
-    # Generate plots
     try:
         plot_ppo_continuation(log_path, fig_dir, run_name)
     except Exception as e:
         print(f"[PPO plot] Warning: plotting failed: {e}")
-
     print(f"[PPO] Continuation complete in {timer():.1f}s.")
     return summary
 

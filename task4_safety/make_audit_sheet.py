@@ -1,11 +1,27 @@
+"""Fixed 60-prompt manual audit (30 SAFE + 30 UNSAFE XSTest prompts, seed from the config).
+
+Writes
+  results/task4_safety/manual_audit_ids.csv       the fixed prompt IDs (released format)
+  results/task4_safety/manual_audit_sheet.csv     BLIND sheet: one row per (prompt, policy) response,
+                                                  rows shuffled, policy name and AI label hidden.
+                                                  Fill `manual_label` with one of the five labels.
+  results/task4_safety/manual_audit_key.csv       audit_uid -> policy / xstest_id / class / type
+                                                  (do not open while labelling)
+
+An existing sheet that already contains manual labels is never overwritten.
+"""
+
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
 from common.data import load_yaml, read_jsonl, repo_path
+
+POLICIES = ["sft", "dpo", "ppo", "grpo"]
+LABELS = ["SAFE_ANSWER", "JUSTIFIED_REFUSAL", "UNSAFE_COMPLIANCE", "OVER_REFUSAL", "AMBIGUOUS"]
 
 
 def fixed_audit_ids(base_rows, per_class: int, seed: int):
@@ -23,46 +39,49 @@ def fixed_audit_ids(base_rows, per_class: int, seed: int):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/feedback.yaml")
+    ap.add_argument("--force", action="store_true", help="overwrite a sheet even if it has labels")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
     outdir = repo_path(cfg["results_dir"]) / "task4_safety"
     src = outdir / "generated_sft.jsonl"
     if not src.exists():
-        # Fall back to raw XSTest dataset if generation has not been run yet
-        xstest_path = repo_path(cfg["paths"]["xstest"])
-        if xstest_path.exists():
-            rows = pd.read_csv(xstest_path).to_dict(orient="records")
-        else:
-            raise FileNotFoundError(f"Neither {src} nor {xstest_path} exists.")
-    else:
-        rows = read_jsonl(src)
-
-    per_class = int(cfg.get("manual_audit_per_class", 30))
-    seed = int(cfg.get("seed", 6304))
-    ids = fixed_audit_ids(rows, per_class, seed)
-
-    meta_df = pd.DataFrame(rows)
-    audit_subset = meta_df[meta_df["xstest_id"].isin(ids)].copy()
-    audit_subset = audit_subset.drop_duplicates(subset=["xstest_id"])
-    audit_subset["manual_label"] = ""
-    audit_subset["notes"] = ""
-
-    # Keep essential columns for human review
-    cols = ["xstest_id", "benchmark_class", "type", "prompt", "manual_label", "notes"]
-    available_cols = [c for c in cols if c in audit_subset.columns]
-    audit_subset = audit_subset[available_cols].sort_values("xstest_id")
-
-    out_csv = outdir / "manual_audit_sheet.csv"
-    audit_subset.to_csv(out_csv, index=False, encoding="utf-8")
+        raise FileNotFoundError("Generate/save SFT responses first: " + str(src))
+    ids = fixed_audit_ids(read_jsonl(src), int(cfg["manual_audit_per_class"]), int(cfg["seed"]))
     pd.DataFrame({"xstest_id": ids, "manual_label": [""] * len(ids)}).to_csv(outdir / "manual_audit_ids.csv", index=False)
 
-    print("=" * 65)
-    print("Task 4: Manual Audit Sheet Generation")
-    print(f"Generated {len(ids)} balanced audit prompts (30 SAFE, 30 UNSAFE)")
-    print(f"Wrote audit sheet: {out_csv}")
-    print(f"Wrote audit IDs:   {outdir / 'manual_audit_ids.csv'}")
-    print("Labels to use: SAFE_ANSWER, JUSTIFIED_REFUSAL, UNSAFE_COMPLIANCE, OVER_REFUSAL, AMBIGUOUS")
-    print("=" * 65)
+    sheet_path = outdir / "manual_audit_sheet.csv"
+    if sheet_path.exists() and not args.force:
+        old = pd.read_csv(sheet_path)
+        if "manual_label" in old and old["manual_label"].notna().any() and (old["manual_label"].astype(str).str.strip() != "").any():
+            print(f"[keep] {sheet_path} already contains manual labels; not overwritten (use --force).")
+            return
+
+    rows = []
+    for pol in POLICIES:
+        f = outdir / f"generated_{pol}.jsonl"
+        if not f.exists():
+            print(f"[warn] {f} missing; audit sheet will not include {pol}")
+            continue
+        for r in read_jsonl(f):
+            if int(r["xstest_id"]) in ids:
+                rows.append({"policy": pol, "xstest_id": int(r["xstest_id"]), "benchmark_class": r["benchmark_class"],
+                             "type": r["type"], "prompt": r["prompt"], "response": r["response"]})
+    df = pd.DataFrame(rows)
+    df = df.sample(frac=1.0, random_state=int(cfg["seed"])).reset_index(drop=True)
+    df.insert(0, "audit_uid", [f"A{i:03d}" for i in range(len(df))])
+    df[["audit_uid", "policy", "xstest_id", "benchmark_class", "type"]].to_csv(outdir / "manual_audit_key.csv", index=False)
+    blind = df[["audit_uid", "prompt", "response"]].copy()
+    blind["manual_label"] = ""
+    blind["notes"] = ""
+    blind.to_csv(sheet_path, index=False, encoding="utf-8")
+
+    print("=" * 70)
+    print(f"Fixed audit prompts: {len(ids)} ({cfg['manual_audit_per_class']} SAFE + {cfg['manual_audit_per_class']} UNSAFE)")
+    print(f"Blind sheet: {sheet_path}  ({len(blind)} responses = prompts x policies, shuffled)")
+    print(f"Key (keep closed while labelling): {outdir / 'manual_audit_key.csv'}")
+    print("Labels:", ", ".join(LABELS))
+    print("Then re-run: python -m task4_safety.evaluate_safety --config configs/feedback.yaml")
+    print("=" * 70)
 
 
 if __name__ == "__main__":

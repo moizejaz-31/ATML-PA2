@@ -13,3 +13,12 @@ max_grad_norm: 1.0
 standard_output: outputs/task1_dpo/standard
 length_output: outputs/task1_dpo/length_balanced
 results_dir: results/task1_dpo
+
+# --- Added for the run (not part of the released config) ---
+# Overlength policy (TA clarification 3 Oct): keep the prompt, right-truncate the response, and
+# drop pairs whose prompt leaves < min_response_tokens of response budget. See task1_dpo/preprocess.py.
+min_response_tokens: 64
+# Held-out generation protocol shared by every DPO condition (incl. the untouched SFT reference).
+eval_generation_prompts: 200   # first N kept held-out pairs' prompts
+eval_batch_size: 8
+reward_max_length: 1280         # same RM context as PPO; RM inputs are left-truncated

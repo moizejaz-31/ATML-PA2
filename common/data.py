@@ -90,6 +90,10 @@ def prompt_messages(row: dict) -> list[dict]:
     return [{"role": "user", "content": str(row.get("prompt", row.get("question", "")))}]
 
 
+def prompt_token_count(tokenizer, messages: list[dict]) -> int:
+    return len(tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True))
+
+
 def render_prompt(tokenizer, messages: list[dict]) -> str:
     return tokenizer.apply_chat_template(
         messages,
@@ -98,24 +102,52 @@ def render_prompt(tokenizer, messages: list[dict]) -> str:
     )
 
 
-def encode_prompt_response(tokenizer, messages: list[dict], response: str, max_length: int):
-    prompt_ids = tokenizer.apply_chat_template(
+def encode_prompt_response(
+    tokenizer,
+    messages: list[dict],
+    response: str,
+    max_length: int,
+    return_info: bool = False,
+):
+    """Encode prompt + response for DPO with prompt preservation.
+
+    Truncation policy (TA clarification, 3 Oct 2026; based on the starter's prompt-preservation patch):
+    the rendered prompt is always kept intact and, if prompt + response exceeds `max_length`,
+    the RESPONSE is truncated from the right. A response that fits keeps its EOS token. A response
+    that is cut does NOT get an EOS appended: appending one would train DPO on a fake end-of-turn
+    decision in the middle of a sentence, which directly confounds the length experiments.
+
+    Pairs whose prompt leaves too little response budget are removed beforehand by
+    `task1_dpo.preprocess.filter_pairs`; reaching that case here is an error.
+    """
+    prompt_ids = list(tokenizer.apply_chat_template(
         messages,
         tokenize=True,
         add_generation_prompt=True,
-    )
-    response_ids = tokenizer(
-        response + (tokenizer.eos_token or ""),
-        add_special_tokens=False,
-    )["input_ids"]
+    ))
+    if len(prompt_ids) >= max_length:
+        raise ValueError(
+            f"Prompt alone has {len(prompt_ids)} tokens (max_length={max_length}). "
+            "Filter this pair with task1_dpo.preprocess.filter_pairs first."
+        )
+    content_ids = tokenizer(response, add_special_tokens=False)["input_ids"]
+    eos_id = tokenizer.eos_token_id
+    full_ids = content_ids + ([eos_id] if eos_id is not None else [])
 
-    # Prefer truncating prompt context; keep the response tokens intact whenever possible.
-    if len(prompt_ids) + len(response_ids) > max_length:
-        keep_prompt = max(1, max_length - len(response_ids))
-        prompt_ids = prompt_ids[-keep_prompt:]
-    ids = (prompt_ids + response_ids)[-max_length:]
-    response_start = max(0, len(ids) - min(len(response_ids), len(ids)))
-    response_mask = [0] * response_start + [1] * (len(ids) - response_start)
+    budget = max_length - len(prompt_ids)
+    truncated = len(full_ids) > budget
+    response_ids = content_ids[:budget] if truncated else full_ids
+
+    ids = prompt_ids + response_ids
+    response_mask = [0] * len(prompt_ids) + [1] * len(response_ids)
+    assert len(ids) <= max_length and len(ids) == len(response_mask)
+    if return_info:
+        return ids, response_mask, {
+            "prompt_tokens": len(prompt_ids),
+            "response_tokens_full": len(full_ids),
+            "response_tokens_kept": len(response_ids),
+            "response_truncated": truncated,
+        }
     return ids, response_mask
 
 

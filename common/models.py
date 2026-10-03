@@ -231,6 +231,32 @@ def token_values(value_model, input_ids, attention_mask):
     return head(hidden).squeeze(-1)
 
 
+def disable_dropout(model) -> int:
+    """Set every dropout probability to 0 (TRL `disable_dropout` convention for RL updates).
+
+    With LoRA dropout active, the "old" and "new" log-probs of the same weights differ, so the PPO/GRPO
+    ratio and clip fraction would measure dropout noise instead of policy change.
+    """
+    n = 0
+    for m in model.modules():
+        if isinstance(m, torch.nn.Dropout) and m.p > 0:
+            m.p = 0.0
+            n += 1
+    return n
+
+
+def lora_state(model) -> dict:
+    """Copy of the trainable (LoRA) tensors, for restoring a model between probe conditions."""
+    return {n: p.detach().clone() for n, p in model.named_parameters() if p.requires_grad}
+
+
+def load_lora_state(model, state: dict) -> None:
+    params = dict(model.named_parameters())
+    with torch.no_grad():
+        for n, v in state.items():
+            params[n].copy_(v)
+
+
 def trainable_parameters(model):
     return [p for p in model.parameters() if p.requires_grad]
 

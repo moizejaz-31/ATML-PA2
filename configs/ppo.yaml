@@ -32,3 +32,8 @@ max_grad_norm: 1.0
 output: outputs/task2_ppo/standard
 results_dir: results/task2_ppo
 cached_rollouts: cached/ppo_rollout.pt
+
+# --- Added for the run (not part of the released config) ---
+disable_dropout: true          # LoRA dropout off so the PPO ratio/clip fraction measure policy change, not dropout noise
+eval_num_prompts: 64           # fixed first 64 held-out RL prompts, identical for every PPO condition
+eval_batch_size: 8

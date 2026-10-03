@@ -31,13 +31,23 @@ def batch_generate(
         tokenizer.apply_chat_template(p, tokenize=False, add_generation_prompt=True)
         for p in prompts
     ]
-    enc = tokenizer(
-        rendered,
-        return_tensors="pt",
-        padding=True,
-        truncation=True,
-        max_length=max_prompt_length,
-    )
+    # Over-length prompts are truncated from the LEFT (TRL convention). The tokenizer default is
+    # right truncation, which silently removes the trailing "<|im_start|>assistant\n" header, so the
+    # model continues the user's text instead of answering (3 of the first 20 RL training prompts
+    # and 35/200 held-out RL prompts exceed the 256-token prompt cap).
+    full_lengths = [len(x) for x in tokenizer(rendered, add_special_tokens=False)["input_ids"]]
+    old_side = tokenizer.truncation_side
+    tokenizer.truncation_side = "left"
+    try:
+        enc = tokenizer(
+            rendered,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=max_prompt_length,
+        )
+    finally:
+        tokenizer.truncation_side = old_side
     device = next(model.parameters()).device
     enc = {k: v.to(device) for k, v in enc.items()}
 
@@ -81,10 +91,13 @@ def batch_generate(
         "terminated_with_eos": terminated,
         "truncated": truncated,
         "response_lengths": lengths,
+        "prompt_truncated": [n > max_prompt_length for n in full_lengths],
     }
 
 
-def response_token_logprobs(model, sequences, attention_mask, prompt_width, response_ids):
+def response_token_logprobs(model, sequences, attention_mask, prompt_width, response_ids, return_entropy: bool = False):
+    """Per-token log-probs of `response_ids`. With `return_entropy=True` the second output is the
+    exact per-token policy entropy H(pi(.|s_t)) (no grad) instead of the raw logits."""
     sequences = sequences.clone()
     attention_mask = attention_mask.clone()
     response_ids = response_ids.clone()
@@ -98,7 +111,23 @@ def response_token_logprobs(model, sequences, attention_mask, prompt_width, resp
     logits = logits[:, : response_ids.shape[1], :]
     logp = F.log_softmax(logits.float(), dim=-1)
     chosen = torch.gather(logp, -1, response_ids.unsqueeze(-1)).squeeze(-1)
+    if return_entropy:
+        with torch.no_grad():
+            lp = logp.detach()
+            entropy = -(lp.exp() * lp).sum(-1)
+        return chosen, entropy
     return chosen, logits
+
+
+def single_sequence(gen: dict, i: int):
+    """Slice sample `i` out of a `batch_generate` output, dropping its left padding and the
+    padding after its first EOS. Returns (sequence, attention_mask, prompt_width, response_ids)."""
+    attn = gen["attention_mask"][i]
+    pw = int(gen["prompt_width"])
+    first = int(attn[:pw].nonzero(as_tuple=False)[0].item()) if attn[:pw].any() else pw
+    n = int(gen["response_mask"][i].sum().item())
+    seq = gen["sequences"][i : i + 1, first : pw + n]
+    return seq, torch.ones_like(seq), pw - first, gen["response_ids"][i : i + 1, :n]
 
 
 def response_sequence_logprobs(model, batch: dict):
@@ -130,12 +159,19 @@ def score_reward_pairs(rm_model, rm_tokenizer, prompts, responses, max_length=10
         )
 
     device = next(rm_model.parameters()).device
-    enc = rm_tokenizer(
-        texts,
-        return_tensors="pt",
-        padding=True,
-        truncation=True,
-        max_length=max_length,
-    )
+    # Truncate from the left so an over-length input loses the start of the prompt, never the
+    # response being scored (right truncation would score the prompt alone for long prompts).
+    old_side = rm_tokenizer.truncation_side
+    rm_tokenizer.truncation_side = "left"
+    try:
+        enc = rm_tokenizer(
+            texts,
+            return_tensors="pt",
+            padding=True,
+            truncation=True,
+            max_length=max_length,
+        )
+    finally:
+        rm_tokenizer.truncation_side = old_side
     enc = {k: v.to(device) for k, v in enc.items()}
     return rm_model(**enc).logits[:, 0].float()

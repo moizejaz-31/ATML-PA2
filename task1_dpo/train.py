@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import argparse
-import time
+from collections import defaultdict
 from pathlib import Path
 
 import torch
@@ -14,11 +14,10 @@ from common.data import (
     pad_batch,
     preference_responses,
     prompt_messages_from_preference,
-    read_jsonl,
     repo_path,
 )
 from common.generation import response_sequence_logprobs
-from common.logging_utils import append_jsonl, save_json, set_seed, wall_timer
+from common.logging_utils import append_jsonl, reset_file, save_json, set_seed, wall_timer
 from common.models import (
     count_parameters,
     load_policy,
@@ -27,75 +26,63 @@ from common.models import (
     trainable_parameters,
 )
 from task1_dpo.dpo import dpo_loss
+from task1_dpo.preprocess import load_filtered_pairs, pair_id
 
 
 # ---------------------------------------------------------------------------
 # Visualization helpers
 # ---------------------------------------------------------------------------
-def plot_training_curves(log_path: Path, fig_dir: Path):
-    """Generate and save training curve plots from the JSONL log."""
+def plot_training_curves(log_path: Path, fig_dir: Path, run_name: str):
+    """Per-run training dashboard. Every logged value is a mean over one optimizer step's
+    accumulation window (batch_size x grad_accum_steps pairs)."""
     import json
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
 
-    records = []
-    with log_path.open(encoding="utf-8") as f:
-        for line in f:
-            if line.strip():
-                records.append(json.loads(line))
+    records = [json.loads(l) for l in log_path.open(encoding="utf-8") if l.strip()]
     if not records:
         return
-
     steps = [r["step"] for r in records]
     fig_dir.mkdir(parents=True, exist_ok=True)
 
-    # --- Multi-panel training dashboard ---
-    metrics = {
-        "loss": ("DPO Loss", "tab:red"),
-        "preference_accuracy": ("Preference Accuracy", "tab:blue"),
-        "logit_mean": ("Logit Mean", "tab:green"),
-        "policy_margin_mean": ("Policy Margin Mean", "tab:purple"),
-        "ref_margin_mean": ("Ref Margin Mean", "tab:orange"),
-        "reward_margin_mean": ("Implicit Reward Margin", "tab:brown"),
-        "grad_norm": ("Gradient Norm", "tab:cyan"),
-    }
-    available = {k: v for k, v in metrics.items() if k in records[0]}
-
-    fig, axes = plt.subplots(len(available), 1, figsize=(12, 3.5 * len(available)), sharex=True)
-    if len(available) == 1:
-        axes = [axes]
-
-    for ax, (key, (title, color)) in zip(axes, available.items()):
-        vals = [r.get(key, float("nan")) for r in records]
-        ax.plot(steps, vals, color=color, linewidth=1.2, alpha=0.85)
-        ax.set_ylabel(title, fontsize=10)
-        ax.grid(True, alpha=0.3)
-        ax.set_title(title, fontsize=11, fontweight="bold")
-
-    axes[-1].set_xlabel("Optimization Step", fontsize=10)
-    fig.suptitle("Task 1 — DPO Training Curves", fontsize=14, fontweight="bold", y=1.01)
+    panels = [
+        ("loss", "DPO loss"),
+        ("preference_accuracy", "Train preference accuracy"),
+        ("reward_margin_mean", "Implicit reward margin  β·Δlog-ratio"),
+        ("kl_chosen", "log π/π_ref on chosen (seq. sum)"),
+        ("grad_norm", "Grad norm (pre-clip)"),
+        ("response_truncated_frac", "Pairs with a truncated response"),
+    ]
+    panels = [p for p in panels if p[0] in records[0]]
+    fig, axes = plt.subplots(2, 3, figsize=(15, 7), sharex=True)
+    for ax, (key, title) in zip(axes.flat, panels):
+        ax.plot(steps, [r[key] for r in records], color="#2563EB", lw=1.4)
+        ax.set_title(title, fontsize=10)
+        ax.grid(alpha=0.3)
+    for ax in axes[-1]:
+        ax.set_xlabel("optimizer step")
+    fig.suptitle(f"Task 1 — DPO training ({run_name}, β={records[0]['beta']})", fontsize=12)
     fig.tight_layout()
-    fig.savefig(fig_dir / "task1_dpo_training_curves.png", dpi=150, bbox_inches="tight")
+    fig.savefig(fig_dir / f"task1_dpo_training_curves_{run_name}.png", dpi=150, bbox_inches="tight")
     plt.close(fig)
 
-    # --- Implicit reward distribution over training ---
     if "implicit_chosen_reward_mean" in records[0]:
-        fig2, ax2 = plt.subplots(figsize=(10, 5))
+        fig2, ax2 = plt.subplots(figsize=(8, 4))
         chosen = [r["implicit_chosen_reward_mean"] for r in records]
         rejected = [r["implicit_rejected_reward_mean"] for r in records]
-        ax2.plot(steps, chosen, label="Chosen (implicit reward)", color="tab:green", linewidth=1.5)
-        ax2.plot(steps, rejected, label="Rejected (implicit reward)", color="tab:red", linewidth=1.5)
-        ax2.fill_between(steps, chosen, rejected, alpha=0.15, color="tab:blue")
-        ax2.set_xlabel("Optimization Step", fontsize=11)
-        ax2.set_ylabel("Mean Implicit Reward (β · log π_θ/π_ref)", fontsize=11)
-        ax2.set_title("DPO Implicit Reward Separation Over Training", fontsize=13, fontweight="bold")
-        ax2.legend(fontsize=10)
-        ax2.grid(True, alpha=0.3)
+        ax2.plot(steps, chosen, label="chosen  β·log π/π_ref", color="#16A34A")
+        ax2.plot(steps, rejected, label="rejected  β·log π/π_ref", color="#DC2626")
+        ax2.fill_between(steps, chosen, rejected, alpha=0.12, color="#2563EB")
+        ax2.axhline(0, color="black", lw=0.6)
+        ax2.set_xlabel("optimizer step")
+        ax2.set_ylabel("implicit reward")
+        ax2.set_title(f"Implicit reward separation ({run_name})")
+        ax2.legend(frameon=False)
+        ax2.grid(alpha=0.3)
         fig2.tight_layout()
-        fig2.savefig(fig_dir / "task1_dpo_implicit_reward.png", dpi=150, bbox_inches="tight")
+        fig2.savefig(fig_dir / f"task1_dpo_implicit_reward_{run_name}.png", dpi=150, bbox_inches="tight")
         plt.close(fig2)
-
     print(f"[plot] Training curves saved to {fig_dir}")
 
 
@@ -104,13 +91,18 @@ def plot_training_curves(log_path: Path, fig_dir: Path):
 # ---------------------------------------------------------------------------
 def make_collate(tokenizer, max_length):
     def collate(rows):
-        chosen, rejected = [], []
+        chosen, rejected, truncated = [], [], []
         for row in rows:
             prompt = prompt_messages_from_preference(row)
             yc, yr = preference_responses(row)
-            chosen.append(encode_prompt_response(tokenizer, prompt, yc, max_length))
-            rejected.append(encode_prompt_response(tokenizer, prompt, yr, max_length))
-        return pad_batch(tokenizer, chosen), pad_batch(tokenizer, rejected)
+            ic, mc, info_c = encode_prompt_response(tokenizer, prompt, yc, max_length, return_info=True)
+            ir, mr, info_r = encode_prompt_response(tokenizer, prompt, yr, max_length, return_info=True)
+            chosen.append((ic, mc))
+            rejected.append((ir, mr))
+            truncated.append(info_c["response_truncated"] or info_r["response_truncated"])
+        cb, rb = pad_batch(tokenizer, chosen), pad_batch(tokenizer, rejected)
+        cb["response_truncated"] = torch.tensor(truncated, dtype=torch.float32)
+        return cb, rb
     return collate
 
 
@@ -121,16 +113,16 @@ def prepare_dpo_run(config_path: str, dataset_path: str | None = None, beta: flo
     cfg = load_yaml(config_path)
     set_seed(int(cfg["seed"]))
     path = dataset_path or cfg["paths"]["dpo_standard_train"]
-    rows = read_jsonl(path)
-    if max_examples is not None:
-        rows = rows[: int(max_examples)]
 
     tokenizer = load_tokenizer(cfg["base_model"])
+    rows, data_info = load_filtered_pairs(cfg, tokenizer, path, max_examples)
     model = load_policy(cfg, trainable=True, fresh_lora=True)
+    generator = torch.Generator().manual_seed(int(cfg["seed"]))
     loader = DataLoader(
         rows,
         batch_size=int(cfg["batch_size"]),
         shuffle=True,
+        generator=generator,
         collate_fn=make_collate(tokenizer, int(cfg["max_sequence_length"])),
     )
     optimizer = AdamW(
@@ -141,6 +133,7 @@ def prepare_dpo_run(config_path: str, dataset_path: str | None = None, beta: flo
     return {
         "cfg": cfg,
         "rows": rows,
+        "data_info": data_info,
         "tokenizer": tokenizer,
         "model": model,
         "loader": loader,
@@ -173,20 +166,27 @@ def run_training(config_path: str, run_name: str, dataset_path: str | None = Non
     epochs = int(cfg.get("epochs", 1))
 
     total, trainable = count_parameters(model)
-    log_path = results_dir / f"dpo_train_{run_name}.jsonl"
+    log_path = reset_file(results_dir / f"dpo_train_{run_name}.jsonl")
+    info = bundle["data_info"]
     print(f"[DPO train] run={run_name} beta={beta_val} epochs={epochs} "
           f"grad_accum={grad_accum} trainable={trainable:,}/{total:,}")
-    print(f"[DPO train] dataset={len(bundle['rows'])} examples")
+    print(f"[DPO train] data={info['source_file']} rows={info['rows_in_file']} "
+          f"dropped_overlength={info['dropped_overlength']} used={info['kept_used']}")
     print(f"[DPO train] output -> {output}")
     print(f"[DPO train] log    -> {log_path}")
 
     timer = wall_timer()
+    if torch.cuda.is_available():
+        torch.cuda.reset_peak_memory_stats()
     global_step = 0
     optimizer.zero_grad()
+    window = defaultdict(list)  # per-optimizer-step accumulation of diagnostics
+    record = {}
 
     for epoch in range(epochs):
         for batch_idx, (chosen_batch, rejected_batch) in enumerate(loader):
             device = next(model.parameters()).device
+            trunc = chosen_batch.pop("response_truncated")
             chosen_batch = {k: v.to(device) for k, v in chosen_batch.items()}
             rejected_batch = {k: v.to(device) for k, v in rejected_batch.items()}
 
@@ -210,9 +210,13 @@ def run_training(config_path: str, run_name: str, dataset_path: str | None = Non
                 beta_val,
             )
 
-            # Gradient accumulation
-            scaled_loss = loss / grad_accum
-            scaled_loss.backward()
+            (loss / grad_accum).backward()
+
+            window["loss"].append(float(loss.item()))
+            window["kl_chosen"].append(float((policy_chosen_seq_logp - ref_chosen_seq_logp).mean().item()))
+            window["response_truncated_frac"].append(float(trunc.mean().item()))
+            for k, v in diagnostics.items():
+                window[k].append(float(v.item()) if hasattr(v, "item") else float(v))
 
             if (batch_idx + 1) % grad_accum == 0 or (batch_idx + 1) == len(loader):
                 grad_norm = torch.nn.utils.clip_grad_norm_(
@@ -222,66 +226,59 @@ def run_training(config_path: str, run_name: str, dataset_path: str | None = Non
                 optimizer.zero_grad()
                 global_step += 1
 
-                # Compute KL divergence: E[log π_θ - log π_ref] on chosen
-                kl_chosen = (policy_chosen_seq_logp - ref_chosen_seq_logp).mean().item()
-
                 record = {
                     "epoch": epoch,
                     "step": global_step,
                     "batch_idx": batch_idx,
-                    "loss": float(loss.item()),
+                    "pairs_in_step": len(window["loss"]) * int(cfg["batch_size"]),
                     "grad_norm": float(grad_norm),
-                    "kl_chosen": float(kl_chosen),
                     "beta": float(beta_val),
                     "wall_time": float(timer()),
-                    **{k: float(v.item()) if hasattr(v, "item") else float(v)
-                       for k, v in diagnostics.items()},
+                    **{k: float(sum(v) / len(v)) for k, v in window.items()},
                 }
                 append_jsonl(log_path, record)
+                window = defaultdict(list)
 
                 if global_step % 10 == 0 or global_step == 1:
                     print(
-                        f"  [step {global_step:4d}] loss={loss.item():.4f} "
-                        f"pref_acc={diagnostics['preference_accuracy'].item():.3f} "
-                        f"logit_mean={diagnostics['logit_mean'].item():.3f} "
-                        f"kl={kl_chosen:.4f} "
-                        f"grad_norm={grad_norm:.3f} "
-                        f"time={timer():.1f}s"
+                        f"  [step {global_step:4d}] loss={record['loss']:.4f} "
+                        f"pref_acc={record['preference_accuracy']:.3f} "
+                        f"margin={record['reward_margin_mean']:.3f} "
+                        f"kl_chosen={record['kl_chosen']:.3f} "
+                        f"grad_norm={grad_norm:.3f} time={timer():.1f}s"
                     )
-
-                    # Track VRAM
-                    if torch.cuda.is_available():
-                        vram_mb = torch.cuda.max_memory_allocated() / 1024**2
-                        print(f"           peak_vram={vram_mb:.0f}MB")
 
     # --- Save adapter ---
     print(f"[DPO train] Saving adapter to {output}")
     model.save_pretrained(str(output))
     tokenizer.save_pretrained(str(output))
 
-    # --- Save summary ---
     summary = {
         "run_name": run_name,
         "beta": beta_val,
         "epochs": epochs,
         "total_steps": global_step,
         "dataset_size": len(bundle["rows"]),
+        "data": info,
+        "used_pair_ids": [pair_id(r) for r in bundle["rows"]],
+        "learning_rate": float(cfg["learning_rate"]),
+        "effective_batch_pairs": int(cfg["batch_size"]) * grad_accum,
+        "seed": int(cfg["seed"]),
         "wall_time_seconds": timer(),
-        "final_loss": float(loss.item()),
-        "final_preference_accuracy": float(diagnostics["preference_accuracy"].item()),
+        "final_window_loss": record.get("loss"),
+        "final_window_preference_accuracy": record.get("preference_accuracy"),
         "adapter_path": str(output),
     }
     if torch.cuda.is_available():
         summary["peak_vram_mb"] = torch.cuda.max_memory_allocated() / 1024**2
     save_json(results_dir / f"dpo_summary_{run_name}.json", summary)
 
-    # --- Generate training curves ---
     try:
-        plot_training_curves(log_path, fig_dir)
+        plot_training_curves(log_path, fig_dir, run_name)
     except Exception as e:
         print(f"[plot] Warning: could not generate plots: {e}")
 
-    print(f"[DPO train] Done in {timer():.1f}s, {global_step} steps, final loss={loss.item():.4f}")
+    print(f"[DPO train] Done in {timer():.1f}s, {global_step} steps")
     return summary
 
 

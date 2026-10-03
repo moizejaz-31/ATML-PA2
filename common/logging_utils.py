@@ -44,3 +44,11 @@ def load_json(path: str | Path) -> Any:
 def wall_timer():
     start = time.perf_counter()
     return lambda: time.perf_counter() - start
+
+
+def reset_file(path: str | Path) -> Path:
+    """Remove a log file before a fresh run so `append_jsonl` never mixes runs."""
+    p = ensure_parent(path)
+    if p.exists():
+        p.unlink()
+    return p

@@ -1,7 +1,12 @@
+"""Task 2 KL-pressure (reward over-optimisation) study: beta_KL in {0, 0.10, 0.20} at the reference eps,
+matched short forks from the identical midpoint, common held-out protocol."""
+
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -9,145 +14,98 @@ import numpy as np
 
 from common.data import load_yaml, repo_path
 from common.logging_utils import load_json, save_json
-from task2_ppo.continue_train import run_ppo
-from task2_ppo.evaluate import evaluate_ppo
+from task2_ppo.forks import fork_name, run_or_load_fork
+
+TRAJ = [("reward_rm", "RM reward (rollout)"), ("kl_token_mean", "Sampled KL to reference"),
+        ("entropy_exact", "Policy entropy (exact)"), ("response_length", "Response length (tokens)")]
 
 
-def plot_kl_ablation(results: dict[str, dict], fig_dir: Path):
-    """Plot multi-panel KL penalty ablation study."""
-    fig_dir.mkdir(parents=True, exist_ok=True)
-    kl_betas = sorted(float(b) for b in results.keys())
-    beta_strs = [f"{b:.2f}" for b in kl_betas]
+def plot_kl_ablation(res: dict, fig_dir: Path, results_dir: Path):
+    kls = res["kl_values"]
+    colors = dict(zip([str(k) for k in kls], ["#DC2626", "#2563EB", "#16A34A"]))
+    fig, axes = plt.subplots(2, 4, figsize=(22, 8))
+    # Row 1: training trajectories (which observable moves first when KL pressure is weakened?)
+    for ax, (key, title) in zip(axes[0], TRAJ):
+        for k in kls:
+            f = results_dir / f"ppo_train_{fork_name(res['clip_epsilon'], k)}.jsonl"
+            if not f.exists():
+                continue
+            recs = [json.loads(l) for l in f.open(encoding="utf-8") if l.strip()]
+            ax.plot([r["update"] for r in recs], [r[key] for r in recs], "-o", ms=3, color=colors[str(k)], label=f"β_KL={k}")
+        ax.set_title(title, fontsize=10)
+        ax.set_xlabel("fork update")
+        ax.grid(alpha=0.3)
+    axes[0, 0].legend(frameon=False)
 
-    rewards = [results[str(b)]["eval"]["mean_reward"] for b in kl_betas]
-    reward_stds = [results[str(b)]["eval"].get("std_reward", 0.0) for b in kl_betas]
-    kl_drifts = [results[str(b)]["eval"]["mean_kl"] for b in kl_betas]
-    lengths = [results[str(b)]["eval"]["mean_response_length_tokens"] for b in kl_betas]
-    eos_rates = [results[str(b)]["eval"]["eos_termination_rate"] for b in kl_betas]
-
-    fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-
-    # 1. Reward vs beta_KL
-    axes[0, 0].errorbar(beta_strs, rewards, yerr=reward_stds, marker="o", color="tab:blue",
-                        linewidth=2, markersize=8, capsize=5)
-    axes[0, 0].set_xlabel("KL Penalty Coefficient β_KL", fontsize=11)
-    axes[0, 0].set_ylabel("Held-Out Reward Score", fontsize=11)
-    axes[0, 0].set_title("Reward Model Score vs β_KL", fontsize=12, fontweight="bold")
-    axes[0, 0].grid(True, alpha=0.3)
-
-    # 2. Reference Policy KL Drift vs beta_KL
-    axes[0, 1].plot(beta_strs, kl_drifts, marker="s", color="tab:red", linewidth=2, markersize=8)
-    axes[0, 1].set_xlabel("KL Penalty Coefficient β_KL", fontsize=11)
-    axes[0, 1].set_ylabel("Mean KL(π_θ || π_ref)", fontsize=11)
-    axes[0, 1].set_title("Policy Drift from Reference vs β_KL", fontsize=12, fontweight="bold")
-    axes[0, 1].grid(True, alpha=0.3)
-
-    # 3. Response Length vs beta_KL
-    axes[1, 0].plot(beta_strs, lengths, marker="^", color="tab:green", linewidth=2, markersize=8)
-    axes[1, 0].set_xlabel("KL Penalty Coefficient β_KL", fontsize=11)
-    axes[1, 0].set_ylabel("Mean Response Length (tokens)", fontsize=11)
-    axes[1, 0].set_title("Response Length vs β_KL", fontsize=12, fontweight="bold")
-    axes[1, 0].grid(True, alpha=0.3)
-
-    # 4. EOS Termination Rate vs beta_KL
-    axes[1, 1].plot(beta_strs, [r * 100 for r in eos_rates], marker="d", color="tab:purple", linewidth=2, markersize=8)
-    axes[1, 1].set_xlabel("KL Penalty Coefficient β_KL", fontsize=11)
-    axes[1, 1].set_ylabel("EOS Termination Rate (%)", fontsize=11)
-    axes[1, 1].set_title("Proper EOS Termination Rate vs β_KL", fontsize=12, fontweight="bold")
-    axes[1, 1].grid(True, alpha=0.3)
-
-    fig.suptitle("Task 2 — PPO KL Regularization & Overoptimization Study", fontsize=14, fontweight="bold", y=0.99)
+    # Row 2: held-out metrics (with the midpoint as the common starting point)
+    mid_file = results_dir / "ppo_eval_midpoint.json"
+    mid = load_json(mid_file) if mid_file.exists() else None
+    x = np.arange(len(kls))
+    held = [("mean_reward", "Held-out RM score", "sem_reward"), ("kl_token_mean", "Held-out sampled KL", None),
+            ("entropy_exact", "Held-out entropy", None), ("length_tokens", "Held-out length (tokens)", None)]
+    for ax, (key, title, err) in zip(axes[1], held):
+        ev = [res["forks"][str(k)]["eval"] for k in kls]
+        y = [e[key]["mean"] if key == "length_tokens" else e[key] for e in ev]
+        yerr = [e[err] for e in ev] if err else ([e[key]["iqr"] / 2 for e in ev] if key == "length_tokens" else None)
+        ax.bar(x, y, yerr=yerr, capsize=4, color=[colors[str(k)] for k in kls], alpha=0.85)
+        if mid is not None:
+            mv = mid[key]["mean"] if key == "length_tokens" else mid[key]
+            ax.axhline(mv, color="black", ls="--", lw=1, label="midpoint (start)")
+            ax.legend(frameon=False, fontsize=7)
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"β_KL={k}" for k in kls])
+        ax.set_title(title, fontsize=10)
+        ax.grid(alpha=0.3, axis="y")
+    fig.suptitle(f"Task 2 — KL-pressure study (ε={res['clip_epsilon']}, {res['fork_updates']} updates per fork)")
     fig.tight_layout()
-    fig_path = fig_dir / "task2_ppo_kl_ablation.png"
-    fig.savefig(fig_path, dpi=150, bbox_inches="tight")
+    fig.savefig(fig_dir / "task2_ppo_kl_ablation.png", dpi=170, bbox_inches="tight")
     plt.close(fig)
-    print(f"[plot] Saved KL ablation dashboard to {fig_path}")
 
-    # Pareto trade-off: Reward vs Policy Drift
-    fig2, ax2 = plt.subplots(figsize=(8, 6))
-    ax2.plot(kl_drifts, rewards, marker="o", markersize=10, linewidth=2, color="tab:blue")
-    for b, kl_val, r_val in zip(kl_betas, kl_drifts, rewards):
-        ax2.annotate(f"β_KL={b}", (kl_val, r_val), textcoords="offset points", xytext=(8, 8),
-                     fontweight="bold", fontsize=10)
-    ax2.set_xlabel("Policy Drift: Mean KL(π_θ || π_ref)", fontsize=11)
-    ax2.set_ylabel("Mean Reward Model Score", fontsize=11)
-    ax2.set_title("PPO Reward vs Drift Trade-Off (Goodhart / Overoptimization)", fontsize=12, fontweight="bold")
-    ax2.grid(True, alpha=0.3)
+    fig2, ax2 = plt.subplots(figsize=(6, 4.5))
+    for k in kls:
+        e = res["forks"][str(k)]["eval"]
+        ax2.errorbar(e["kl_token_mean"], e["mean_reward"], yerr=e["sem_reward"], fmt="o", ms=9, color=colors[str(k)], label=f"β_KL={k}")
+    if mid is not None:
+        ax2.errorbar(mid["kl_token_mean"], mid["mean_reward"], yerr=mid["sem_reward"], fmt="s", color="black", label="midpoint")
+    ax2.set_xlabel("held-out sampled KL to reference")
+    ax2.set_ylabel("held-out RM score (± s.e.m.)")
+    ax2.set_title("Reward bought with drift")
+    ax2.grid(alpha=0.3)
+    ax2.legend(frameon=False)
     fig2.tight_layout()
-    tradeoff_path = fig_dir / "task2_ppo_reward_vs_drift_tradeoff.png"
-    fig2.savefig(tradeoff_path, dpi=150, bbox_inches="tight")
+    fig2.savefig(fig_dir / "task2_ppo_reward_vs_drift_tradeoff.png", dpi=170, bbox_inches="tight")
     plt.close(fig2)
-    print(f"[plot] Saved Reward vs Drift trade-off to {tradeoff_path}")
+    print(f"[plot] Saved KL-study figures to {fig_dir}")
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/ppo.yaml")
-    ap.add_argument("--skip-train", action="store_true", help="Skip training if forks exist")
+    ap.add_argument("--no-reuse", action="store_true")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
-
-    kl_values = [float(b) for b in cfg.get("kl_values", [0.0, 0.10, 0.20])]
-    fork_updates = int(cfg.get("fork_updates", 8))
+    kls = [float(b) for b in cfg.get("kl_values", [0.0, 0.10, 0.20])]
+    eps = float(cfg["clip_epsilon"])
     results_dir = repo_path(cfg["results_dir"])
     fig_dir = repo_path("report/figures")
-    results_dir.mkdir(parents=True, exist_ok=True)
-    fig_dir.mkdir(parents=True, exist_ok=True)
 
-    print("=" * 65)
-    print(f"Task 2: PPO KL Regularization Study (Reward Overoptimization)")
-    print(f"Testing β_KL values: {kl_values}")
-    print(f"Fork budget:         {fork_updates} updates")
-    print("=" * 65)
-
-    results = {}
-
-    for beta_kl in kl_values:
-        run_name = f"kl_{beta_kl:.2f}".replace(".", "_")
-        adapter_out = repo_path(f"outputs/task2_ppo/fork_{run_name}")
-
-        if not args.skip_train:
-            print(f"\n>>> Running PPO Fork: β_KL = {beta_kl} ({fork_updates} updates) <<<")
-            train_sum = run_ppo(
-                config_path=args.config,
-                output=str(adapter_out),
-                updates=fork_updates,
-                kl_beta=beta_kl,
-                run_name=run_name,
-            )
-        else:
-            train_file = results_dir / f"ppo_summary_{run_name}.json"
-            train_sum = load_json(train_file) if train_file.exists() else {"kl_beta": beta_kl}
-
-        print(f">>> Evaluating Fork β_KL = {beta_kl} <<<")
-        eval_sum = evaluate_ppo(
-            config_path=args.config,
-            adapter=str(adapter_out),
-            name=f"fork_{run_name}",
-        )
-
-        results[str(beta_kl)] = {
-            "beta_kl": beta_kl,
-            "train": train_sum,
-            "eval": eval_sum,
-        }
-
-    out_file = results_dir / "ppo_kl_ablation_results.json"
-    save_json(out_file, results)
-    print(f"\n[KL Ablation] Complete. Saved results to {out_file}")
-
+    forks = {str(k): run_or_load_fork(args.config, eps, k, reuse=not args.no_reuse) for k in kls}
+    res = {"kl_values": kls, "clip_epsilon": eps, "fork_updates": int(cfg["fork_updates"]), "forks": forks}
+    # Backwards-compatible flat view
+    res.update({str(k): {"beta_kl": k, "train": forks[str(k)]["train"], "eval": forks[str(k)]["eval"]} for k in kls})
+    save_json(results_dir / "ppo_kl_ablation_results.json", res)
     try:
-        plot_kl_ablation(results, fig_dir)
+        plot_kl_ablation(res, fig_dir, results_dir)
     except Exception as e:
         print(f"[KL Ablation] Warning: plotting failed: {e}")
 
-    print("\n" + "=" * 80)
-    print(f"{'β_KL':>6} | {'Held-out Reward':>18} | {'Policy Drift (KL)':>20} | {'Length (tokens)':>18} | {'EOS Rate':>10}")
-    print("-" * 80)
-    for b in kl_values:
-        ev = results[str(b)]["eval"]
-        print(f"{b:6.2f} | {ev['mean_reward']:17.4f} | {ev['mean_kl']:19.4f} | {ev['mean_response_length_tokens']:17.1f} | {ev['eos_termination_rate']:9.1%}")
-    print("=" * 80)
+    print("\n" + "=" * 90)
+    print(f"{'β_KL':>5} | {'RM':>7} | {'KL tok':>8} | {'entropy':>7} | {'len':>6} | {'EOS':>5} | {'train KL last':>13}")
+    for k in kls:
+        e, t = forks[str(k)]["eval"], forks[str(k)]["train"]
+        print(f"{k:5.2f} | {e['mean_reward']:7.3f} | {e['kl_token_mean']:8.4f} | {e['entropy_exact']:7.3f} | "
+              f"{e['length_tokens']['mean']:6.1f} | {e['eos_rate']:5.2f} | {t['final_kl']:13.4f}")
+    print("=" * 90)
 
 
 if __name__ == "__main__":

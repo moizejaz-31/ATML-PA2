@@ -67,7 +67,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/feedback.yaml")
     ap.add_argument("--policies", nargs="+", default=["sft", "dpo", "ppo", "grpo"])
-    ap.add_argument("--batch-size", type=int, default=4)
+    ap.add_argument("--batch-size", type=int, default=8)
+    ap.add_argument("--skip-existing", action="store_true", help="skip policies whose generated file already exists")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
     set_seed(int(cfg["seed"]))
@@ -83,6 +84,9 @@ def main():
 
     for pol in args.policies:
         out_path = outdir / f"generated_{pol}.jsonl"
+        if args.skip_existing and out_path.exists():
+            print(f"[skip] {out_path} exists")
+            continue
         print(f"\nProcessing policy '{pol}' -> {out_path}...")
         records = generate_for_policy(cfg, pol, batch_size=args.batch_size)
         write_jsonl(out_path, records)

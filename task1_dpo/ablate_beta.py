@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import matplotlib
@@ -13,81 +14,107 @@ from common.logging_utils import load_json, save_json
 from task1_dpo.evaluate import evaluate_dpo
 from task1_dpo.train import run_training
 
+SLIM_DROP = {"per_pair", "generations"}
 
-def plot_beta_ablation(results: dict[str, dict], fig_dir: Path):
-    """Plot multi-panel comparison across beta values."""
+
+def run_name_for(beta: float) -> str:
+    return f"beta_{beta:.2f}".replace(".", "_")
+
+
+def slim(d: dict) -> dict:
+    return {k: v for k, v in d.items() if k not in SLIM_DROP}
+
+
+def plot_beta_ablation(results: dict[str, dict], fig_dir: Path, results_dir: Path):
+    """β study panels. The standard one-epoch run (different budget) and the untouched SFT policy are
+    drawn as separate reference markers, never on the β line."""
     fig_dir.mkdir(parents=True, exist_ok=True)
-    betas = sorted(float(b) for b in results.keys())
-    beta_strs = [f"{b:.2f}" for b in betas]
+    betas = sorted(float(b) for b in results)
+    ev = [results[str(b)]["eval"] for b in betas]
+    sft = load_json(results_dir / "dpo_eval_sft_reference.json") if (results_dir / "dpo_eval_sft_reference.json").exists() else None
+    std = load_json(results_dir / "dpo_eval_standard.json") if (results_dir / "dpo_eval_standard.json").exists() else None
 
-    pref_accs = [results[str(b)]["eval"]["held_out_preference_accuracy"] for b in betas]
-    kls = [results[str(b)]["eval"]["mean_kl_from_reference"] for b in betas]
-    rewards = [results[str(b)]["eval"]["mean_reward"] for b in betas]
-    reward_stds = [results[str(b)]["eval"].get("std_reward", 0.0) for b in betas]
-    lengths = [results[str(b)]["eval"]["mean_response_length_words"] for b in betas]
-
-    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
-
-    # 1. Preference Accuracy vs Beta
-    axes[0, 0].plot(beta_strs, pref_accs, marker="o", color="tab:blue", linewidth=2, markersize=8)
-    axes[0, 0].set_title("Held-out Preference Accuracy vs β", fontsize=12, fontweight="bold")
-    axes[0, 0].set_xlabel("Regularization β", fontsize=11)
-    axes[0, 0].set_ylabel("Preference Accuracy", fontsize=11)
-    axes[0, 0].grid(True, alpha=0.3)
-
-    # 2. Reference Policy KL vs Beta
-    axes[0, 1].plot(beta_strs, kls, marker="s", color="tab:orange", linewidth=2, markersize=8)
-    axes[0, 1].set_title("KL Divergence from Reference Policy vs β", fontsize=12, fontweight="bold")
-    axes[0, 1].set_xlabel("Regularization β", fontsize=11)
-    axes[0, 1].set_ylabel("Mean KL(π_θ || π_ref)", fontsize=11)
-    axes[0, 1].grid(True, alpha=0.3)
-
-    # 3. Reward Score vs Beta
-    axes[1, 0].errorbar(beta_strs, rewards, yerr=reward_stds, marker="^", color="tab:green",
-                        linewidth=2, markersize=8, capsize=5)
-    axes[1, 0].set_title("Reward Model Score vs β", fontsize=12, fontweight="bold")
-    axes[1, 0].set_xlabel("Regularization β", fontsize=11)
-    axes[1, 0].set_ylabel("Mean RM Score", fontsize=11)
-    axes[1, 0].grid(True, alpha=0.3)
-
-    # 4. Response Length vs Beta
-    axes[1, 1].plot(beta_strs, lengths, marker="d", color="tab:purple", linewidth=2, markersize=8)
-    axes[1, 1].set_title("Mean Response Length (words) vs β", fontsize=12, fontweight="bold")
-    axes[1, 1].set_xlabel("Regularization β", fontsize=11)
-    axes[1, 1].set_ylabel("Length (words)", fontsize=11)
-    axes[1, 1].grid(True, alpha=0.3)
-
-    fig.suptitle("Task 1 — DPO Regularization Strength Study (β Ablation)", fontsize=14, fontweight="bold", y=0.99)
+    panels = [
+        ("heldout_preference_accuracy", "Held-out preference accuracy", None),
+        ("heldout_dpo_loss", "Held-out DPO loss (own β)", None),
+        ("kl_token_mean", "Sampled KL to reference (token mean)", None),
+        ("mean_reward", "RM score of generations", "sem_reward"),
+        ("length_tokens", "Generated length (tokens, mean ± IQR/2)", None),
+    ]
+    fig, axes = plt.subplots(1, 5, figsize=(22, 4))
+    x = np.arange(len(betas))
+    for ax, (key, title, err) in zip(axes, panels):
+        if key == "length_tokens":
+            y = [e[key]["mean"] for e in ev]
+            yerr = [e[key]["iqr"] / 2 for e in ev]
+        else:
+            y = [e[key] for e in ev]
+            yerr = [e[err] for e in ev] if err else None
+        ax.errorbar(x, y, yerr=yerr, marker="o", color="#2563EB", capsize=4, lw=2, label="short forks (600 pairs)")
+        for ref, style, label in [(sft, ":", "SFT (no adapter)"), (std, "--", "standard DPO β=0.10, 1 epoch")]:
+            if ref is not None and key in ref:
+                val = ref[key]["mean"] if key == "length_tokens" else ref[key]
+                if key in ("heldout_preference_accuracy", "heldout_dpo_loss") and ref is sft:
+                    continue  # margins are identically 0 for the reference policy itself
+                ax.axhline(val, ls=style, color="gray", lw=1.2, label=label)
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"β={b:g}" for b in betas])
+        ax.set_title(title, fontsize=10)
+        ax.grid(alpha=0.3)
+    axes[0].legend(frameon=False, fontsize=7)
+    axes[3].legend(frameon=False, fontsize=7)
+    fig.suptitle("Task 1 — DPO regularization-strength study (only β changes)", fontsize=12)
     fig.tight_layout()
-    plot_path = fig_dir / "task1_dpo_beta_ablation.png"
-    fig.savefig(plot_path, dpi=150, bbox_inches="tight")
+    fig.savefig(fig_dir / "task1_dpo_beta_ablation.png", dpi=170, bbox_inches="tight")
     plt.close(fig)
-    print(f"[plot] Saved beta ablation dashboard to {plot_path}")
 
-    # Trade-off curve: Reward vs KL
-    fig2, ax2 = plt.subplots(figsize=(8, 6))
-    scatter = ax2.scatter(kls, rewards, c=betas, cmap="viridis", s=150, zorder=5)
-    for b, kl_val, r_val in zip(betas, kls, rewards):
-        ax2.annotate(f"β={b}", (kl_val, r_val), textcoords="offset points", xytext=(8, 8),
-                     fontweight="bold")
-    ax2.plot(kls, rewards, "k--", alpha=0.4)
-    ax2.set_xlabel("Mean KL from Reference (Policy Drift)", fontsize=11)
-    ax2.set_ylabel("Reward Model Score", fontsize=11)
-    ax2.set_title("DPO Pareto Frontier: Reward vs Policy Drift", fontsize=13, fontweight="bold")
-    ax2.grid(True, alpha=0.3)
-    cbar = fig2.colorbar(scatter, ax=ax2)
-    cbar.set_label("β", fontsize=11)
+    # Fit-vs-drift view: preference accuracy and RM score against sampled KL.
+    fig2, ax2 = plt.subplots(1, 2, figsize=(11, 4))
+    kls = [e["kl_token_mean"] for e in ev]
+    for ax, key, lab in [(ax2[0], "heldout_preference_accuracy", "held-out preference accuracy"),
+                         (ax2[1], "mean_reward", "RM score")]:
+        ys = [e[key] for e in ev]
+        ax.plot(kls, ys, "-o", color="#2563EB")
+        for b, kx, yy in zip(betas, kls, ys):
+            ax.annotate(f"β={b:g}", (kx, yy), textcoords="offset points", xytext=(6, 6))
+        if std is not None:
+            ax.scatter([std["kl_token_mean"]], [std[key]], marker="*", s=160, color="#DC2626", label="standard (1 epoch)")
+            ax.legend(frameon=False)
+        ax.set_xlabel("sampled KL to reference (token mean)")
+        ax.set_ylabel(lab)
+        ax.grid(alpha=0.3)
+    fig2.suptitle("Preference fit / reward vs. drift across β")
     fig2.tight_layout()
-    frontier_path = fig_dir / "task1_dpo_reward_vs_kl_frontier.png"
-    fig2.savefig(frontier_path, dpi=150, bbox_inches="tight")
+    fig2.savefig(fig_dir / "task1_dpo_reward_vs_kl_frontier.png", dpi=170, bbox_inches="tight")
     plt.close(fig2)
-    print(f"[plot] Saved Pareto frontier to {frontier_path}")
+
+    # Training curves of the forks overlaid.
+    fig3, ax3 = plt.subplots(1, 3, figsize=(16, 3.8))
+    for b, color in zip(betas, ["#93C5FD", "#2563EB", "#1E3A8A"]):
+        log = results_dir / f"dpo_train_{run_name_for(b)}.jsonl"
+        if not log.exists():
+            continue
+        recs = [json.loads(l) for l in log.open(encoding="utf-8") if l.strip()]
+        st = [r["step"] for r in recs]
+        ax3[0].plot(st, [r["loss"] for r in recs], color=color, label=f"β={b:g}")
+        ax3[1].plot(st, [r["reward_margin_mean"] / r["beta"] for r in recs], color=color, label=f"β={b:g}")
+        ax3[2].plot(st, [r["preference_accuracy"] for r in recs], color=color, label=f"β={b:g}")
+    for ax, t in zip(ax3, ["train DPO loss", "train log-ratio margin (unscaled)", "train preference accuracy"]):
+        ax.set_title(t, fontsize=10)
+        ax.set_xlabel("optimizer step")
+        ax.grid(alpha=0.3)
+    ax3[0].legend(frameon=False)
+    fig3.tight_layout()
+    fig3.savefig(fig_dir / "task1_dpo_beta_training_curves.png", dpi=170, bbox_inches="tight")
+    plt.close(fig3)
+    print(f"[plot] Saved β-study figures to {fig_dir}")
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="configs/dpo.yaml")
-    ap.add_argument("--skip-train", action="store_true", help="Skip training if checkpoints exist")
+    ap.add_argument("--skip-train", action="store_true", help="Reuse existing fork adapters")
+    ap.add_argument("--plot-only", action="store_true", help="Only redraw figures from saved results")
     args = ap.parse_args()
     cfg = load_yaml(args.config)
 
@@ -96,22 +123,20 @@ def main():
     results_dir = repo_path(cfg["results_dir"])
     fig_dir = repo_path("report/figures")
     results_dir.mkdir(parents=True, exist_ok=True)
-    fig_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"============================================================")
-    print(f"Task 1: DPO Regularization Strength Study")
-    print(f"Testing β values: {betas}")
-    print(f"Training subset cap: {max_examples} examples")
-    print(f"============================================================")
+    if args.plot_only:
+        plot_beta_ablation(load_json(results_dir / "dpo_beta_ablation_results.json"), fig_dir, results_dir)
+        return
 
-    combined_results = {}
-
+    print(f"Task 1: DPO regularization study  β={betas}  short-run budget={max_examples} kept pairs")
+    combined = {}
     for beta in betas:
-        run_name = f"beta_{beta:.2f}".replace(".", "_")
+        run_name = run_name_for(beta)
         adapter_output = repo_path(f"outputs/task1_dpo/ablation_{run_name}")
-
-        if not args.skip_train:
-            print(f"\n>>> Running DPO training fork: β = {beta} <<<")
+        if args.skip_train and (adapter_output / "adapter_config.json").exists():
+            train_summary = load_json(results_dir / f"dpo_summary_{run_name}.json")
+        else:
+            print(f"\n>>> DPO fork β={beta}")
             train_summary = run_training(
                 config_path=args.config,
                 run_name=run_name,
@@ -120,46 +145,29 @@ def main():
                 beta=beta,
                 max_examples=max_examples,
             )
-        else:
-            train_summary_file = results_dir / f"dpo_summary_{run_name}.json"
-            if train_summary_file.exists():
-                train_summary = load_json(train_summary_file)
-            else:
-                train_summary = {"beta": beta, "run_name": run_name}
-
-        print(f"\n>>> Running evaluation: β = {beta} <<<")
-        eval_summary = evaluate_dpo(
-            config_path=args.config,
-            adapter=str(adapter_output),
-            name=f"ablation_{run_name}",
-        )
-
-        combined_results[str(beta)] = {
+        print(f"\n>>> Evaluating fork β={beta}")
+        eval_summary = evaluate_dpo(args.config, str(adapter_output), name=f"ablation_{run_name}", beta=beta)
+        combined[str(beta)] = {
             "beta": beta,
-            "train": train_summary,
-            "eval": eval_summary,
+            "budget": f"{max_examples} pairs, 1 pass",
+            "train": {k: v for k, v in train_summary.items() if k != "used_pair_ids"},
+            "eval": slim(eval_summary),
         }
 
-    # Save overall ablation summary
-    ablation_json = results_dir / "dpo_beta_ablation_results.json"
-    save_json(ablation_json, combined_results)
-    print(f"\n[Ablation] Saved complete beta ablation results to {ablation_json}")
-
-    # Generate plots
+    save_json(results_dir / "dpo_beta_ablation_results.json", combined)
     try:
-        plot_beta_ablation(combined_results, fig_dir)
+        plot_beta_ablation(combined, fig_dir, results_dir)
     except Exception as e:
         print(f"[Ablation] Warning: plotting failed: {e}")
 
-    # Print summary table
-    print("\n" + "=" * 70)
-    print(f"{'β':>6} | {'Pref Acc':>10} | {'KL (drift)':>10} | {'Mean Reward':>12} | {'Length (words)':>14}")
-    print("-" * 70)
+    print("\n" + "=" * 96)
+    print(f"{'β':>6} | {'loss':>7} | {'pref acc':>8} | {'KL tok':>8} | {'KL seq':>8} | {'RM':>7} | {'len tok':>8} | {'IQR':>6}")
     for b in betas:
-        res = combined_results[str(b)]["eval"]
-        print(f"{b:6.2f} | {res['held_out_preference_accuracy']:10.4f} | {res['mean_kl_from_reference']:10.4f} | "
-              f"{res['mean_reward']:12.4f} | {res['mean_response_length_words']:14.1f}")
-    print("=" * 70)
+        e = combined[str(b)]["eval"]
+        print(f"{b:6.2f} | {e['heldout_dpo_loss']:7.4f} | {e['heldout_preference_accuracy']:8.3f} | "
+              f"{e['kl_token_mean']:8.4f} | {e['kl_sequence_mean']:8.3f} | {e['mean_reward']:7.3f} | "
+              f"{e['length_tokens']['mean']:8.1f} | {e['length_tokens']['iqr']:6.1f}")
+    print("=" * 96)
 
 
 if __name__ == "__main__":

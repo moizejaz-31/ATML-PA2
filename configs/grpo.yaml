@@ -16,3 +16,9 @@ output: outputs/task3_grpo/standard
 results_dir: results/task3_grpo
 group_cache: cached/grpo_k_cache.jsonl
 cache_generation_cap: 768
+
+# --- Added for the run (not part of the released config) ---
+disable_dropout: true
+reward_max_length: 1280
+eval_num_prompts: 64
+eval_batch_size: 8
