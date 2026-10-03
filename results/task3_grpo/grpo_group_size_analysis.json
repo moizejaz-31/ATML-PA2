@@ -1,0 +1,80 @@
+{
+  "2": {
+    "k": 2,
+    "total_groups": 96,
+    "total_generations": 192,
+    "informative_group_fraction": 0.9375,
+    "uninformative_group_fraction": 0.0625,
+    "mean_within_group_reward_std": 0.3845672607421875,
+    "relative_signal_variance": 0.9374814173564774,
+    "difficulty_breakdown": {
+      "medium": {
+        "total_groups": 32,
+        "informative_groups": 31,
+        "informative_fraction": 0.96875
+      },
+      "hard": {
+        "total_groups": 32,
+        "informative_groups": 27,
+        "informative_fraction": 0.84375
+      },
+      "easy": {
+        "total_groups": 32,
+        "informative_groups": 32,
+        "informative_fraction": 1.0
+      }
+    }
+  },
+  "4": {
+    "k": 4,
+    "total_groups": 48,
+    "total_generations": 192,
+    "informative_group_fraction": 0.9583333333333334,
+    "uninformative_group_fraction": 0.04166666666666663,
+    "mean_within_group_reward_std": 0.5410043647319412,
+    "relative_signal_variance": 0.9583276282884473,
+    "difficulty_breakdown": {
+      "medium": {
+        "total_groups": 16,
+        "informative_groups": 16,
+        "informative_fraction": 1.0
+      },
+      "hard": {
+        "total_groups": 16,
+        "informative_groups": 14,
+        "informative_fraction": 0.875
+      },
+      "easy": {
+        "total_groups": 16,
+        "informative_groups": 16,
+        "informative_fraction": 1.0
+      }
+    }
+  },
+  "8": {
+    "k": 8,
+    "total_groups": 24,
+    "total_generations": 192,
+    "informative_group_fraction": 0.9583333333333334,
+    "uninformative_group_fraction": 0.04166666666666663,
+    "mean_within_group_reward_std": 0.6190544134665206,
+    "relative_signal_variance": 0.9583290996055105,
+    "difficulty_breakdown": {
+      "medium": {
+        "total_groups": 8,
+        "informative_groups": 8,
+        "informative_fraction": 1.0
+      },
+      "hard": {
+        "total_groups": 8,
+        "informative_groups": 7,
+        "informative_fraction": 0.875
+      },
+      "easy": {
+        "total_groups": 8,
+        "informative_groups": 8,
+        "informative_fraction": 1.0
+      }
+    }
+  }
+}

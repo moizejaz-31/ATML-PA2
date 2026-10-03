@@ -1,0 +1,80 @@
+{
+  "in_domain_gsm": {
+    "sft": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 287.8433333333333,
+      "mean_words": 162.22666666666666
+    },
+    "rlvr": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 288.62,
+      "mean_words": 162.83666666666667
+    },
+    "rlaif": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 288.57,
+      "mean_words": 163.21333333333334
+    }
+  },
+  "transfer_svamp": {
+    "sft": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 182.47,
+      "mean_words": 115.44
+    },
+    "rlvr": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 182.37,
+      "mean_words": 115.17
+    },
+    "rlaif": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 181.55,
+      "mean_words": 114.98
+    }
+  },
+  "diagnostic_sensitivities": {
+    "s_reason": {
+      "rlvr": 0.0,
+      "rlaif": 0.0
+    },
+    "s_outcome": {
+      "rlvr": 0.0,
+      "rlaif": 0.0
+    }
+  },
+  "retention_ratios": {
+    "sft": 0.0,
+    "rlvr": 0.0,
+    "rlaif": 0.0
+  },
+  "pairwise_head_to_head": {
+    "rlvr_vs_sft": {
+      "policy_a": "rlvr",
+      "policy_b": "sft",
+      "win_rate_a": 0.04,
+      "win_rate_b": 0.02666666666666667,
+      "tie_rate": 0.9333333333333333
+    },
+    "rlaif_vs_sft": {
+      "policy_a": "rlaif",
+      "policy_b": "sft",
+      "win_rate_a": 0.04,
+      "win_rate_b": 0.03,
+      "tie_rate": 0.93
+    },
+    "rlvr_vs_rlaif": {
+      "policy_a": "rlvr",
+      "policy_b": "rlaif",
+      "win_rate_a": 0.04,
+      "win_rate_b": 0.03,
+      "tie_rate": 0.93
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "run_name": "length_balanced",
+  "beta": 0.1,
+  "epochs": 1,
+  "total_steps": 94,
+  "dataset_size": 1500,
+  "wall_time_seconds": 1108.3445818479995,
+  "final_loss": 0.6853814125061035,
+  "final_preference_accuracy": 0.5,
+  "adapter_path": "/kaggle/working/ATML-PA2/outputs/task1_dpo/length_balanced",
+  "peak_vram_mb": 7278.60009765625
+}

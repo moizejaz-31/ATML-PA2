@@ -1,0 +1,47 @@
+{
+  "dataset": "gsm",
+  "num_problems": 300,
+  "per_policy": {
+    "sft": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 287.8433333333333,
+      "mean_words": 162.22666666666666
+    },
+    "rlvr": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 288.62,
+      "mean_words": 162.83666666666667
+    },
+    "rlaif": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 288.57,
+      "mean_words": 163.21333333333334
+    }
+  },
+  "pairwise_comparisons": {
+    "rlvr_vs_sft": {
+      "policy_a": "rlvr",
+      "policy_b": "sft",
+      "win_rate_a": 0.04,
+      "win_rate_b": 0.02666666666666667,
+      "tie_rate": 0.9333333333333333
+    },
+    "rlaif_vs_sft": {
+      "policy_a": "rlaif",
+      "policy_b": "sft",
+      "win_rate_a": 0.04,
+      "win_rate_b": 0.03,
+      "tie_rate": 0.93
+    },
+    "rlvr_vs_rlaif": {
+      "policy_a": "rlvr",
+      "policy_b": "rlaif",
+      "win_rate_a": 0.04,
+      "win_rate_b": 0.03,
+      "tie_rate": 0.93
+    }
+  }
+}

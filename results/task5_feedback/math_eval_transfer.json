@@ -1,0 +1,47 @@
+{
+  "dataset": "transfer",
+  "num_problems": 100,
+  "per_policy": {
+    "sft": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 182.47,
+      "mean_words": 115.44
+    },
+    "rlvr": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 182.37,
+      "mean_words": 115.17
+    },
+    "rlaif": {
+      "exact_accuracy": 0.0,
+      "format_compliance_rate": 0.0,
+      "mean_tokens": 181.55,
+      "mean_words": 114.98
+    }
+  },
+  "pairwise_comparisons": {
+    "rlvr_vs_sft": {
+      "policy_a": "rlvr",
+      "policy_b": "sft",
+      "win_rate_a": 0.14,
+      "win_rate_b": 0.15,
+      "tie_rate": 0.71
+    },
+    "rlaif_vs_sft": {
+      "policy_a": "rlaif",
+      "policy_b": "sft",
+      "win_rate_a": 0.13,
+      "win_rate_b": 0.16,
+      "tie_rate": 0.71
+    },
+    "rlvr_vs_rlaif": {
+      "policy_a": "rlvr",
+      "policy_b": "rlaif",
+      "win_rate_a": 0.15,
+      "win_rate_b": 0.15,
+      "tie_rate": 0.7
+    }
+  }
+}

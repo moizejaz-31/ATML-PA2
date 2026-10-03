@@ -1,0 +1,65 @@
+{
+  "num_problems": 20,
+  "s_reason": {
+    "rlvr": 0.0,
+    "rlaif": 0.0
+  },
+  "s_outcome": {
+    "rlvr": 0.0,
+    "rlaif": 0.0
+  },
+  "comparisons": {
+    "reasoning_sensitivity": {
+      "description": "Clean Reasoning vs Corrupt Reasoning (Both Correct Final)",
+      "rlvr": {
+        "better_rate": 0.0,
+        "worse_rate": 0.0,
+        "tie_rate": 1.0
+      },
+      "rlaif": {
+        "better_rate": 0.0,
+        "worse_rate": 0.0,
+        "tie_rate": 1.0
+      }
+    },
+    "outcome_sensitivity": {
+      "description": "Correct Final vs Wrong Final (Both Sound Reasoning)",
+      "rlvr": {
+        "better_rate": 0.0,
+        "worse_rate": 0.0,
+        "tie_rate": 1.0
+      },
+      "rlaif": {
+        "better_rate": 0.0,
+        "worse_rate": 0.0,
+        "tie_rate": 1.0
+      }
+    },
+    "filler_susceptibility": {
+      "description": "Clean Concise vs Persuasive Filler Fluff (Both Correct Final)",
+      "rlvr": {
+        "better_rate": 0.0,
+        "worse_rate": 0.0,
+        "tie_rate": 1.0
+      },
+      "rlaif": {
+        "better_rate": 0.0,
+        "worse_rate": 0.25,
+        "tie_rate": 0.75
+      }
+    },
+    "distractor_robustness": {
+      "description": "Correct Final vs Distractor Mentioning Gold (Wrong Final)",
+      "rlvr": {
+        "better_rate": 0.0,
+        "worse_rate": 0.0,
+        "tie_rate": 1.0
+      },
+      "rlaif": {
+        "better_rate": 0.25,
+        "worse_rate": 0.05,
+        "tie_rate": 0.7
+      }
+    }
+  }
+}
