@@ -140,6 +140,7 @@ def run_grpo(
     timer = wall_timer()
     prompt_idx = 0
     generated_tokens = 0
+    skipped = 0
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()
 
@@ -235,7 +236,11 @@ def run_grpo(
                 clip_num += float(diag["clip_fraction"].item()) * float(m.sum())
                 ratio_sum += float(diag["ratio_mean"].item()) * float(m.sum())
             grad_norm = torch.nn.utils.clip_grad_norm_(params, max_grad_norm).item()
-            optimizer.step()
+            if np.isfinite(grad_norm) and np.isfinite(pol_total):
+                optimizer.step()
+            else:                                    # never apply an inf/NaN update (fp16 overflow)
+                skipped += 1
+            optimizer.zero_grad()
 
         mask_all = gen["response_mask"]
         kl_tok = sum(float(((o - r)).sum()) for o, r in zip(old_lp, ref_lp)) / max(float(mask_all.sum()), 1.0)
@@ -266,6 +271,7 @@ def run_grpo(
             if n_seq > 2 and float(rewards.std()) > 0 and float(mask_all.sum(-1).float().std()) > 0 else float("nan"),
             "sequences": seq_stats,
             "generated_tokens_cum": generated_tokens,
+            "skipped_nonfinite_steps": skipped,
             "peak_vram_mb": peak_vram,
             "wall_time": float(timer()),
         }
@@ -297,6 +303,7 @@ def run_grpo(
         "disable_dropout": bool(cfg.get("disable_dropout", True)),
         "prompt_ids": [p for r in recs for p in r["prompt_ids"]],
         "generated_tokens": generated_tokens,
+        "skipped_nonfinite_steps": skipped,
         "mean_reward": float(np.mean([r["reward_mean"] for r in recs])),
         "mean_within_group_std": float(np.mean([r["within_group_reward_std"] for r in recs])),
         "mean_uninformative_fraction": float(np.mean([r["uninformative_group_fraction"] for r in recs])),

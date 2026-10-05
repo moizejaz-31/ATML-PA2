@@ -189,6 +189,7 @@ def run_ppo(
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()
     generated_tokens = 0
+    skipped = {"policy": 0, "value": 0}
 
     for update in range(1, num_updates + 1):
         # 1. Prompts (identical order for every fork: index 0, 1, 2, ...)
@@ -240,6 +241,9 @@ def run_ppo(
             advantages, returns = compute_gae(shaped, resp_values, response_mask, gamma=gamma, lam=lam)
             norm_adv = normalize_advantages(advantages, response_mask)
             ev = explained_variance(resp_values, returns, response_mask)
+        if not (torch.isfinite(resp_values).all() and torch.isfinite(norm_adv).all()):
+            raise FloatingPointError(f"non-finite critic values/advantages at update {update}; "
+                                     "the critic state is corrupted (see load_value_model dtype note)")
 
         # 6. PPO epochs on this rollout batch
         policy.train()
@@ -251,7 +255,11 @@ def run_ppo(
             opt_p.zero_grad()
             p_loss.backward()
             p_norm = torch.nn.utils.clip_grad_norm_(trainable_parameters(policy), max_grad_norm).item()
-            opt_p.step()
+            if np.isfinite(p_norm) and torch.isfinite(p_loss):
+                opt_p.step()
+            else:                                    # never apply an inf/NaN update (fp16 overflow)
+                skipped["policy"] += 1
+            opt_p.zero_grad()
 
             cur_vals = token_values(value_model, sequences, attention_mask)[
                 :, prompt_width - 1 : prompt_width - 1 + response_ids.shape[1]
@@ -260,7 +268,11 @@ def run_ppo(
             opt_v.zero_grad()
             (v_loss * val_coef).backward()
             v_norm = torch.nn.utils.clip_grad_norm_(trainable_parameters(value_model), max_grad_norm).item()
-            opt_v.step()
+            if np.isfinite(v_norm) and torch.isfinite(v_loss):
+                opt_v.step()
+            else:
+                skipped["value"] += 1
+            opt_v.zero_grad()
 
             log_ratio = (new_logp - old_logp).detach()
             ep.append({
@@ -309,6 +321,7 @@ def run_ppo(
             "value_explained_variance": ev,
             "value_first_token": float(resp_values[:, 0].mean().item()),
             "generated_tokens_cum": generated_tokens,
+            "skipped_nonfinite_steps": dict(skipped),
             "epochs": ep,
             "peak_vram_mb": peak_vram,
             "wall_time": float(timer()),
@@ -343,6 +356,7 @@ def run_ppo(
         "disable_dropout": bool(cfg.get("disable_dropout", True)),
         "prompt_ids": [r["prompt_id"] for r in recs],
         "generated_tokens": generated_tokens,
+        "skipped_nonfinite_steps": dict(skipped),
         "final_reward": recs[-1]["reward_rm"],
         "final_kl": recs[-1]["kl_token_mean"],
         "mean_reward_last5": float(np.mean([r["reward_rm"] for r in recs[-5:]])),

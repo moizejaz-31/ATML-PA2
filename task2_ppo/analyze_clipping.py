@@ -171,7 +171,8 @@ def update_probe(policy, items, eps, cfg, init_state, device, order):
             opt.zero_grad()
             loss.backward()
             gn = torch.nn.utils.clip_grad_norm_(trainable_parameters(policy), float(cfg.get("max_grad_norm", 1.0))).item()
-            opt.step()
+            if np.isfinite(gn) and torch.isfinite(loss):
+                opt.step()
             traj.append({"epoch": epoch, "rollout": i, "clip_fraction": float(diag["clip_fraction"]),
                          "affected_fraction": float(diag["clip_high_fraction"] + diag["clip_low_fraction"]),
                          "loss": float(loss.item()), "grad_norm": gn})

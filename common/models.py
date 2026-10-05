@@ -181,6 +181,14 @@ def load_value_model(cfg: dict, checkpoint: str, train_mode: str = "lora_head"):
     else:
         raise ValueError(f"Unknown value train_mode={train_mode!r}")
 
+    # Keep trainable critic tensors in fp32. On GPUs without bf16 (T4) the checkpoint loads in fp16 and the
+    # `score` head copy kept by `modules_to_save` stays fp16; AdamW on fp16 weights produces inf/NaN on the
+    # first step (eps and the second moment underflow), which then poisons advantages and the policy.
+    # The forward pass runs under fp16 autocast (see token_values), so only the master weights change dtype.
+    for p in model.parameters():
+        if p.requires_grad and p.dtype != torch.float32:
+            p.data = p.data.float()
+
     if torch.cuda.is_available():
         model = model.cuda()
     model.train()
@@ -213,22 +221,27 @@ def value_parameter_groups(model, lora_lr: float, head_lr: float):
 
 
 def token_values(value_model, input_ids, attention_mask):
-    backbone = getattr(value_model, value_model.base_model_prefix)
-    outputs = backbone(
-        input_ids=input_ids,
-        attention_mask=attention_mask,
-        output_hidden_states=True,
-        return_dict=True,
-        use_cache=False,
-    )
-    hidden = outputs.hidden_states[-1]
-    if hasattr(value_model, "score"):
-        head = value_model.score
-    elif hasattr(value_model, "classifier"):
-        head = value_model.classifier
-    else:
-        raise RuntimeError("Could not locate scalar value head")
-    return head(hidden).squeeze(-1)
+    # Mixed precision: fp16 backbone + fp32 trainable head/LoRA (load_value_model) -> autocast on CUDA.
+    low = next((p.dtype for p in value_model.parameters() if p.dtype in (torch.float16, torch.bfloat16)), None)
+    use_amp = low is not None and input_ids.is_cuda
+    with torch.autocast(device_type="cuda", dtype=low or torch.float16, enabled=use_amp):
+        backbone = getattr(value_model, value_model.base_model_prefix)
+        outputs = backbone(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            output_hidden_states=True,
+            return_dict=True,
+            use_cache=False,
+        )
+        hidden = outputs.hidden_states[-1]
+        if hasattr(value_model, "score"):
+            head = value_model.score
+        elif hasattr(value_model, "classifier"):
+            head = value_model.classifier
+        else:
+            raise RuntimeError("Could not locate scalar value head")
+        values = head(hidden).squeeze(-1)
+    return values.float()
 
 
 def disable_dropout(model) -> int:
