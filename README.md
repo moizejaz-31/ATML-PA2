@@ -163,6 +163,22 @@ python -m scripts.build_task_notebooks  # regenerate the per-step inspection not
   `max` instead of `min` (`task2_ppo/ppo.py`); GRPO advantages were normalised over the whole batch instead
   of within each prompt group (`task3_grpo/grpo.py`).
 
+## 5c. Analysis notebooks
+
+`task*/notebooks/*.ipynb` (15 notebooks, one per experiment step) document each step: objective and
+setting, validated objective (the deliberate starter defect and a numerical check), the full training
+log and curves, held-out tables, distributions, paired comparisons, qualitative examples, and a final
+cell printing the facts for the manual's research question. They read the saved results of the script
+pipeline (the experiments themselves run as scripts; each notebook has a `FORCE_RUN` switch that
+re-runs its step's scripts on a GPU). They are committed with their outputs. To rebuild and re-execute
+them on a CPU after new results arrive:
+
+```bash
+pip install nbclient ipykernel
+python -m scripts.build_task_notebooks
+python -m scripts.execute_notebooks
+```
+
 ## 6. Reproducibility rules
 
 - Do not alter course-provided data, cached rollouts, or supplied checkpoints.

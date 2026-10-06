@@ -2,7 +2,11 @@ from __future__ import annotations
 
 import re
 import numpy as np
-import torch
+
+try:  # torch is only needed by the tensor helpers; result analysis works without it
+    import torch  # noqa: F401
+except ImportError:  # pragma: no cover
+    torch = None
 
 
 # A GRPO group is uninformative when its reward std is within the tolerance used by the released
