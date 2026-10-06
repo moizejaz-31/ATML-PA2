@@ -288,7 +288,7 @@ def main():
     probe = {}
     if not args.skip_probe:
         init = lora_state(policy)
-        order = list(np.random.default_rng(int(cfg["seed"])).permutation(len(items)))
+        order = [int(i) for i in np.random.default_rng(int(cfg["seed"])).permutation(len(items))]
         for e in eps_values:
             traj, new_list = update_probe(policy, items, e, cfg, init, device, order)
             geo, lr = geometry(new_list, items, eps_values)

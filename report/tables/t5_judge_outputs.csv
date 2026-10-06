@@ -1,0 +1,11 @@
+set,comparison,n,decisive A/B,explicit TIE,ambiguous (echo/unparsed)
+gsm,rlaif_vs_sft,300,5,287,8
+gsm,rlvr_vs_sft,300,6,286,8
+gsm,rlvr_vs_rlaif,300,7,284,9
+transfer,rlaif_vs_sft,100,0,79,21
+transfer,rlvr_vs_sft,100,0,79,21
+transfer,rlvr_vs_rlaif,100,0,80,20
+diagnostics,reasoning_sensitivity,20,0,20,0
+diagnostics,outcome_sensitivity,20,0,20,0
+diagnostics,filler_susceptibility,20,1,15,4
+diagnostics,distractor_robustness,20,6,14,0

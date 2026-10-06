@@ -3,45 +3,201 @@
   "num_problems": 300,
   "per_policy": {
     "sft": {
-      "exact_accuracy": 0.0,
-      "format_compliance_rate": 0.0,
-      "mean_tokens": 287.8433333333333,
-      "mean_words": 162.22666666666666
+      "n": 300,
+      "exact_accuracy": 0.2833333333333333,
+      "exact_accuracy_ci95": [
+        0.23533002872803954,
+        0.33681545760431253
+      ],
+      "format_compliance_rate": 0.35,
+      "accuracy_given_format": 0.8095238095238095,
+      "length_tokens": {
+        "n": 300,
+        "mean": 274.33,
+        "std": 84.71163497418758,
+        "median": 259.5,
+        "q25": 213.5,
+        "q75": 328.25,
+        "iqr": 114.75
+      },
+      "mean_tokens": 274.33,
+      "mean_words": 156.43333333333334,
+      "hit_max_tokens_rate": 0.016666666666666666,
+      "failure_types": {
+        "correct": 0.2833333333333333,
+        "wrong_final_answer": 0.06666666666666667,
+        "no_final_format": 0.6333333333333333,
+        "no_final_format_hit_cap": 0.016666666666666666
+      }
     },
     "rlvr": {
-      "exact_accuracy": 0.0,
-      "format_compliance_rate": 0.0,
-      "mean_tokens": 288.62,
-      "mean_words": 162.83666666666667
+      "n": 300,
+      "exact_accuracy": 0.2866666666666667,
+      "exact_accuracy_ci95": [
+        0.238445210315098,
+        0.3402826531506026
+      ],
+      "format_compliance_rate": 0.36,
+      "accuracy_given_format": 0.7962962962962963,
+      "length_tokens": {
+        "n": 300,
+        "mean": 275.87666666666667,
+        "std": 86.29894624050877,
+        "median": 261.0,
+        "q25": 214.0,
+        "q75": 329.0,
+        "iqr": 115.0
+      },
+      "mean_tokens": 275.87666666666667,
+      "mean_words": 157.07333333333332,
+      "hit_max_tokens_rate": 0.02,
+      "failure_types": {
+        "correct": 0.2866666666666667,
+        "wrong_final_answer": 0.07333333333333333,
+        "no_final_format": 0.62,
+        "no_final_format_hit_cap": 0.02
+      }
     },
     "rlaif": {
-      "exact_accuracy": 0.0,
-      "format_compliance_rate": 0.0,
-      "mean_tokens": 288.57,
-      "mean_words": 163.21333333333334
+      "n": 300,
+      "exact_accuracy": 0.2866666666666667,
+      "exact_accuracy_ci95": [
+        0.238445210315098,
+        0.3402826531506026
+      ],
+      "format_compliance_rate": 0.36,
+      "accuracy_given_format": 0.7962962962962963,
+      "length_tokens": {
+        "n": 300,
+        "mean": 275.45,
+        "std": 88.10834712632699,
+        "median": 260.5,
+        "q25": 208.75,
+        "q75": 329.0,
+        "iqr": 120.25
+      },
+      "mean_tokens": 275.45,
+      "mean_words": 157.02666666666667,
+      "hit_max_tokens_rate": 0.023333333333333334,
+      "failure_types": {
+        "correct": 0.2866666666666667,
+        "wrong_final_answer": 0.07333333333333333,
+        "no_final_format": 0.6166666666666667,
+        "no_final_format_hit_cap": 0.023333333333333334
+      }
     }
   },
   "pairwise_comparisons": {
-    "rlvr_vs_sft": {
-      "policy_a": "rlvr",
-      "policy_b": "sft",
-      "win_rate_a": 0.04,
-      "win_rate_b": 0.02666666666666667,
-      "tie_rate": 0.9333333333333333
-    },
     "rlaif_vs_sft": {
       "policy_a": "rlaif",
       "policy_b": "sft",
-      "win_rate_a": 0.04,
-      "win_rate_b": 0.03,
-      "tie_rate": 0.93
+      "n": 300,
+      "win_rate_a": 0.016666666666666666,
+      "loss_rate_a": 0.02666666666666667,
+      "tie_rate": 0.9566666666666667,
+      "win_rate_a_ties_half": 0.495,
+      "explicit_ties": 287,
+      "unparsed_judge_outputs": 0,
+      "verifier_judge_contingency": {
+        "A": {
+          "A": 0,
+          "B": 1,
+          "TIE": 3
+        },
+        "B": {
+          "A": 0,
+          "B": 0,
+          "TIE": 3
+        },
+        "TIE": {
+          "A": 5,
+          "B": 7,
+          "TIE": 281
+        }
+      },
+      "agreement_on_verifier_decisive": 0.0,
+      "judge_opposes_verifier_rate": 0.14285714285714285,
+      "n_verifier_decisive": 7,
+      "judge_decisive_when_verifier_tie": 0.040955631399317405,
+      "judge_prefers_longer_when_verifier_tie": 0.6666666666666666
+    },
+    "rlvr_vs_sft": {
+      "policy_a": "rlvr",
+      "policy_b": "sft",
+      "n": 300,
+      "win_rate_a": 0.02666666666666667,
+      "loss_rate_a": 0.02,
+      "tie_rate": 0.9533333333333334,
+      "win_rate_a_ties_half": 0.5033333333333333,
+      "explicit_ties": 286,
+      "unparsed_judge_outputs": 0,
+      "verifier_judge_contingency": {
+        "A": {
+          "A": 1,
+          "B": 1,
+          "TIE": 5
+        },
+        "B": {
+          "A": 0,
+          "B": 0,
+          "TIE": 6
+        },
+        "TIE": {
+          "A": 7,
+          "B": 5,
+          "TIE": 275
+        }
+      },
+      "agreement_on_verifier_decisive": 0.07692307692307693,
+      "judge_opposes_verifier_rate": 0.07692307692307693,
+      "n_verifier_decisive": 13,
+      "judge_decisive_when_verifier_tie": 0.041811846689895474,
+      "judge_prefers_longer_when_verifier_tie": 0.6666666666666666
     },
     "rlvr_vs_rlaif": {
       "policy_a": "rlvr",
       "policy_b": "rlaif",
-      "win_rate_a": 0.04,
-      "win_rate_b": 0.03,
-      "tie_rate": 0.93
+      "n": 300,
+      "win_rate_a": 0.03333333333333333,
+      "loss_rate_a": 0.02,
+      "tie_rate": 0.9466666666666667,
+      "win_rate_a_ties_half": 0.5066666666666667,
+      "explicit_ties": 284,
+      "unparsed_judge_outputs": 0,
+      "verifier_judge_contingency": {
+        "A": {
+          "A": 1,
+          "B": 0,
+          "TIE": 4
+        },
+        "B": {
+          "A": 0,
+          "B": 0,
+          "TIE": 5
+        },
+        "TIE": {
+          "A": 9,
+          "B": 6,
+          "TIE": 275
+        }
+      },
+      "agreement_on_verifier_decisive": 0.1,
+      "judge_opposes_verifier_rate": 0.0,
+      "n_verifier_decisive": 10,
+      "judge_decisive_when_verifier_tie": 0.05172413793103448,
+      "judge_prefers_longer_when_verifier_tie": 0.6666666666666666
     }
+  },
+  "judge_cost": {
+    "uncached_calls": 409,
+    "cache_hits": 491,
+    "mean_seconds_per_call": 0.504531487936413,
+    "total_seconds": 206.3533785659929,
+    "judge_phase_seconds": 206.43603217000054
+  },
+  "protocol": {
+    "decoding": "greedy",
+    "max_new_tokens": 512,
+    "max_prompt_length": 256
   }
 }

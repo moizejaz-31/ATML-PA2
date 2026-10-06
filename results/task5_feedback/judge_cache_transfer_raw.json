@@ -1,0 +1,577 @@
+{
+  "317703d64575443103eccfe5854aee996e4ca55d50bd41f64b53b7acc3da26b3": {
+    "decoded": "A, B",
+    "parsed": true,
+    "swapped": false
+  },
+  "42f7c6713dcc1e0195a8fc7a5ade4e0dcc5ee078ea1d4cc3f85c74b1d174a388": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "2ff22848f8e07dd821e522d4c889bde6641015e91ba6e47bd263173b36161e29": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "1ce41a6fceedcf43cdfa84f9b1615bd88e6331b1d8e2a50c992a32259c7abfec": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "c477aac6b277cdc3ba9facd0b86b0c026f876557b50cfaa44f8988d8d9fc94b8": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "a74dc78d4c14f398e0ad4658fd0cd0bd2e2c3238a56bc0051c58c43cdbbd229a": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "5f2f41ee0191d70b08cd3fedaad4ae91423dd148d61345b0dc62786d80ce71db": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "f5eaa4122a78c3694378b139b895df6661638db8dcde7d6a9f55af20657a205a": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "aab57c0a9beb8ca6a6e6e5c3ca5ff5d1553847864e5c5a43c433a15baddd3eb5": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "d4431081289118ff3620123d90fcfd4025374809f77c533ef611c52c3ed42182": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "0316d047504052ef1af75a9c813946f8a0ac36c04dc372723b4f08e2b5e9bfe5": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "dcedf827d8fa2d2abbe960929c977eaf194b84c715170a33bb165e78e0bf4f56": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "af00aacab1fcb1f023bbe8f8672e97a3e0cb258853d047b4481b2f1d0b6ebb69": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "96d84fb90182ea7de3e43f42ad3da3bd0dce41a341574b486b7d5b5886d7fbc3": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "359cc3e5eb39e3a0ae61972d301301f230e5536cff97734befab61c2ef2c0166": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "210cc33bbff0b4f54745ac3e5bf03a36eebaa1945dde98d34930b1981a7294c3": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "a98a13f2d6da4c0581ade7f63622ef5148336348ea355b3375488dce7f3b01c4": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "a3dd7227a259f7701f0c624af55e08ca08a5442e7e514c27c62f03024dc68a26": {
+    "decoded": "A, B",
+    "parsed": true,
+    "swapped": true
+  },
+  "5ef063766ed8140c41f2668dfcd297fb5e345ffcd350587e85feab6852f241bd": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "591eff52b0ca6ec08565fb957a22bb0e576ab16c8c4406141405de0491f42da5": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "025d679c754f1647ef64b996fa8c5d9918ca5c4a1f71e5450ad7be52c4c1cbd1": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "e6e587589320b8216df8919fe794e3a9d8e260a6eb267001cfbf90666c50a42d": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "f415882b6a7caa33054834addabe499cfc182490ab8bc8ea09e2f7c88949ab32": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "886d7fdd465ba68c3d854d8049ed50809bb366ee16a6b9bea159e108c8129d1d": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": true
+  },
+  "e96696751ed854686a1f0aeb3094e2810ceb7f4be76a66356bdc3992dbd21239": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "60ce806cd30fc573f44a4aa2839c8208225a2e1e87c81fe9732329f113330ded": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "b4a5342c2e52b4f078061541ecfc348f5db8e1e850f7b8bdbd787910fb319de7": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "e9a82f8c7705f7d4ed7a76ee7537470f2c01f967707ca771ad7475b402b47130": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "3c322138bf0e3c6d5f8929c5d4638801746cce9e588bdfe7ddc7dcc175cc057e": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "5bd258d5a7f7ed608197288f5054ff6d6e97e70244ffc83ecfb5f83540d17266": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "757fb13c3450b04b1c6482191a6dfb276d64821772238e06b7e3e6b36d012d7a": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "d2a0202f9a79a513be15a020cdd8b27945c6b19bea61ee73d1baab346e1e7051": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "3f23b53a3b7aafdea21340edda6ad5bcf04142646b42f42dc931131b05b9e658": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "6bfca77f7886aed357a216a7cf6fb76b419d9842366007b56ab5091b11aba3b3": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "6d2e665a83837067bf820e160a5b7798028a13fb66f5c431c367096a40577dda": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "67bfd8314eda604fa40183af930d7bed40822c7fc6493a5af4aa2542ac2a9a03": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "8bbb2738bab3bead16ab5e7951aede3db5f69c28be04ab8ba9d7cbea56a40b7f": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "28bede08371cb5c7a931928515cb1c316ebd9eade28ed59bc7d30ebcd340b039": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "484d32d06a526446460ec420aa744025627b478493b3c3245625493bdd5912b3": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "2da49979bb076de2ab549d364594dfd848f097153732ac9d3cf7bd6a896b55a4": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "b017a52bbd28bc53f8214868ba64e1169cb1448d59a5d381c334e72d2e37370d": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": true
+  },
+  "cc01c749947d1716c264c6b8da72ec3d76f67c4760df3884da04c89996def62f": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "5a62cb2cbdc519867bb6283619f8901679d79181f1d1f4a65e43d9c41af311d2": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "1579b7c3109e5076d5ac00a77e1e7a19a23c892f1e184ce6c248034101f3e192": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "35bb885266744c620843a955a155af34f444be7e466686224f28098ac35d39c7": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "e54210a3c11de680a121f8fa76ef23c973d573d08dae657f4a6e1ae3945d558f": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "f23e2b9aa60eb4708b656ee4139979bc5ffe5308c352a78bb82c853148e84471": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "6601aeb0556d7a4e5b25d1907a329ab942703690fb26666b36255b13ac7ce6e8": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "9ddb4bb38de748207530cadab08b13521fde8a5b03bdc38f644704a16aac2f43": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "68bf23ebfc7a5e33523bcb0e8a8a27fc66e38fc7b61a1244600d3aab1f438457": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "8c9881b441e8253d63def3debe6c7c32258e2f7f6c7aa0fa2d7835f4fc54dfeb": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "2cf432b9e4ed5821bfb03a55fc896f64cc27dfc303ec094d710cbc10dbb29c45": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "c6d052a657d97c835f1d7425cba2d7c9e8b6e9f8bae48bb5f06c2a3d8707cc0b": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "15f9119a57c46006f8e01e326a568b4760af115cae2038e3ffb4eaf7af78a5a2": {
+    "decoded": "A,B,TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "6273597a0f9fa6a531b72dd4e22b09f61c4f2cddc38f52f27c36f06c114faad9": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "5e1fdd61a73f702e650ad8e85e0bccac1a480a3bbcfaf28b5a80c641308ee274": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "fa0f8d21eb02381f238b61e037616fe39abc6a788613f102575115ef58407c2a": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "d29d8fbdfc2da449467a0aed33c2658443f22cbe7d89ef80b996b4bbcbc2d36b": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "d2b6fd871cc5cf7cfb818e7dcbfb5da81b95de58fefacd9b37031afa6d6483d5": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "f941de08b6cee85bca08c599744e9c0c20130a55ca0dd6cd21be36321e162829": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "c58822dd99c604af238cb1a07de328ec8535bf89718d010bcace26f6202646aa": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "4d30bf40607adbb617f3b8f91720431a5e5e9e50aaacdff0c9c192c248d537f4": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "4474e366450d52321750f00bdd1d5f29e944eb4ca4cf60c689a793ecab85101b": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "7afe3fd86b094bff92b10b679d60cdb580c08f1018dba067ac0556058423d9df": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "afe752a46913a477853344c556ea929fa7b1ba6b902c11b7a4a8701d8876094d": {
+    "decoded": "A, B",
+    "parsed": true,
+    "swapped": false
+  },
+  "5870869cd92da6468ac456043706fd4b16f840b42287b87b17a6bf9a87c59919": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "0aa3dc983c7d243d23d1d81b5b6d85b9807bd69398a16b29db599237a8f9fbc8": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "1b67809c241e82a741a3954f9294eaa1048ea82aef984ce642e48fd3d214804e": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "2b37fbcc5222b6030c068395aaea92c1fc93732b47ced04f16852e9013bba1fa": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "a898639f66271f7ed1436724567108b3c4b99b657ffc3aa1b3509cf2b52bbd66": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "05464d1db4b7ac44c45e97c1daaae2eaccf1cb316970e527422427f395bfb28b": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "7c6a5c61ba9fedbc006706649b4bd858f56c10ae00a699ae6a48cd5a2679c346": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": true
+  },
+  "8799826b3c364267c4e5bda37337aac74563a1db92b33d9f515ba2d5457c0af8": {
+    "decoded": "A, B",
+    "parsed": true,
+    "swapped": true
+  },
+  "b97df45cdd058dd54132cb542424f90d4ea894e064e79eb188f4fb1a142e4a18": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "acb2f50a53fe74387ed7539a3bbfc3622125f3a347a8aa526fba72844c712c9b": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "ef4beebb7dc119803ebc3dffd1cc9cb991e0dd50d0c9db15e06c9ffa2f69b09f": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": true
+  },
+  "accfb10d68db040fa3239a48894bbfa50e50fb5c33455e4eea4069bcd66d4cca": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "1a23ad1202a8cf45c7870040454b8d7c0872610d96ad3e73c1fdf683cd2a279a": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "e4abc4f01873d6deaa294d12a7e61bf4f97000be2ede4744e69c4785dd6662fe": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "ef09dffa21b8a09f4922eff11f1ab41058950e3c9d4165e824807385614a1bd4": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "f5b726867d46dfcdd3dba40eff95eaeb896cb1d584e0f82719ae06cb184fe992": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "c151868caa0b24a0689ad970742c305d3324908ba5c58bc1c75003e7c6b74ca9": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "aa0b70816942e6d3a9c32de4f9091f54a1c8ce92db7f23c6ad057d97ccc4274a": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": true
+  },
+  "93efe986eb4f630090a3126252ce028ac25a4e0eb5e8d50cdf002dd59dee80c1": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "3ec3ceb563ccb7af786796f88cb288bc816850f18088472ba0d5cbc4049d18e9": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "886ad808a09e095396649637df57bfd97fba8a181ccbde95be696f7a4b74f8e8": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "81263b0bdc4052baa6ac8d4493852a7bb569afb52b1588dd2b86a7a26fba810c": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "60bcb011c6b02b869980f51106fe5c12c597a2a3ace9acee165a8422a2675e82": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": true
+  },
+  "e0575be27062fd574f2b24d89335c53496d8eff0d777a47a7247d9fe72204658": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "8cab902b2be1ea308ca25edea1ab37abc81cef82d3fdfd4b3b81102043fe6268": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "93e0f3d153abe925d1e03040a88969775f39d977b10472176c43f28640ee2a90": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "75e538dcc49921449a8c35d7ab7a5f2c3d1b27097dcb56aa9f1dedd753cf5340": {
+    "decoded": "A, B,",
+    "parsed": true,
+    "swapped": false
+  },
+  "b863a9691bf0dde50625a002d53d3f7f09012049c5fb31bacb33893494870d83": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "8c560ceacb4837950ec04371f82e197a56f3d72a0201b4c79216c39166123ef0": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "84646af6d7d570b6138a1621e97724116f4c92521947a12f62209e3b4ae08b62": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "309cdd7c2d70d9f11bf594042c6125cacbeb6fe304a7ffdd49d81145fd271472": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "3eca33d7b7d24fcf54b8fa61b1b64d09e00b6189e60061d4119c84eebcd4d702": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "19d0bd18f931e0fbaba3fee7d2efafaa6bb7a8ebe636f388683102f480d9d17d": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "a85e8ca6c104578b9aa3157b5dc7611b6e160ed7160934d6080abe561d9df7f3": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "5c2955a2c0d3f6cd24ffc58cb6ed32d49b789949d3c16489db06fcd576e2d0ba": {
+    "decoded": "A, B",
+    "parsed": true,
+    "swapped": false
+  },
+  "9b071f5d0bfa412b53b89f0de937322cdbb83c7a4924d7ea27537b1462e7c37c": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "320cd976413e4f2db2fc6b61955be2bfcf22da5d80ebca73e42752a6b69e1fe7": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "f6592fce173ecd5caf21750e9797d32800b8160d2f3eb3bbe27444c9fcff04b5": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "ccf39d2e067321395393aa3a0579a1494d40835008b1488961c694cd04f0b012": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "cfe34635501152cb73aaed57dad24ee3e3ead03a7320fb0042f1644095fedf60": {
+    "decoded": "A,B,TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "6614f76fa107cb7c0602b8f256e1dbac924dd3a7bfd478b229bc1e36be68cec5": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "dff589e71a2c1a0246adc35bd2f4f7e65ee1d646e4942f46686bc7a75d0a59df": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "f2dd2967370c73bc11a7bb6f7fe2143ed7b0988d6aeb38f12c340f4408c55681": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "b6098ef77096ec75e316a47341d7ed3beca6cba06919a540cbebd9b088d8d5db": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "986eef787a36dfd998168ec26347ade2bfa0c278d189419e41f5198c635dce8b": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "dfa64f07d67b15821b8542283b7b220dc92acffaa953a65e173ba4ed793cf46e": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  },
+  "ccc9d4eeddb2fbefbaa4ab897cb76233a9b4a156c20928a3418a81bbd6d71d35": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "4ae09f50e32062dffe9f5e6d3c2d2e5023be40f112d53e125073316f056031f2": {
+    "decoded": "A,B,TIE",
+    "parsed": true,
+    "swapped": false
+  },
+  "7465978200266ab3e624ec3fc8be78054fe4240ea2973e5a1f7ba45a1456d1be": {
+    "decoded": "A, B",
+    "parsed": true,
+    "swapped": false
+  },
+  "ea9c342b4c7fd505cb4b354b90c9fe743cb9a82d6ff474060793925217a9374e": {
+    "decoded": "TIE",
+    "parsed": true,
+    "swapped": true
+  }
+}

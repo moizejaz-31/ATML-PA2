@@ -1,0 +1,5 @@
+policy,RM,KL tok,entropy,len,hit cap
+GRPO midpoint (start),1.444 ± 0.156,-0.0,0.971,259.4 ± 200.3,0.28
+Standard GRPO (20 updates),1.467 ± 0.150,0.0001,0.964,264.7 ± 199.3,0.3
+fork canonical GRPO (8),1.442 ± 0.146,0.0001,0.97,262.3 ± 198.1,0.28
+fork Dr. GRPO (8),1.436 ± 0.150,0.0001,0.986,260.8 ± 192.9,0.23

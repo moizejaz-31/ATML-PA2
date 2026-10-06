@@ -1,0 +1,9008 @@
+{
+  "rlaif_vs_sft": [
+    {
+      "id": "803",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 366,
+      "b_tokens": 366
+    },
+    {
+      "id": "750",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 386,
+      "b_tokens": 395
+    },
+    {
+      "id": "867",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 156,
+      "b_tokens": 156
+    },
+    {
+      "id": "506",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 235,
+      "b_tokens": 235
+    },
+    {
+      "id": "505",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "289",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 260,
+      "b_tokens": 260
+    },
+    {
+      "id": "736",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 188,
+      "b_tokens": 188
+    },
+    {
+      "id": "558",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 201,
+      "b_tokens": 201
+    },
+    {
+      "id": "677",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 140,
+      "b_tokens": 140
+    },
+    {
+      "id": "23",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 224,
+      "b_tokens": 224
+    },
+    {
+      "id": "1122",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 442
+    },
+    {
+      "id": "569",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "620",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "299",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 476,
+      "b_tokens": 476
+    },
+    {
+      "id": "1200",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "1245",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 274,
+      "b_tokens": 272
+    },
+    {
+      "id": "103",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 301,
+      "b_tokens": 301
+    },
+    {
+      "id": "459",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 343,
+      "b_tokens": 343
+    },
+    {
+      "id": "113",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 151,
+      "b_tokens": 151
+    },
+    {
+      "id": "681",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 336,
+      "b_tokens": 336
+    },
+    {
+      "id": "632",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 342,
+      "b_tokens": 342
+    },
+    {
+      "id": "234",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 424,
+      "b_tokens": 424
+    },
+    {
+      "id": "1043",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 197,
+      "b_tokens": 197
+    },
+    {
+      "id": "248",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 125,
+      "b_tokens": 125
+    },
+    {
+      "id": "887",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 220,
+      "b_tokens": 220
+    },
+    {
+      "id": "1019",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 251
+    },
+    {
+      "id": "697",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 206,
+      "b_tokens": 206
+    },
+    {
+      "id": "805",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "167",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 282,
+      "b_tokens": 278
+    },
+    {
+      "id": "535",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 116,
+      "b_tokens": 116
+    },
+    {
+      "id": "760",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 237,
+      "b_tokens": 390
+    },
+    {
+      "id": "1092",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "680",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1180",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 263,
+      "b_tokens": 263
+    },
+    {
+      "id": "438",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "423",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 349,
+      "b_tokens": 316
+    },
+    {
+      "id": "1074",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 220,
+      "b_tokens": 220
+    },
+    {
+      "id": "897",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 221
+    },
+    {
+      "id": "1283",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "1126",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 271,
+      "b_tokens": 271
+    },
+    {
+      "id": "1058",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 197,
+      "b_tokens": 197
+    },
+    {
+      "id": "761",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "314",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 382,
+      "b_tokens": 382
+    },
+    {
+      "id": "92",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 286,
+      "b_tokens": 286
+    },
+    {
+      "id": "738",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "508",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 362,
+      "b_tokens": 362
+    },
+    {
+      "id": "1291",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 112,
+      "b_tokens": 112
+    },
+    {
+      "id": "1005",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 209,
+      "b_tokens": 209
+    },
+    {
+      "id": "688",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 217,
+      "b_tokens": 236
+    },
+    {
+      "id": "319",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 270,
+      "b_tokens": 270
+    },
+    {
+      "id": "495",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 162,
+      "b_tokens": 161
+    },
+    {
+      "id": "507",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "454",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 264,
+      "b_tokens": 264
+    },
+    {
+      "id": "1128",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 246,
+      "b_tokens": 246
+    },
+    {
+      "id": "837",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 355,
+      "b_tokens": 355
+    },
+    {
+      "id": "408",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 296,
+      "b_tokens": 296
+    },
+    {
+      "id": "1015",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 195,
+      "b_tokens": 195
+    },
+    {
+      "id": "447",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "764",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "303",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 434,
+      "b_tokens": 434
+    },
+    {
+      "id": "320",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 362,
+      "b_tokens": 362
+    },
+    {
+      "id": "414",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 231,
+      "b_tokens": 331
+    },
+    {
+      "id": "623",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 170,
+      "b_tokens": 170
+    },
+    {
+      "id": "2",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "345",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 223,
+      "b_tokens": 223
+    },
+    {
+      "id": "1095",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 271,
+      "b_tokens": 271
+    },
+    {
+      "id": "1071",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 207,
+      "b_tokens": 255
+    },
+    {
+      "id": "442",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 224,
+      "b_tokens": 254
+    },
+    {
+      "id": "349",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 303,
+      "b_tokens": 303
+    },
+    {
+      "id": "1284",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 189,
+      "b_tokens": 214
+    },
+    {
+      "id": "1276",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 150,
+      "b_tokens": 150
+    },
+    {
+      "id": "1207",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 170,
+      "b_tokens": 170
+    },
+    {
+      "id": "226",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "1052",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 241
+    },
+    {
+      "id": "607",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "1160",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 228,
+      "b_tokens": 233
+    },
+    {
+      "id": "696",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 421,
+      "b_tokens": 421
+    },
+    {
+      "id": "1219",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 227
+    },
+    {
+      "id": "822",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 226
+    },
+    {
+      "id": "882",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 448,
+      "b_tokens": 448
+    },
+    {
+      "id": "596",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 484,
+      "b_tokens": 358
+    },
+    {
+      "id": "182",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 236,
+      "b_tokens": 236
+    },
+    {
+      "id": "285",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 159,
+      "b_tokens": 159
+    },
+    {
+      "id": "18",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 267
+    },
+    {
+      "id": "910",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 279,
+      "b_tokens": 279
+    },
+    {
+      "id": "284",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 355,
+      "b_tokens": 355
+    },
+    {
+      "id": "1070",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 371,
+      "b_tokens": 302
+    },
+    {
+      "id": "466",
+      "judge": "B",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 311,
+      "b_tokens": 298
+    },
+    {
+      "id": "787",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 290,
+      "b_tokens": 290
+    },
+    {
+      "id": "1069",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 314,
+      "b_tokens": 314
+    },
+    {
+      "id": "565",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 225,
+      "b_tokens": 225
+    },
+    {
+      "id": "192",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 328,
+      "b_tokens": 328
+    },
+    {
+      "id": "1211",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 182,
+      "b_tokens": 182
+    },
+    {
+      "id": "730",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "305",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 255
+    },
+    {
+      "id": "673",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 258,
+      "b_tokens": 258
+    },
+    {
+      "id": "519",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "1118",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 235,
+      "b_tokens": 235
+    },
+    {
+      "id": "515",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 227
+    },
+    {
+      "id": "196",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 299,
+      "b_tokens": 299
+    },
+    {
+      "id": "366",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 249,
+      "b_tokens": 249
+    },
+    {
+      "id": "571",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "446",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 314,
+      "b_tokens": 314
+    },
+    {
+      "id": "889",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 236,
+      "b_tokens": 236
+    },
+    {
+      "id": "686",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "413",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 252,
+      "b_tokens": 252
+    },
+    {
+      "id": "579",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 152,
+      "b_tokens": 152
+    },
+    {
+      "id": "60",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 269,
+      "b_tokens": 269
+    },
+    {
+      "id": "572",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "1164",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 256
+    },
+    {
+      "id": "141",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 376,
+      "b_tokens": 376
+    },
+    {
+      "id": "635",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "371",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "1057",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 194,
+      "b_tokens": 194
+    },
+    {
+      "id": "243",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 219,
+      "b_tokens": 219
+    },
+    {
+      "id": "774",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 364,
+      "b_tokens": 364
+    },
+    {
+      "id": "986",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 386,
+      "b_tokens": 387
+    },
+    {
+      "id": "169",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "1105",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 470,
+      "b_tokens": 470
+    },
+    {
+      "id": "1268",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "606",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 360,
+      "b_tokens": 360
+    },
+    {
+      "id": "150",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 447,
+      "b_tokens": 447
+    },
+    {
+      "id": "989",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 310,
+      "b_tokens": 310
+    },
+    {
+      "id": "1267",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1167",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 143,
+      "b_tokens": 143
+    },
+    {
+      "id": "731",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "329",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 160,
+      "b_tokens": 160
+    },
+    {
+      "id": "421",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 202,
+      "b_tokens": 202
+    },
+    {
+      "id": "257",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "888",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 181,
+      "b_tokens": 181
+    },
+    {
+      "id": "199",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 373,
+      "b_tokens": 373
+    },
+    {
+      "id": "557",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "755",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 180,
+      "b_tokens": 180
+    },
+    {
+      "id": "1292",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 254,
+      "b_tokens": 254
+    },
+    {
+      "id": "1175",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 350,
+      "b_tokens": 350
+    },
+    {
+      "id": "1229",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "974",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 170,
+      "b_tokens": 194
+    },
+    {
+      "id": "1188",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "823",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 196,
+      "b_tokens": 196
+    },
+    {
+      "id": "19",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 285,
+      "b_tokens": 289
+    },
+    {
+      "id": "1174",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 372,
+      "b_tokens": 372
+    },
+    {
+      "id": "1271",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 302,
+      "b_tokens": 317
+    },
+    {
+      "id": "698",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 295,
+      "b_tokens": 350
+    },
+    {
+      "id": "222",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 173,
+      "b_tokens": 173
+    },
+    {
+      "id": "1049",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 239,
+      "b_tokens": 239
+    },
+    {
+      "id": "1294",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 256,
+      "b_tokens": 256
+    },
+    {
+      "id": "1078",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 276,
+      "b_tokens": 276
+    },
+    {
+      "id": "220",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 212,
+      "b_tokens": 212
+    },
+    {
+      "id": "1237",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 225,
+      "b_tokens": 225
+    },
+    {
+      "id": "655",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "684",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 156,
+      "b_tokens": 156
+    },
+    {
+      "id": "189",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 333,
+      "b_tokens": 320
+    },
+    {
+      "id": "100",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "638",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 415,
+      "b_tokens": 415
+    },
+    {
+      "id": "1176",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 508,
+      "b_tokens": 512
+    },
+    {
+      "id": "269",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "15",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "1169",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 340,
+      "b_tokens": 340
+    },
+    {
+      "id": "110",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 342,
+      "b_tokens": 342
+    },
+    {
+      "id": "441",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 295,
+      "b_tokens": 295
+    },
+    {
+      "id": "170",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "1108",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 120,
+      "b_tokens": 120
+    },
+    {
+      "id": "1282",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 253,
+      "b_tokens": 253
+    },
+    {
+      "id": "929",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 315,
+      "b_tokens": 315
+    },
+    {
+      "id": "383",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 339,
+      "b_tokens": 339
+    },
+    {
+      "id": "610",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 267,
+      "b_tokens": 267
+    },
+    {
+      "id": "883",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 195,
+      "b_tokens": 195
+    },
+    {
+      "id": "928",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 396,
+      "b_tokens": 396
+    },
+    {
+      "id": "233",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "669",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 243,
+      "b_tokens": 243
+    },
+    {
+      "id": "428",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "343",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 243,
+      "b_tokens": 243
+    },
+    {
+      "id": "630",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 240,
+      "b_tokens": 240
+    },
+    {
+      "id": "838",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 204,
+      "b_tokens": 204
+    },
+    {
+      "id": "80",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "333",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 297,
+      "b_tokens": 297
+    },
+    {
+      "id": "334",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 149,
+      "b_tokens": 149
+    },
+    {
+      "id": "1018",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 222,
+      "b_tokens": 222
+    },
+    {
+      "id": "825",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "715",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 336,
+      "b_tokens": 336
+    },
+    {
+      "id": "573",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 218,
+      "b_tokens": 218
+    },
+    {
+      "id": "933",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "758",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 222,
+      "b_tokens": 222
+    },
+    {
+      "id": "75",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "461",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "529",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 313,
+      "b_tokens": 315
+    },
+    {
+      "id": "98",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 390,
+      "b_tokens": 390
+    },
+    {
+      "id": "25",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 340,
+      "b_tokens": 340
+    },
+    {
+      "id": "981",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 249,
+      "b_tokens": 218
+    },
+    {
+      "id": "868",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 281,
+      "b_tokens": 281
+    },
+    {
+      "id": "223",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 206,
+      "b_tokens": 206
+    },
+    {
+      "id": "548",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 203,
+      "b_tokens": 139
+    },
+    {
+      "id": "216",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "1082",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 327,
+      "b_tokens": 327
+    },
+    {
+      "id": "690",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 291,
+      "b_tokens": 291
+    },
+    {
+      "id": "321",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 164,
+      "b_tokens": 192
+    },
+    {
+      "id": "354",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "245",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 246,
+      "b_tokens": 246
+    },
+    {
+      "id": "1073",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 405,
+      "b_tokens": 406
+    },
+    {
+      "id": "624",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 253
+    },
+    {
+      "id": "228",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 254,
+      "b_tokens": 254
+    },
+    {
+      "id": "156",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 210,
+      "b_tokens": 229
+    },
+    {
+      "id": "64",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "1077",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 395,
+      "b_tokens": 395
+    },
+    {
+      "id": "768",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 333,
+      "b_tokens": 333
+    },
+    {
+      "id": "1143",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 325,
+      "b_tokens": 313
+    },
+    {
+      "id": "1152",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 329,
+      "b_tokens": 329
+    },
+    {
+      "id": "239",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 303,
+      "b_tokens": 303
+    },
+    {
+      "id": "1012",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "726",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 331
+    },
+    {
+      "id": "855",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 412,
+      "b_tokens": 412
+    },
+    {
+      "id": "464",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 214,
+      "b_tokens": 214
+    },
+    {
+      "id": "800",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 145,
+      "b_tokens": 145
+    },
+    {
+      "id": "411",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "247",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 147,
+      "b_tokens": 147
+    },
+    {
+      "id": "804",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 241,
+      "b_tokens": 241
+    },
+    {
+      "id": "1028",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 286,
+      "b_tokens": 286
+    },
+    {
+      "id": "788",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 167,
+      "b_tokens": 167
+    },
+    {
+      "id": "746",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 402,
+      "b_tokens": 402
+    },
+    {
+      "id": "884",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 177,
+      "b_tokens": 177
+    },
+    {
+      "id": "1075",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 259,
+      "b_tokens": 259
+    },
+    {
+      "id": "43",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 473,
+      "b_tokens": 473
+    },
+    {
+      "id": "1213",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 395,
+      "b_tokens": 361
+    },
+    {
+      "id": "1064",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "734",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 269,
+      "b_tokens": 269
+    },
+    {
+      "id": "999",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 420,
+      "b_tokens": 428
+    },
+    {
+      "id": "1209",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 305,
+      "b_tokens": 309
+    },
+    {
+      "id": "771",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "88",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 191,
+      "b_tokens": 191
+    },
+    {
+      "id": "1104",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 107,
+      "b_tokens": 107
+    },
+    {
+      "id": "1316",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "458",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "297",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 351,
+      "b_tokens": 344
+    },
+    {
+      "id": "615",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 298,
+      "b_tokens": 298
+    },
+    {
+      "id": "39",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "416",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 477,
+      "b_tokens": 477
+    },
+    {
+      "id": "1145",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 307,
+      "b_tokens": 307
+    },
+    {
+      "id": "501",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 224,
+      "b_tokens": 244
+    },
+    {
+      "id": "836",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 431,
+      "b_tokens": 431
+    },
+    {
+      "id": "116",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "520",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 371,
+      "b_tokens": 371
+    },
+    {
+      "id": "1309",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 177,
+      "b_tokens": 177
+    },
+    {
+      "id": "526",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 304,
+      "b_tokens": 304
+    },
+    {
+      "id": "911",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 245,
+      "b_tokens": 245
+    },
+    {
+      "id": "674",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "47",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 383,
+      "b_tokens": 383
+    },
+    {
+      "id": "348",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 331
+    },
+    {
+      "id": "5",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 294,
+      "b_tokens": 294
+    },
+    {
+      "id": "87",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 296,
+      "b_tokens": 296
+    },
+    {
+      "id": "864",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 209,
+      "b_tokens": 209
+    },
+    {
+      "id": "545",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 153,
+      "b_tokens": 153
+    },
+    {
+      "id": "496",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 241,
+      "b_tokens": 241
+    },
+    {
+      "id": "1275",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 166,
+      "b_tokens": 166
+    },
+    {
+      "id": "906",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "956",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 223
+    },
+    {
+      "id": "654",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 232,
+      "b_tokens": 221
+    },
+    {
+      "id": "337",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 181,
+      "b_tokens": 181
+    },
+    {
+      "id": "1281",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 292,
+      "b_tokens": 292
+    },
+    {
+      "id": "295",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 283,
+      "b_tokens": 268
+    },
+    {
+      "id": "200",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 241,
+      "b_tokens": 241
+    },
+    {
+      "id": "142",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 143,
+      "b_tokens": 180
+    },
+    {
+      "id": "753",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 288,
+      "b_tokens": 288
+    },
+    {
+      "id": "36",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 265,
+      "b_tokens": 265
+    },
+    {
+      "id": "225",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 186,
+      "b_tokens": 186
+    },
+    {
+      "id": "1255",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 397,
+      "b_tokens": 397
+    },
+    {
+      "id": "181",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 274
+    },
+    {
+      "id": "1014",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 307,
+      "b_tokens": 307
+    },
+    {
+      "id": "195",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 191,
+      "b_tokens": 191
+    },
+    {
+      "id": "784",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 329,
+      "b_tokens": 329
+    },
+    {
+      "id": "410",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 289,
+      "b_tokens": 289
+    },
+    {
+      "id": "66",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 285,
+      "b_tokens": 285
+    },
+    {
+      "id": "687",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "826",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "300",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 144,
+      "b_tokens": 144
+    },
+    {
+      "id": "634",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 137,
+      "b_tokens": 137
+    },
+    {
+      "id": "710",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 328,
+      "b_tokens": 328
+    },
+    {
+      "id": "356",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "362",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 437,
+      "b_tokens": 437
+    },
+    {
+      "id": "562",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "1009",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 464,
+      "b_tokens": 464
+    },
+    {
+      "id": "1054",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 218,
+      "b_tokens": 218
+    },
+    {
+      "id": "1130",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 450,
+      "b_tokens": 450
+    },
+    {
+      "id": "251",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 140,
+      "b_tokens": 140
+    },
+    {
+      "id": "1124",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 323,
+      "b_tokens": 323
+    },
+    {
+      "id": "346",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 322,
+      "b_tokens": 311
+    },
+    {
+      "id": "34",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "1096",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 303,
+      "b_tokens": 245
+    },
+    {
+      "id": "988",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 306,
+      "b_tokens": 306
+    },
+    {
+      "id": "723",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 200,
+      "b_tokens": 214
+    },
+    {
+      "id": "575",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "1134",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 259
+    },
+    {
+      "id": "16",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 353,
+      "b_tokens": 206
+    },
+    {
+      "id": "174",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 347,
+      "b_tokens": 347
+    },
+    {
+      "id": "601",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 217,
+      "b_tokens": 217
+    },
+    {
+      "id": "286",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 189,
+      "b_tokens": 189
+    },
+    {
+      "id": "403",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 416
+    },
+    {
+      "id": "617",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 228,
+      "b_tokens": 228
+    },
+    {
+      "id": "675",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 500,
+      "b_tokens": 500
+    },
+    {
+      "id": "106",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "1298",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 376,
+      "b_tokens": 376
+    }
+  ],
+  "rlvr_vs_sft": [
+    {
+      "id": "803",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 370,
+      "b_tokens": 366
+    },
+    {
+      "id": "750",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 386,
+      "b_tokens": 395
+    },
+    {
+      "id": "867",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 156,
+      "b_tokens": 156
+    },
+    {
+      "id": "506",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 235,
+      "b_tokens": 235
+    },
+    {
+      "id": "505",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 377,
+      "b_tokens": 374
+    },
+    {
+      "id": "289",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 260,
+      "b_tokens": 260
+    },
+    {
+      "id": "736",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 188,
+      "b_tokens": 188
+    },
+    {
+      "id": "558",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 201,
+      "b_tokens": 201
+    },
+    {
+      "id": "677",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 140,
+      "b_tokens": 140
+    },
+    {
+      "id": "23",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 224,
+      "b_tokens": 224
+    },
+    {
+      "id": "1122",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 430,
+      "b_tokens": 442
+    },
+    {
+      "id": "569",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "620",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "299",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 476,
+      "b_tokens": 476
+    },
+    {
+      "id": "1200",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "1245",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 274,
+      "b_tokens": 272
+    },
+    {
+      "id": "103",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 301,
+      "b_tokens": 301
+    },
+    {
+      "id": "459",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 343,
+      "b_tokens": 343
+    },
+    {
+      "id": "113",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 151,
+      "b_tokens": 151
+    },
+    {
+      "id": "681",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 336,
+      "b_tokens": 336
+    },
+    {
+      "id": "632",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 341,
+      "b_tokens": 342
+    },
+    {
+      "id": "234",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 424,
+      "b_tokens": 424
+    },
+    {
+      "id": "1043",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 197,
+      "b_tokens": 197
+    },
+    {
+      "id": "248",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 125,
+      "b_tokens": 125
+    },
+    {
+      "id": "887",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 220,
+      "b_tokens": 220
+    },
+    {
+      "id": "1019",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 251
+    },
+    {
+      "id": "697",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 206,
+      "b_tokens": 206
+    },
+    {
+      "id": "805",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 249,
+      "b_tokens": 208
+    },
+    {
+      "id": "167",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 278,
+      "b_tokens": 278
+    },
+    {
+      "id": "535",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 116,
+      "b_tokens": 116
+    },
+    {
+      "id": "760",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 237,
+      "b_tokens": 390
+    },
+    {
+      "id": "1092",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "680",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1180",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 263,
+      "b_tokens": 263
+    },
+    {
+      "id": "438",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "423",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 316
+    },
+    {
+      "id": "1074",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 220
+    },
+    {
+      "id": "897",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 221
+    },
+    {
+      "id": "1283",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "1126",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 271,
+      "b_tokens": 271
+    },
+    {
+      "id": "1058",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 197,
+      "b_tokens": 197
+    },
+    {
+      "id": "761",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "314",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 382,
+      "b_tokens": 382
+    },
+    {
+      "id": "92",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 286,
+      "b_tokens": 286
+    },
+    {
+      "id": "738",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "508",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 362,
+      "b_tokens": 362
+    },
+    {
+      "id": "1291",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 117,
+      "b_tokens": 112
+    },
+    {
+      "id": "1005",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 209,
+      "b_tokens": 209
+    },
+    {
+      "id": "688",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 217,
+      "b_tokens": 236
+    },
+    {
+      "id": "319",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 270,
+      "b_tokens": 270
+    },
+    {
+      "id": "495",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 162,
+      "b_tokens": 161
+    },
+    {
+      "id": "507",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "454",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 264,
+      "b_tokens": 264
+    },
+    {
+      "id": "1128",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 246,
+      "b_tokens": 246
+    },
+    {
+      "id": "837",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 355,
+      "b_tokens": 355
+    },
+    {
+      "id": "408",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 296,
+      "b_tokens": 296
+    },
+    {
+      "id": "1015",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 195,
+      "b_tokens": 195
+    },
+    {
+      "id": "447",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "764",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "303",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 434,
+      "b_tokens": 434
+    },
+    {
+      "id": "320",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 362
+    },
+    {
+      "id": "414",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 331
+    },
+    {
+      "id": "623",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 170,
+      "b_tokens": 170
+    },
+    {
+      "id": "2",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "345",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 223,
+      "b_tokens": 223
+    },
+    {
+      "id": "1095",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 271,
+      "b_tokens": 271
+    },
+    {
+      "id": "1071",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 255
+    },
+    {
+      "id": "442",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 224,
+      "b_tokens": 254
+    },
+    {
+      "id": "349",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 303,
+      "b_tokens": 303
+    },
+    {
+      "id": "1284",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 214,
+      "b_tokens": 214
+    },
+    {
+      "id": "1276",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 150,
+      "b_tokens": 150
+    },
+    {
+      "id": "1207",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 170,
+      "b_tokens": 170
+    },
+    {
+      "id": "226",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "1052",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 241
+    },
+    {
+      "id": "607",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "1160",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 233,
+      "b_tokens": 233
+    },
+    {
+      "id": "696",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 421,
+      "b_tokens": 421
+    },
+    {
+      "id": "1219",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 227
+    },
+    {
+      "id": "822",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "882",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 448,
+      "b_tokens": 448
+    },
+    {
+      "id": "596",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "182",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 236,
+      "b_tokens": 236
+    },
+    {
+      "id": "285",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 159,
+      "b_tokens": 159
+    },
+    {
+      "id": "18",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 267
+    },
+    {
+      "id": "910",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 279,
+      "b_tokens": 279
+    },
+    {
+      "id": "284",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 355,
+      "b_tokens": 355
+    },
+    {
+      "id": "1070",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 302,
+      "b_tokens": 302
+    },
+    {
+      "id": "466",
+      "judge": "B",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 311,
+      "b_tokens": 298
+    },
+    {
+      "id": "787",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 290,
+      "b_tokens": 290
+    },
+    {
+      "id": "1069",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 314,
+      "b_tokens": 314
+    },
+    {
+      "id": "565",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 225,
+      "b_tokens": 225
+    },
+    {
+      "id": "192",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 328,
+      "b_tokens": 328
+    },
+    {
+      "id": "1211",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 182,
+      "b_tokens": 182
+    },
+    {
+      "id": "730",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "305",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 255
+    },
+    {
+      "id": "673",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 258,
+      "b_tokens": 258
+    },
+    {
+      "id": "519",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "1118",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 235,
+      "b_tokens": 235
+    },
+    {
+      "id": "515",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 227
+    },
+    {
+      "id": "196",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 299,
+      "b_tokens": 299
+    },
+    {
+      "id": "366",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 249,
+      "b_tokens": 249
+    },
+    {
+      "id": "571",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "446",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 314,
+      "b_tokens": 314
+    },
+    {
+      "id": "889",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 236,
+      "b_tokens": 236
+    },
+    {
+      "id": "686",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "413",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 252,
+      "b_tokens": 252
+    },
+    {
+      "id": "579",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 152,
+      "b_tokens": 152
+    },
+    {
+      "id": "60",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 269,
+      "b_tokens": 269
+    },
+    {
+      "id": "572",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "1164",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 256
+    },
+    {
+      "id": "141",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 376,
+      "b_tokens": 376
+    },
+    {
+      "id": "635",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 388,
+      "b_tokens": 287
+    },
+    {
+      "id": "371",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "1057",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 194,
+      "b_tokens": 194
+    },
+    {
+      "id": "243",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 219,
+      "b_tokens": 219
+    },
+    {
+      "id": "774",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 359,
+      "b_tokens": 364
+    },
+    {
+      "id": "986",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 386,
+      "b_tokens": 387
+    },
+    {
+      "id": "169",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 216,
+      "b_tokens": 203
+    },
+    {
+      "id": "1105",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 470,
+      "b_tokens": 470
+    },
+    {
+      "id": "1268",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "606",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 360,
+      "b_tokens": 360
+    },
+    {
+      "id": "150",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 447,
+      "b_tokens": 447
+    },
+    {
+      "id": "989",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 310,
+      "b_tokens": 310
+    },
+    {
+      "id": "1267",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1167",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 143,
+      "b_tokens": 143
+    },
+    {
+      "id": "731",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "329",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 160,
+      "b_tokens": 160
+    },
+    {
+      "id": "421",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 202,
+      "b_tokens": 202
+    },
+    {
+      "id": "257",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "888",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 181,
+      "b_tokens": 181
+    },
+    {
+      "id": "199",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 373,
+      "b_tokens": 373
+    },
+    {
+      "id": "557",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "755",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 194,
+      "b_tokens": 180
+    },
+    {
+      "id": "1292",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 254,
+      "b_tokens": 254
+    },
+    {
+      "id": "1175",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 350,
+      "b_tokens": 350
+    },
+    {
+      "id": "1229",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "974",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 194,
+      "b_tokens": 194
+    },
+    {
+      "id": "1188",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "823",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 196,
+      "b_tokens": 196
+    },
+    {
+      "id": "19",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 289,
+      "b_tokens": 289
+    },
+    {
+      "id": "1174",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 372,
+      "b_tokens": 372
+    },
+    {
+      "id": "1271",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 302,
+      "b_tokens": 317
+    },
+    {
+      "id": "698",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 316,
+      "b_tokens": 350
+    },
+    {
+      "id": "222",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 173,
+      "b_tokens": 173
+    },
+    {
+      "id": "1049",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 239,
+      "b_tokens": 239
+    },
+    {
+      "id": "1294",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 256,
+      "b_tokens": 256
+    },
+    {
+      "id": "1078",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 276,
+      "b_tokens": 276
+    },
+    {
+      "id": "220",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 212,
+      "b_tokens": 212
+    },
+    {
+      "id": "1237",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 292,
+      "b_tokens": 225
+    },
+    {
+      "id": "655",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "684",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 156,
+      "b_tokens": 156
+    },
+    {
+      "id": "189",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 333,
+      "b_tokens": 320
+    },
+    {
+      "id": "100",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "638",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 415,
+      "b_tokens": 415
+    },
+    {
+      "id": "1176",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 508,
+      "b_tokens": 512
+    },
+    {
+      "id": "269",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "15",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "1169",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 340,
+      "b_tokens": 340
+    },
+    {
+      "id": "110",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 342,
+      "b_tokens": 342
+    },
+    {
+      "id": "441",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 295,
+      "b_tokens": 295
+    },
+    {
+      "id": "170",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "1108",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 120,
+      "b_tokens": 120
+    },
+    {
+      "id": "1282",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 253,
+      "b_tokens": 253
+    },
+    {
+      "id": "929",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 315,
+      "b_tokens": 315
+    },
+    {
+      "id": "383",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 339,
+      "b_tokens": 339
+    },
+    {
+      "id": "610",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 267,
+      "b_tokens": 267
+    },
+    {
+      "id": "883",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 195,
+      "b_tokens": 195
+    },
+    {
+      "id": "928",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 396,
+      "b_tokens": 396
+    },
+    {
+      "id": "233",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "669",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 243,
+      "b_tokens": 243
+    },
+    {
+      "id": "428",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "343",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 243,
+      "b_tokens": 243
+    },
+    {
+      "id": "630",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 240,
+      "b_tokens": 240
+    },
+    {
+      "id": "838",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 204,
+      "b_tokens": 204
+    },
+    {
+      "id": "80",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "333",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 297,
+      "b_tokens": 297
+    },
+    {
+      "id": "334",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 149,
+      "b_tokens": 149
+    },
+    {
+      "id": "1018",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 222,
+      "b_tokens": 222
+    },
+    {
+      "id": "825",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "715",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 336,
+      "b_tokens": 336
+    },
+    {
+      "id": "573",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 218,
+      "b_tokens": 218
+    },
+    {
+      "id": "933",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "758",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 222,
+      "b_tokens": 222
+    },
+    {
+      "id": "75",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "461",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "529",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 313,
+      "b_tokens": 315
+    },
+    {
+      "id": "98",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 394,
+      "b_tokens": 390
+    },
+    {
+      "id": "25",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 340,
+      "b_tokens": 340
+    },
+    {
+      "id": "981",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 249,
+      "b_tokens": 218
+    },
+    {
+      "id": "868",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 281,
+      "b_tokens": 281
+    },
+    {
+      "id": "223",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 161,
+      "b_tokens": 206
+    },
+    {
+      "id": "548",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 203,
+      "b_tokens": 139
+    },
+    {
+      "id": "216",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "1082",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 327,
+      "b_tokens": 327
+    },
+    {
+      "id": "690",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 291,
+      "b_tokens": 291
+    },
+    {
+      "id": "321",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 192,
+      "b_tokens": 192
+    },
+    {
+      "id": "354",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "245",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 246,
+      "b_tokens": 246
+    },
+    {
+      "id": "1073",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 361,
+      "b_tokens": 406
+    },
+    {
+      "id": "624",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 253
+    },
+    {
+      "id": "228",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 254,
+      "b_tokens": 254
+    },
+    {
+      "id": "156",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 229,
+      "b_tokens": 229
+    },
+    {
+      "id": "64",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "1077",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 395,
+      "b_tokens": 395
+    },
+    {
+      "id": "768",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 333,
+      "b_tokens": 333
+    },
+    {
+      "id": "1143",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 325,
+      "b_tokens": 313
+    },
+    {
+      "id": "1152",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 329,
+      "b_tokens": 329
+    },
+    {
+      "id": "239",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 303,
+      "b_tokens": 303
+    },
+    {
+      "id": "1012",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "726",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 331
+    },
+    {
+      "id": "855",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 412,
+      "b_tokens": 412
+    },
+    {
+      "id": "464",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 214,
+      "b_tokens": 214
+    },
+    {
+      "id": "800",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 145,
+      "b_tokens": 145
+    },
+    {
+      "id": "411",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "247",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 147,
+      "b_tokens": 147
+    },
+    {
+      "id": "804",
+      "judge": "A",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 234,
+      "b_tokens": 241
+    },
+    {
+      "id": "1028",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 286,
+      "b_tokens": 286
+    },
+    {
+      "id": "788",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 167,
+      "b_tokens": 167
+    },
+    {
+      "id": "746",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 402,
+      "b_tokens": 402
+    },
+    {
+      "id": "884",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 177,
+      "b_tokens": 177
+    },
+    {
+      "id": "1075",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 259,
+      "b_tokens": 259
+    },
+    {
+      "id": "43",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 473,
+      "b_tokens": 473
+    },
+    {
+      "id": "1213",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 395,
+      "b_tokens": 361
+    },
+    {
+      "id": "1064",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "734",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 269,
+      "b_tokens": 269
+    },
+    {
+      "id": "999",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 428,
+      "b_tokens": 428
+    },
+    {
+      "id": "1209",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 305,
+      "b_tokens": 309
+    },
+    {
+      "id": "771",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "88",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 191,
+      "b_tokens": 191
+    },
+    {
+      "id": "1104",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 107,
+      "b_tokens": 107
+    },
+    {
+      "id": "1316",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "458",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "297",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 363,
+      "b_tokens": 344
+    },
+    {
+      "id": "615",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 298,
+      "b_tokens": 298
+    },
+    {
+      "id": "39",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "416",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 477,
+      "b_tokens": 477
+    },
+    {
+      "id": "1145",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 307,
+      "b_tokens": 307
+    },
+    {
+      "id": "501",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 224,
+      "b_tokens": 244
+    },
+    {
+      "id": "836",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 431,
+      "b_tokens": 431
+    },
+    {
+      "id": "116",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "520",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 416,
+      "b_tokens": 371
+    },
+    {
+      "id": "1309",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 183,
+      "b_tokens": 177
+    },
+    {
+      "id": "526",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 304,
+      "b_tokens": 304
+    },
+    {
+      "id": "911",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 245,
+      "b_tokens": 245
+    },
+    {
+      "id": "674",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "47",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 383,
+      "b_tokens": 383
+    },
+    {
+      "id": "348",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 331
+    },
+    {
+      "id": "5",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 294,
+      "b_tokens": 294
+    },
+    {
+      "id": "87",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 296,
+      "b_tokens": 296
+    },
+    {
+      "id": "864",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 209,
+      "b_tokens": 209
+    },
+    {
+      "id": "545",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 153,
+      "b_tokens": 153
+    },
+    {
+      "id": "496",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 241,
+      "b_tokens": 241
+    },
+    {
+      "id": "1275",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 166,
+      "b_tokens": 166
+    },
+    {
+      "id": "906",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "956",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 239,
+      "b_tokens": 223
+    },
+    {
+      "id": "654",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 221
+    },
+    {
+      "id": "337",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 181,
+      "b_tokens": 181
+    },
+    {
+      "id": "1281",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 292,
+      "b_tokens": 292
+    },
+    {
+      "id": "295",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 270,
+      "b_tokens": 268
+    },
+    {
+      "id": "200",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 246,
+      "b_tokens": 241
+    },
+    {
+      "id": "142",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 180,
+      "b_tokens": 180
+    },
+    {
+      "id": "753",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 288,
+      "b_tokens": 288
+    },
+    {
+      "id": "36",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 265,
+      "b_tokens": 265
+    },
+    {
+      "id": "225",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 186,
+      "b_tokens": 186
+    },
+    {
+      "id": "1255",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 397,
+      "b_tokens": 397
+    },
+    {
+      "id": "181",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 274
+    },
+    {
+      "id": "1014",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 307,
+      "b_tokens": 307
+    },
+    {
+      "id": "195",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 191,
+      "b_tokens": 191
+    },
+    {
+      "id": "784",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 329,
+      "b_tokens": 329
+    },
+    {
+      "id": "410",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 289,
+      "b_tokens": 289
+    },
+    {
+      "id": "66",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 285,
+      "b_tokens": 285
+    },
+    {
+      "id": "687",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "826",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 310,
+      "b_tokens": 244
+    },
+    {
+      "id": "300",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 142,
+      "b_tokens": 144
+    },
+    {
+      "id": "634",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 137,
+      "b_tokens": 137
+    },
+    {
+      "id": "710",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 328,
+      "b_tokens": 328
+    },
+    {
+      "id": "356",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "362",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 437,
+      "b_tokens": 437
+    },
+    {
+      "id": "562",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "1009",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 464,
+      "b_tokens": 464
+    },
+    {
+      "id": "1054",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 218,
+      "b_tokens": 218
+    },
+    {
+      "id": "1130",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 450,
+      "b_tokens": 450
+    },
+    {
+      "id": "251",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 140,
+      "b_tokens": 140
+    },
+    {
+      "id": "1124",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 323,
+      "b_tokens": 323
+    },
+    {
+      "id": "346",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 322,
+      "b_tokens": 311
+    },
+    {
+      "id": "34",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "1096",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 245,
+      "b_tokens": 245
+    },
+    {
+      "id": "988",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 306,
+      "b_tokens": 306
+    },
+    {
+      "id": "723",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 200,
+      "b_tokens": 214
+    },
+    {
+      "id": "575",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "1134",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 259
+    },
+    {
+      "id": "16",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 359,
+      "b_tokens": 206
+    },
+    {
+      "id": "174",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 347
+    },
+    {
+      "id": "601",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 217,
+      "b_tokens": 217
+    },
+    {
+      "id": "286",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 189,
+      "b_tokens": 189
+    },
+    {
+      "id": "403",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 416
+    },
+    {
+      "id": "617",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 228,
+      "b_tokens": 228
+    },
+    {
+      "id": "675",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 500,
+      "b_tokens": 500
+    },
+    {
+      "id": "106",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 276,
+      "b_tokens": 287
+    },
+    {
+      "id": "1298",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 376,
+      "b_tokens": 376
+    }
+  ],
+  "rlvr_vs_rlaif": [
+    {
+      "id": "803",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 370,
+      "b_tokens": 366
+    },
+    {
+      "id": "750",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 386,
+      "b_tokens": 386
+    },
+    {
+      "id": "867",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 156,
+      "b_tokens": 156
+    },
+    {
+      "id": "506",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 235,
+      "b_tokens": 235
+    },
+    {
+      "id": "505",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 377,
+      "b_tokens": 374
+    },
+    {
+      "id": "289",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 260,
+      "b_tokens": 260
+    },
+    {
+      "id": "736",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 188,
+      "b_tokens": 188
+    },
+    {
+      "id": "558",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 201,
+      "b_tokens": 201
+    },
+    {
+      "id": "677",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 140,
+      "b_tokens": 140
+    },
+    {
+      "id": "23",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 224,
+      "b_tokens": 224
+    },
+    {
+      "id": "1122",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 430,
+      "b_tokens": 512
+    },
+    {
+      "id": "569",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "620",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "299",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 476,
+      "b_tokens": 476
+    },
+    {
+      "id": "1200",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "1245",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "103",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 301,
+      "b_tokens": 301
+    },
+    {
+      "id": "459",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 343,
+      "b_tokens": 343
+    },
+    {
+      "id": "113",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 151,
+      "b_tokens": 151
+    },
+    {
+      "id": "681",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 336,
+      "b_tokens": 336
+    },
+    {
+      "id": "632",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 341,
+      "b_tokens": 342
+    },
+    {
+      "id": "234",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 424,
+      "b_tokens": 424
+    },
+    {
+      "id": "1043",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 197,
+      "b_tokens": 197
+    },
+    {
+      "id": "248",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 125,
+      "b_tokens": 125
+    },
+    {
+      "id": "887",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 220,
+      "b_tokens": 220
+    },
+    {
+      "id": "1019",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 251
+    },
+    {
+      "id": "697",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 206,
+      "b_tokens": 206
+    },
+    {
+      "id": "805",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 249,
+      "b_tokens": 208
+    },
+    {
+      "id": "167",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 278,
+      "b_tokens": 282
+    },
+    {
+      "id": "535",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 116,
+      "b_tokens": 116
+    },
+    {
+      "id": "760",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 237,
+      "b_tokens": 237
+    },
+    {
+      "id": "1092",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "680",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1180",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 263,
+      "b_tokens": 263
+    },
+    {
+      "id": "438",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "423",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 349
+    },
+    {
+      "id": "1074",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 220
+    },
+    {
+      "id": "897",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 221
+    },
+    {
+      "id": "1283",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "1126",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 271,
+      "b_tokens": 271
+    },
+    {
+      "id": "1058",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 197,
+      "b_tokens": 197
+    },
+    {
+      "id": "761",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "314",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 382,
+      "b_tokens": 382
+    },
+    {
+      "id": "92",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 286,
+      "b_tokens": 286
+    },
+    {
+      "id": "738",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "508",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 362,
+      "b_tokens": 362
+    },
+    {
+      "id": "1291",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 117,
+      "b_tokens": 112
+    },
+    {
+      "id": "1005",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 209,
+      "b_tokens": 209
+    },
+    {
+      "id": "688",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 217,
+      "b_tokens": 217
+    },
+    {
+      "id": "319",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 270,
+      "b_tokens": 270
+    },
+    {
+      "id": "495",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 162,
+      "b_tokens": 162
+    },
+    {
+      "id": "507",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "454",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 264,
+      "b_tokens": 264
+    },
+    {
+      "id": "1128",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 246,
+      "b_tokens": 246
+    },
+    {
+      "id": "837",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 355,
+      "b_tokens": 355
+    },
+    {
+      "id": "408",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 296,
+      "b_tokens": 296
+    },
+    {
+      "id": "1015",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 195,
+      "b_tokens": 195
+    },
+    {
+      "id": "447",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "764",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "303",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 434,
+      "b_tokens": 434
+    },
+    {
+      "id": "320",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 362
+    },
+    {
+      "id": "414",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 231
+    },
+    {
+      "id": "623",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 170,
+      "b_tokens": 170
+    },
+    {
+      "id": "2",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "345",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 223,
+      "b_tokens": 223
+    },
+    {
+      "id": "1095",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 271,
+      "b_tokens": 271
+    },
+    {
+      "id": "1071",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 207
+    },
+    {
+      "id": "442",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 224,
+      "b_tokens": 224
+    },
+    {
+      "id": "349",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 303,
+      "b_tokens": 303
+    },
+    {
+      "id": "1284",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 214,
+      "b_tokens": 189
+    },
+    {
+      "id": "1276",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 150,
+      "b_tokens": 150
+    },
+    {
+      "id": "1207",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 170,
+      "b_tokens": 170
+    },
+    {
+      "id": "226",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "1052",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 221,
+      "b_tokens": 221
+    },
+    {
+      "id": "607",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "1160",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 233,
+      "b_tokens": 228
+    },
+    {
+      "id": "696",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 421,
+      "b_tokens": 421
+    },
+    {
+      "id": "1219",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 227
+    },
+    {
+      "id": "822",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 226,
+      "b_tokens": 208
+    },
+    {
+      "id": "882",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 448,
+      "b_tokens": 448
+    },
+    {
+      "id": "596",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 484
+    },
+    {
+      "id": "182",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 236,
+      "b_tokens": 236
+    },
+    {
+      "id": "285",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 159,
+      "b_tokens": 159
+    },
+    {
+      "id": "18",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "910",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 279,
+      "b_tokens": 279
+    },
+    {
+      "id": "284",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 355,
+      "b_tokens": 355
+    },
+    {
+      "id": "1070",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 302,
+      "b_tokens": 371
+    },
+    {
+      "id": "466",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 311,
+      "b_tokens": 311
+    },
+    {
+      "id": "787",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 290,
+      "b_tokens": 290
+    },
+    {
+      "id": "1069",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 314,
+      "b_tokens": 314
+    },
+    {
+      "id": "565",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 225,
+      "b_tokens": 225
+    },
+    {
+      "id": "192",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 328,
+      "b_tokens": 328
+    },
+    {
+      "id": "1211",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 182,
+      "b_tokens": 182
+    },
+    {
+      "id": "730",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "305",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 255
+    },
+    {
+      "id": "673",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 258,
+      "b_tokens": 258
+    },
+    {
+      "id": "519",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "1118",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 235,
+      "b_tokens": 235
+    },
+    {
+      "id": "515",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 227,
+      "b_tokens": 227
+    },
+    {
+      "id": "196",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 299,
+      "b_tokens": 299
+    },
+    {
+      "id": "366",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 249,
+      "b_tokens": 249
+    },
+    {
+      "id": "571",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "446",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 314,
+      "b_tokens": 314
+    },
+    {
+      "id": "889",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 236,
+      "b_tokens": 236
+    },
+    {
+      "id": "686",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 208,
+      "b_tokens": 208
+    },
+    {
+      "id": "413",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 252,
+      "b_tokens": 252
+    },
+    {
+      "id": "579",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 152,
+      "b_tokens": 152
+    },
+    {
+      "id": "60",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 269,
+      "b_tokens": 269
+    },
+    {
+      "id": "572",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 374,
+      "b_tokens": 374
+    },
+    {
+      "id": "1164",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 255,
+      "b_tokens": 255
+    },
+    {
+      "id": "141",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 376,
+      "b_tokens": 376
+    },
+    {
+      "id": "635",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 388,
+      "b_tokens": 287
+    },
+    {
+      "id": "371",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 272,
+      "b_tokens": 272
+    },
+    {
+      "id": "1057",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 194,
+      "b_tokens": 194
+    },
+    {
+      "id": "243",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 219,
+      "b_tokens": 219
+    },
+    {
+      "id": "774",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 359,
+      "b_tokens": 364
+    },
+    {
+      "id": "986",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 386,
+      "b_tokens": 386
+    },
+    {
+      "id": "169",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 216,
+      "b_tokens": 203
+    },
+    {
+      "id": "1105",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 470,
+      "b_tokens": 470
+    },
+    {
+      "id": "1268",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "606",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 360,
+      "b_tokens": 360
+    },
+    {
+      "id": "150",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 447,
+      "b_tokens": 447
+    },
+    {
+      "id": "989",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 310,
+      "b_tokens": 310
+    },
+    {
+      "id": "1267",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1167",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 143,
+      "b_tokens": 143
+    },
+    {
+      "id": "731",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "329",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 160,
+      "b_tokens": 160
+    },
+    {
+      "id": "421",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 202,
+      "b_tokens": 202
+    },
+    {
+      "id": "257",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "888",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 181,
+      "b_tokens": 181
+    },
+    {
+      "id": "199",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 373,
+      "b_tokens": 373
+    },
+    {
+      "id": "557",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "755",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 194,
+      "b_tokens": 180
+    },
+    {
+      "id": "1292",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 254,
+      "b_tokens": 254
+    },
+    {
+      "id": "1175",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 350,
+      "b_tokens": 350
+    },
+    {
+      "id": "1229",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "974",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 194,
+      "b_tokens": 170
+    },
+    {
+      "id": "1188",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "823",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 196,
+      "b_tokens": 196
+    },
+    {
+      "id": "19",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 289,
+      "b_tokens": 285
+    },
+    {
+      "id": "1174",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 372,
+      "b_tokens": 372
+    },
+    {
+      "id": "1271",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 302,
+      "b_tokens": 302
+    },
+    {
+      "id": "698",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 316,
+      "b_tokens": 295
+    },
+    {
+      "id": "222",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 173,
+      "b_tokens": 173
+    },
+    {
+      "id": "1049",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 239,
+      "b_tokens": 239
+    },
+    {
+      "id": "1294",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 256,
+      "b_tokens": 256
+    },
+    {
+      "id": "1078",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 276,
+      "b_tokens": 276
+    },
+    {
+      "id": "220",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 212,
+      "b_tokens": 212
+    },
+    {
+      "id": "1237",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 292,
+      "b_tokens": 225
+    },
+    {
+      "id": "655",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "684",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 156,
+      "b_tokens": 156
+    },
+    {
+      "id": "189",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 333,
+      "b_tokens": 333
+    },
+    {
+      "id": "100",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 287,
+      "b_tokens": 287
+    },
+    {
+      "id": "638",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 415,
+      "b_tokens": 415
+    },
+    {
+      "id": "1176",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 508,
+      "b_tokens": 508
+    },
+    {
+      "id": "269",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 207,
+      "b_tokens": 207
+    },
+    {
+      "id": "15",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "1169",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 340,
+      "b_tokens": 340
+    },
+    {
+      "id": "110",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 342,
+      "b_tokens": 342
+    },
+    {
+      "id": "441",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 295,
+      "b_tokens": 295
+    },
+    {
+      "id": "170",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "1108",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 120,
+      "b_tokens": 120
+    },
+    {
+      "id": "1282",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 253,
+      "b_tokens": 253
+    },
+    {
+      "id": "929",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 315,
+      "b_tokens": 315
+    },
+    {
+      "id": "383",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 339,
+      "b_tokens": 339
+    },
+    {
+      "id": "610",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 267,
+      "b_tokens": 267
+    },
+    {
+      "id": "883",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 195,
+      "b_tokens": 195
+    },
+    {
+      "id": "928",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 396,
+      "b_tokens": 396
+    },
+    {
+      "id": "233",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "669",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 243,
+      "b_tokens": 243
+    },
+    {
+      "id": "428",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "343",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 243,
+      "b_tokens": 243
+    },
+    {
+      "id": "630",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 240,
+      "b_tokens": 240
+    },
+    {
+      "id": "838",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 204,
+      "b_tokens": 204
+    },
+    {
+      "id": "80",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "333",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 297,
+      "b_tokens": 297
+    },
+    {
+      "id": "334",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 149,
+      "b_tokens": 149
+    },
+    {
+      "id": "1018",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 222,
+      "b_tokens": 222
+    },
+    {
+      "id": "825",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 274,
+      "b_tokens": 274
+    },
+    {
+      "id": "715",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 336,
+      "b_tokens": 336
+    },
+    {
+      "id": "573",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 218,
+      "b_tokens": 218
+    },
+    {
+      "id": "933",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "758",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 222,
+      "b_tokens": 222
+    },
+    {
+      "id": "75",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "461",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "529",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 313,
+      "b_tokens": 313
+    },
+    {
+      "id": "98",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 394,
+      "b_tokens": 390
+    },
+    {
+      "id": "25",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 340,
+      "b_tokens": 340
+    },
+    {
+      "id": "981",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 249,
+      "b_tokens": 249
+    },
+    {
+      "id": "868",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 281,
+      "b_tokens": 281
+    },
+    {
+      "id": "223",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 161,
+      "b_tokens": 206
+    },
+    {
+      "id": "548",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "216",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "1082",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 327,
+      "b_tokens": 327
+    },
+    {
+      "id": "690",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 291,
+      "b_tokens": 291
+    },
+    {
+      "id": "321",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 192,
+      "b_tokens": 164
+    },
+    {
+      "id": "354",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 205,
+      "b_tokens": 205
+    },
+    {
+      "id": "245",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 246,
+      "b_tokens": 246
+    },
+    {
+      "id": "1073",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 361,
+      "b_tokens": 405
+    },
+    {
+      "id": "624",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 251,
+      "b_tokens": 251
+    },
+    {
+      "id": "228",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 254,
+      "b_tokens": 254
+    },
+    {
+      "id": "156",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 229,
+      "b_tokens": 210
+    },
+    {
+      "id": "64",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "1077",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 395,
+      "b_tokens": 395
+    },
+    {
+      "id": "768",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 333,
+      "b_tokens": 333
+    },
+    {
+      "id": "1143",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 325,
+      "b_tokens": 325
+    },
+    {
+      "id": "1152",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 329,
+      "b_tokens": 329
+    },
+    {
+      "id": "239",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 303,
+      "b_tokens": 303
+    },
+    {
+      "id": "1012",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "726",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 331,
+      "b_tokens": 331
+    },
+    {
+      "id": "855",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 412,
+      "b_tokens": 412
+    },
+    {
+      "id": "464",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 214,
+      "b_tokens": 214
+    },
+    {
+      "id": "800",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 145,
+      "b_tokens": 145
+    },
+    {
+      "id": "411",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "247",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 147,
+      "b_tokens": 147
+    },
+    {
+      "id": "804",
+      "judge": "A",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 234,
+      "b_tokens": 241
+    },
+    {
+      "id": "1028",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 286,
+      "b_tokens": 286
+    },
+    {
+      "id": "788",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 167,
+      "b_tokens": 167
+    },
+    {
+      "id": "746",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 402,
+      "b_tokens": 402
+    },
+    {
+      "id": "884",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 177,
+      "b_tokens": 177
+    },
+    {
+      "id": "1075",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 259,
+      "b_tokens": 259
+    },
+    {
+      "id": "43",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 473,
+      "b_tokens": 473
+    },
+    {
+      "id": "1213",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 395,
+      "b_tokens": 395
+    },
+    {
+      "id": "1064",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "734",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 269,
+      "b_tokens": 269
+    },
+    {
+      "id": "999",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 428,
+      "b_tokens": 420
+    },
+    {
+      "id": "1209",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 305,
+      "b_tokens": 305
+    },
+    {
+      "id": "771",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "88",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 191,
+      "b_tokens": 191
+    },
+    {
+      "id": "1104",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 107,
+      "b_tokens": 107
+    },
+    {
+      "id": "1316",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 203,
+      "b_tokens": 203
+    },
+    {
+      "id": "458",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 250,
+      "b_tokens": 250
+    },
+    {
+      "id": "297",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 363,
+      "b_tokens": 351
+    },
+    {
+      "id": "615",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 298,
+      "b_tokens": 298
+    },
+    {
+      "id": "39",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "416",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 477,
+      "b_tokens": 477
+    },
+    {
+      "id": "1145",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 307,
+      "b_tokens": 307
+    },
+    {
+      "id": "501",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 224,
+      "b_tokens": 224
+    },
+    {
+      "id": "836",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 431,
+      "b_tokens": 431
+    },
+    {
+      "id": "116",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 334,
+      "b_tokens": 334
+    },
+    {
+      "id": "520",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 416,
+      "b_tokens": 371
+    },
+    {
+      "id": "1309",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 183,
+      "b_tokens": 177
+    },
+    {
+      "id": "526",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 304,
+      "b_tokens": 304
+    },
+    {
+      "id": "911",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 245,
+      "b_tokens": 245
+    },
+    {
+      "id": "674",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 358
+    },
+    {
+      "id": "47",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 383,
+      "b_tokens": 383
+    },
+    {
+      "id": "348",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "5",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 294,
+      "b_tokens": 294
+    },
+    {
+      "id": "87",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 296,
+      "b_tokens": 296
+    },
+    {
+      "id": "864",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 209,
+      "b_tokens": 209
+    },
+    {
+      "id": "545",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 153,
+      "b_tokens": 153
+    },
+    {
+      "id": "496",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 241,
+      "b_tokens": 241
+    },
+    {
+      "id": "1275",
+      "judge": "B",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 166,
+      "b_tokens": 166
+    },
+    {
+      "id": "906",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 198,
+      "b_tokens": 198
+    },
+    {
+      "id": "956",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 239,
+      "b_tokens": 227
+    },
+    {
+      "id": "654",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 221,
+      "b_tokens": 232
+    },
+    {
+      "id": "337",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 181,
+      "b_tokens": 181
+    },
+    {
+      "id": "1281",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 292,
+      "b_tokens": 292
+    },
+    {
+      "id": "295",
+      "judge": "TIE",
+      "verifier": "B",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": true,
+      "a_tokens": 270,
+      "b_tokens": 283
+    },
+    {
+      "id": "200",
+      "judge": "TIE",
+      "verifier": "A",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": false,
+      "a_tokens": 246,
+      "b_tokens": 241
+    },
+    {
+      "id": "142",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 180,
+      "b_tokens": 143
+    },
+    {
+      "id": "753",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 288,
+      "b_tokens": 288
+    },
+    {
+      "id": "36",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 265,
+      "b_tokens": 265
+    },
+    {
+      "id": "225",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 186,
+      "b_tokens": 186
+    },
+    {
+      "id": "1255",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 397,
+      "b_tokens": 397
+    },
+    {
+      "id": "181",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 266,
+      "b_tokens": 266
+    },
+    {
+      "id": "1014",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 307,
+      "b_tokens": 307
+    },
+    {
+      "id": "195",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 191,
+      "b_tokens": 191
+    },
+    {
+      "id": "784",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 329,
+      "b_tokens": 329
+    },
+    {
+      "id": "410",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 289,
+      "b_tokens": 289
+    },
+    {
+      "id": "66",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 285,
+      "b_tokens": 285
+    },
+    {
+      "id": "687",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 261,
+      "b_tokens": 261
+    },
+    {
+      "id": "826",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 310,
+      "b_tokens": 244
+    },
+    {
+      "id": "300",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 142,
+      "b_tokens": 144
+    },
+    {
+      "id": "634",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 137,
+      "b_tokens": 137
+    },
+    {
+      "id": "710",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 328,
+      "b_tokens": 328
+    },
+    {
+      "id": "356",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 248,
+      "b_tokens": 248
+    },
+    {
+      "id": "362",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 437,
+      "b_tokens": 437
+    },
+    {
+      "id": "562",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 244,
+      "b_tokens": 244
+    },
+    {
+      "id": "1009",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 464,
+      "b_tokens": 464
+    },
+    {
+      "id": "1054",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 218,
+      "b_tokens": 218
+    },
+    {
+      "id": "1130",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 450,
+      "b_tokens": 450
+    },
+    {
+      "id": "251",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 140,
+      "b_tokens": 140
+    },
+    {
+      "id": "1124",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 323,
+      "b_tokens": 323
+    },
+    {
+      "id": "346",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 322,
+      "b_tokens": 322
+    },
+    {
+      "id": "34",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 247,
+      "b_tokens": 247
+    },
+    {
+      "id": "1096",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 245,
+      "b_tokens": 303
+    },
+    {
+      "id": "988",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 306,
+      "b_tokens": 306
+    },
+    {
+      "id": "723",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 200,
+      "b_tokens": 200
+    },
+    {
+      "id": "575",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 226,
+      "b_tokens": 226
+    },
+    {
+      "id": "1134",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 268,
+      "b_tokens": 268
+    },
+    {
+      "id": "16",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 359,
+      "b_tokens": 353
+    },
+    {
+      "id": "174",
+      "judge": "A",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 358,
+      "b_tokens": 347
+    },
+    {
+      "id": "601",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 217,
+      "b_tokens": 217
+    },
+    {
+      "id": "286",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": true,
+      "b_correct": true,
+      "a_tokens": 189,
+      "b_tokens": 189
+    },
+    {
+      "id": "403",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 512,
+      "b_tokens": 512
+    },
+    {
+      "id": "617",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 228,
+      "b_tokens": 228
+    },
+    {
+      "id": "675",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 500,
+      "b_tokens": 500
+    },
+    {
+      "id": "106",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 276,
+      "b_tokens": 287
+    },
+    {
+      "id": "1298",
+      "judge": "TIE",
+      "verifier": "TIE",
+      "judge_unparsed": false,
+      "a_correct": false,
+      "b_correct": false,
+      "a_tokens": 376,
+      "b_tokens": 376
+    }
+  ]
+}

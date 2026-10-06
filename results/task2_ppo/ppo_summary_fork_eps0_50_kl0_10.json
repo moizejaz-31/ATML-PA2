@@ -1,0 +1,35 @@
+{
+  "run_name": "fork_eps0_50_kl0_10",
+  "updates": 8,
+  "clip_epsilon": 0.5,
+  "kl_beta": 0.1,
+  "ppo_epochs": 2,
+  "prompts_per_update": 1,
+  "disable_dropout": true,
+  "prompt_ids": [
+    "b0d35a5e39f7052ac66ea59ebb31bf70535e3ed3cb294dafdb4918e9fda4e879",
+    "361c9921abedfb482ab331cd1f1d5dcb6b038376b9939a1afff6339e87060bd3",
+    "031b833749cbdeab4b1f4ba4af6e325b5c17791958e10b7615a1e97ca33b0703",
+    "767471940df7a8f247484346e1fcea4d02eca6d1fcbc90d264b0dbb94c39ba68",
+    "81a35c3e324857688ecb9cd1e68c14275f01d7752ed6a0d2a5c9cf4cbeaf0439",
+    "9ea7bde8bc147d9faa96dd85d06930f25660cdfd5239227be23a5ff2728637e6",
+    "ff8a4bead03b120d7cd2e879a2b4cd3945d55a840ca78cdd24571cab5a434a59",
+    "317132817254b4f8e35bbffa6faba1b8e1abbad8b3295186e73167375ec4176f"
+  ],
+  "generated_tokens": 2716,
+  "skipped_nonfinite_steps": {
+    "policy": 0,
+    "value": 0
+  },
+  "final_reward": -0.2313232421875,
+  "final_kl": -0.00019916535529773682,
+  "mean_reward_last5": 1.6099853515625,
+  "mean_kl_last5": -0.00012472412490751594,
+  "stability_max_approx_kl_old_new": 4.803682895726524e-05,
+  "stability_mean_clip_fraction_last_epoch": 0.0,
+  "stability_policy_grad_norm_cv": 0.902652184799861,
+  "stability_max_ratio": 1.029132604598999,
+  "peak_vram_mb": 7062.5947265625,
+  "wall_time_seconds": 165.29420342999992,
+  "adapter_path": "/kaggle/working/ATML-PA2/outputs/task2_ppo/fork_eps0_50_kl0_10"
+}

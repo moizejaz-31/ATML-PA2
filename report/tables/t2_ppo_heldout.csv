@@ -1,0 +1,4 @@
+policy,setting,RM,KL tok,entropy,len,EOS
+SFT (no adapter),—,1.562 ± 0.173,0.0,0.981,292.4 ± 257.7,0.94
+PPO midpoint (start),—,1.727 ± 0.169,0.0,0.942,290.4 ± 260.8,0.94
+Standard PPO (20 updates),"ε=0.20, β_KL=0.10",1.631 ± 0.166,-0.0,0.984,297.8 ± 274.3,0.94

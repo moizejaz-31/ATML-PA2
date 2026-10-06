@@ -254,6 +254,16 @@ def task5():
                          "SVAMP acc": f"win {pb['win_rate_a_ties_half']:.3f}", "SVAMP len": "",
                          "acc drop": f(pa["win_rate_a_ties_half"] - pb["win_rate_a_ties_half"])})
         write_table(pd.DataFrame(rows), "t5_math", "RLVR vs RLAIF: exact accuracy, AI-judge win rate (tie=0.5), verifier agreement")
+    amb = load("task5_feedback/judge_ambiguity.json")
+    if amb:
+        rows = []
+        for ds in ["gsm", "transfer", "diagnostics"]:
+            for k, v in (amb.get(ds) or {}).items():
+                if isinstance(v, dict) and "n" in v:
+                    rows.append({"set": ds, "comparison": k, "n": v["n"], "decisive A/B": v["decisive"],
+                                 "explicit TIE": v["explicit_tie"], "ambiguous (echo/unparsed)": v["ambiguous"]})
+        write_table(pd.DataFrame(rows), "t5_judge_outputs",
+                    "Raw pairwise-judge outputs: ambiguous = several or no labels (released parser keeps the first)")
     if d:
         rows = []
         for c, v in d["comparisons"].items():

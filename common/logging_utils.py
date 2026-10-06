@@ -6,13 +6,16 @@ import time
 from pathlib import Path
 from typing import Any
 
+import sys
+
 import numpy as np
-import torch
 
 from common.data import repo_path
 
 
 def set_seed(seed: int) -> None:
+    import torch  # imported lazily so CPU-only result tools work without torch
+
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
@@ -32,9 +35,23 @@ def append_jsonl(path: str | Path, record: dict[str, Any]) -> None:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def _json_default(o):
+    # numpy / torch scalars and arrays that slip into result dicts
+    if isinstance(o, np.generic):
+        return o.item()
+    if isinstance(o, np.ndarray):
+        return o.tolist()
+    torch = sys.modules.get("torch")
+    if torch is not None and isinstance(o, torch.Tensor):
+        return o.detach().cpu().tolist()
+    if isinstance(o, Path):
+        return str(o)
+    raise TypeError(f"Object of type {type(o).__name__} is not JSON serializable")
+
+
 def save_json(path: str | Path, obj: Any) -> None:
     p = ensure_parent(path)
-    p.write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
+    p.write_text(json.dumps(obj, indent=2, ensure_ascii=False, default=_json_default), encoding="utf-8")
 
 
 def load_json(path: str | Path) -> Any:

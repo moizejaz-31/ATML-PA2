@@ -1,0 +1,562 @@
+[
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "803",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "750",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "867",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "506",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "505",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "289",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "736",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "558",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "677",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "23",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "1122",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "569",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "620",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "299",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "1200",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "1245",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "103",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "459",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "113",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "reasoning_sensitivity",
+    "problem_id": "681",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "803",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "750",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "867",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "506",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "better"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "505",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "289",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "736",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "558",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "677",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "23",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "1122",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "569",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "620",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "299",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "1200",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "better"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "1245",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "103",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "459",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "113",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "outcome_sensitivity",
+    "problem_id": "681",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "better"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "803",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "750",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "867",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "506",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "505",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "289",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "736",
+    "verifier": "tie",
+    "judge": "worse",
+    "judge_reversed": "worse"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "558",
+    "verifier": "tie",
+    "judge": "worse",
+    "judge_reversed": "worse"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "677",
+    "verifier": "tie",
+    "judge": "worse",
+    "judge_reversed": "worse"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "23",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "1122",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "569",
+    "verifier": "tie",
+    "judge": "worse",
+    "judge_reversed": "worse"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "620",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "299",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "1200",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "1245",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "103",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "459",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "113",
+    "verifier": "tie",
+    "judge": "worse",
+    "judge_reversed": "worse"
+  },
+  {
+    "comparison": "filler_susceptibility",
+    "problem_id": "681",
+    "verifier": "tie",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "803",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "750",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "867",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "506",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "better"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "505",
+    "verifier": "better",
+    "judge": "better",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "289",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "736",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "558",
+    "verifier": "better",
+    "judge": "better",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "677",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "23",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "1122",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "better"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "569",
+    "verifier": "better",
+    "judge": "better",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "620",
+    "verifier": "better",
+    "judge": "better",
+    "judge_reversed": "better"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "299",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "1200",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "1245",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "103",
+    "verifier": "better",
+    "judge": "better",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "459",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "113",
+    "verifier": "better",
+    "judge": "worse",
+    "judge_reversed": "worse"
+  },
+  {
+    "comparison": "distractor_robustness",
+    "problem_id": "681",
+    "verifier": "better",
+    "judge": "tie",
+    "judge_reversed": "tie"
+  }
+]

@@ -1,0 +1,102 @@
+{
+  "rule": "ambiguous = judge text contains zero or several of {A, B, TIE}; the released parser keeps the first one",
+  "gsm": {
+    "rlaif_vs_sft": {
+      "n": 300,
+      "decisive": 5,
+      "explicit_tie": 287,
+      "ambiguous": 8,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.02666666666666667
+    },
+    "rlvr_vs_sft": {
+      "n": 300,
+      "decisive": 6,
+      "explicit_tie": 286,
+      "ambiguous": 8,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.02666666666666667
+    },
+    "rlvr_vs_rlaif": {
+      "n": 300,
+      "decisive": 7,
+      "explicit_tie": 284,
+      "ambiguous": 9,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.03
+    },
+    "all_raw_outputs": {
+      "TIE": 384,
+      "A, B": 11,
+      "B": 7,
+      "A": 4,
+      "A, B,": 3
+    }
+  },
+  "transfer": {
+    "rlaif_vs_sft": {
+      "n": 100,
+      "decisive": 0,
+      "explicit_tie": 79,
+      "ambiguous": 21,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.21
+    },
+    "rlvr_vs_sft": {
+      "n": 100,
+      "decisive": 0,
+      "explicit_tie": 79,
+      "ambiguous": 21,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.21
+    },
+    "rlvr_vs_rlaif": {
+      "n": 100,
+      "decisive": 0,
+      "explicit_tie": 80,
+      "ambiguous": 20,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.2
+    },
+    "all_raw_outputs": {
+      "TIE": 91,
+      "A, B,": 15,
+      "A, B": 6,
+      "A,B,TIE": 3
+    }
+  },
+  "diagnostics": {
+    "reasoning_sensitivity": {
+      "n": 20,
+      "decisive": 0,
+      "explicit_tie": 20,
+      "ambiguous": 0,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.0
+    },
+    "outcome_sensitivity": {
+      "n": 20,
+      "decisive": 0,
+      "explicit_tie": 20,
+      "ambiguous": 0,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.0
+    },
+    "filler_susceptibility": {
+      "n": 20,
+      "decisive": 1,
+      "explicit_tie": 15,
+      "ambiguous": 4,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.2
+    },
+    "distractor_robustness": {
+      "n": 20,
+      "decisive": 6,
+      "explicit_tie": 14,
+      "ambiguous": 0,
+      "no_raw_record": 0,
+      "ambiguous_rate": 0.0
+    }
+  }
+}
