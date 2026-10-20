@@ -36,6 +36,11 @@ def style():
     pd.set_option("display.max_colwidth", 120)
     pd.set_option("display.width", 200)
     pd.set_option("display.precision", 4)
+    # Undefined entries (e.g. sign agreement for K = 8) are shown as an em dash instead of NaN.
+    def _html_na(self):
+        return self.to_html(na_rep="—", notebook=True, max_rows=pd.get_option("display.max_rows"),
+                            max_cols=pd.get_option("display.max_columns"), show_dimensions=False)
+    pd.DataFrame._repr_html_ = _html_na
 
 
 def exists(rel: str) -> bool:

@@ -1,4 +1,19 @@
-                   policy           setting            RM  KL tok  entropy           len  EOS
-         SFT (no adapter)                 — 1.562 ± 0.173     0.0    0.981 292.4 ± 257.7 0.94
-     PPO midpoint (start)                 — 1.727 ± 0.169     0.0    0.942 290.4 ± 260.8 0.94
-Standard PPO (20 updates) ε=0.20, β_KL=0.10 1.631 ± 0.166    -0.0    0.984 297.8 ± 274.3 0.94
+\begin{table}
+\caption{PPO held-out evaluation (64 fixed prompts, cap 768, RM ± s.e.m.)}
+\label{tab:t2_ppo_heldout}
+\begin{tabular}{lllrrlrrr}
+\toprule
+policy & setting & RM & KL tok & entropy & len & EOS & max KL(old,new) & grad-norm CV \\
+\midrule
+SFT (no adapter) & — & 1.562 ± 0.173 & 0.000000 & 0.981000 & 292.4 ± 257.7 & 0.940000 & -- & -- \\
+PPO midpoint (start) & — & 1.727 ± 0.169 & 0.000000 & 0.942000 & 290.4 ± 260.8 & 0.940000 & -- & -- \\
+Standard PPO (20 updates) & ε=0.20, β\_KL=0.10 & 1.631 ± 0.166 & -0.000000 & 0.984000 & 297.8 ± 274.3 & 0.940000 & -- & -- \\
+fork (clip study, 8 updates) & ε=0.05, β\_KL=0.1 & 1.779 ± 0.163 & 0.000000 & 0.997000 & 295.0 ± 262.3 & 0.910000 & 0.000050 & 0.730000 \\
+fork (clip study, 8 updates) & ε=0.2, β\_KL=0.1 & 1.860 ± 0.155 & -0.000000 & 0.980000 & 305.3 ± 270.5 & 0.890000 & 0.000050 & 0.900000 \\
+fork (clip study, 8 updates) & ε=0.5, β\_KL=0.1 & 1.860 ± 0.155 & -0.000000 & 0.980000 & 305.3 ± 270.5 & 0.890000 & 0.000050 & 0.900000 \\
+fork (kl study, 8 updates) & ε=0.2, β\_KL=0.0 & 1.755 ± 0.146 & -0.000100 & 0.977000 & 282.6 ± 268.3 & 0.910000 & 0.000050 & 1.350000 \\
+fork (kl study, 8 updates) & ε=0.2, β\_KL=0.1 & 1.860 ± 0.155 & -0.000000 & 0.980000 & 305.3 ± 270.5 & 0.890000 & 0.000050 & 0.900000 \\
+fork (kl study, 8 updates) & ε=0.2, β\_KL=0.2 & 1.614 ± 0.179 & -0.000000 & 0.964000 & 307.4 ± 277.2 & 0.840000 & 0.000030 & 1.440000 \\
+\bottomrule
+\end{tabular}
+\end{table}

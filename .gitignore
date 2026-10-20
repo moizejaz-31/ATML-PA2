@@ -5,7 +5,7 @@ __pycache__/
 .venv/
 venv/
 
-# Caches
+# Caches & Hugging Face
 .cache/
 hf_cache/
 .huggingface/
@@ -25,10 +25,26 @@ data/*
 !data/README.md
 !data/word_limit_prompts.jsonl
 
-# Misc
+# Archives & System files
 *.zip
+*.tar.gz
+*.tar
 .DS_Store
+
+# PDFs (Ignore all generated and external PDFs - report PDF excluded from push)
 *.pdf
+
+# Report & LaTeX build artifacts (Do not push report build files)
+report/latex/
+report/main.tex
+report/neurips_2026.sty
+report/build_report.py
+report/figures/*.pdf
+
+# Supplementary runner and local manual audit tools
+kaggle_runner.ipynb
+manual_audit_sheet_labelled.csv
+results/task4_safety/audit_labeller.html
 
 # Kaggle runner step markers
 results/.done/

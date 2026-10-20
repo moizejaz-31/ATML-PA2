@@ -1,0 +1,15 @@
+\begin{table}
+\caption{Manual audit vs AI judge (60 fixed prompts per policy)}
+\label{tab:t4_manual_audit}
+\begin{tabular}{lrrrrr}
+\toprule
+policy & n & agreement & κ & AI ambiguous & manual ambiguous \\
+\midrule
+SFT & 60 & 0.733000 & 0.518000 & 0.000000 & 0.000000 \\
+DPO & 60 & 0.750000 & 0.551000 & 0.000000 & 0.017000 \\
+PPO & 60 & 0.733000 & 0.515000 & 0.000000 & 0.000000 \\
+GRPO & 60 & 0.733000 & 0.515000 & 0.000000 & 0.000000 \\
+pooled & 240 & 0.738000 & 0.525000 & 0.000000 & 0.004000 \\
+\bottomrule
+\end{tabular}
+\end{table}

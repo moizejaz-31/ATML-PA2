@@ -1,4 +1,13 @@
-             policy  word-limit compliance (greedy)  compliance (8 samples/prompt) words (greedy)  words / limit held-out len (tok)
-                SFT                             0.5                           0.46    40.6 ± 17.2           1.12      162.6 ± 102.6
-       standard DPO                             0.4                           0.46    40.8 ± 15.1           1.14      158.8 ± 102.1
-length-balanced DPO                             0.4                           0.45    41.0 ± 15.6           1.14      162.8 ± 101.4
+\begin{table}
+\caption{Word-limit compliance and generated length}
+\label{tab:t1_word_limit}
+\begin{tabular}{lrrlrl}
+\toprule
+policy & word-limit compliance (greedy) & compliance (8 samples/prompt) & words (greedy) & words / limit & held-out len (tok) \\
+\midrule
+SFT & 0.500000 & 0.460000 & 40.6 ± 17.2 & 1.120000 & 162.6 ± 102.6 \\
+standard DPO & 0.400000 & 0.460000 & 40.8 ± 15.1 & 1.140000 & 158.8 ± 102.1 \\
+length-balanced DPO & 0.400000 & 0.450000 & 41.0 ± 15.6 & 1.140000 & 162.8 ± 101.4 \\
+\bottomrule
+\end{tabular}
+\end{table}

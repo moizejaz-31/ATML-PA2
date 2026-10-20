@@ -1,7 +1,16 @@
-       policy   GSM acc          GSM format    GSM len SVAMP acc SVAMP len  acc drop
-          SFT     0.283                0.35   274 ± 85      0.44  164 ± 72    -0.157
-         RLVR     0.287                0.36   276 ± 86      0.46  164 ± 73    -0.173
-        RLAIF     0.287                0.36   275 ± 88      0.44  163 ± 71    -0.153
-  RLVR VS SFT win 0.503 ties 286/unparsed 0 agree 0.08 win 0.515              -0.012
- RLAIF VS SFT win 0.495 ties 287/unparsed 0 agree 0.00 win 0.525              -0.030
-RLVR VS RLAIF win 0.507 ties 284/unparsed 0 agree 0.10 win 0.530              -0.023
+\begin{table}
+\caption{RLVR vs RLAIF: exact accuracy, AI-judge win rate (tie=0.5), verifier agreement}
+\label{tab:t5_math}
+\begin{tabular}{llllllr}
+\toprule
+policy & GSM acc & GSM format & GSM len & SVAMP acc & SVAMP len & acc drop \\
+\midrule
+SFT & 0.283000 & 0.350000 & 274 ± 85 & 0.440000 & 164 ± 72 & -0.157000 \\
+RLVR & 0.287000 & 0.360000 & 276 ± 86 & 0.460000 & 164 ± 73 & -0.173000 \\
+RLAIF & 0.287000 & 0.360000 & 275 ± 88 & 0.440000 & 163 ± 71 & -0.153000 \\
+RLVR VS SFT & win 0.503 & ties 286/unparsed 0 & agree 0.08 & win 0.515 &  & -0.012000 \\
+RLAIF VS SFT & win 0.495 & ties 287/unparsed 0 & agree 0.00 & win 0.525 &  & -0.030000 \\
+RLVR VS RLAIF & win 0.507 & ties 284/unparsed 0 & agree 0.10 & win 0.530 &  & -0.023000 \\
+\bottomrule
+\end{tabular}
+\end{table}
